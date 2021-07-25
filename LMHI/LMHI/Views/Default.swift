@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct Default: View {
     var body: some View {
         Text("LMHI")
             .font(.title)
@@ -9,8 +9,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct Default_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Default()
     }
 }
