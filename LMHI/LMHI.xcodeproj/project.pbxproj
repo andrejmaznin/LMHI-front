@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		348C350E26AD5201000A4D93 /* Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C350D26AD5201000A4D93 /* Default.swift */; };
 		348C351126AD5A07000A4D93 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C351026AD5A07000A4D93 /* Util.swift */; };
+		348C351526AD6B87000A4D93 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C351426AD6B87000A4D93 /* SignUp.swift */; };
+		348C351926AD6DCA000A4D93 /* CustomViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C351826AD6DCA000A4D93 /* CustomViewModifiers.swift */; };
+		348C351D26AD879C000A4D93 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C351C26AD879C000A4D93 /* CheckBox.swift */; };
 		34A874F126ABBFCA0011A40D /* LMHIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A874F026ABBFCA0011A40D /* LMHIApp.swift */; };
 		34A874F326ABBFCA0011A40D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A874F226ABBFCA0011A40D /* ContentView.swift */; };
 		34A874F526ABBFD60011A40D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34A874F426ABBFD60011A40D /* Assets.xcassets */; };
@@ -19,6 +22,9 @@
 /* Begin PBXFileReference section */
 		348C350D26AD5201000A4D93 /* Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Default.swift; sourceTree = "<group>"; };
 		348C351026AD5A07000A4D93 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		348C351426AD6B87000A4D93 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		348C351826AD6DCA000A4D93 /* CustomViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewModifiers.swift; sourceTree = "<group>"; };
+		348C351C26AD879C000A4D93 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		34A874ED26ABBFCA0011A40D /* LMHI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LMHI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34A874F026ABBFCA0011A40D /* LMHIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMHIApp.swift; sourceTree = "<group>"; };
 		34A874F226ABBFCA0011A40D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -39,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		348C351726AD6DA3000A4D93 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				348C351826AD6DCA000A4D93 /* CustomViewModifiers.swift */,
+				348C351C26AD879C000A4D93 /* CheckBox.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		34A874E426ABBFCA0011A40D = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +97,8 @@
 				34A874F226ABBFCA0011A40D /* ContentView.swift */,
 				34A8750126ABC0CC0011A40D /* ProgressBar.swift */,
 				348C350D26AD5201000A4D93 /* Default.swift */,
+				348C351426AD6B87000A4D93 /* SignUp.swift */,
+				348C351726AD6DA3000A4D93 /* Helpers */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -155,7 +172,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				348C351D26AD879C000A4D93 /* CheckBox.swift in Sources */,
+				348C351926AD6DCA000A4D93 /* CustomViewModifiers.swift in Sources */,
 				34A874F326ABBFCA0011A40D /* ContentView.swift in Sources */,
+				348C351526AD6B87000A4D93 /* SignUp.swift in Sources */,
 				348C350E26AD5201000A4D93 /* Default.swift in Sources */,
 				348C351126AD5A07000A4D93 /* Util.swift in Sources */,
 				34A8750226ABC0CC0011A40D /* ProgressBar.swift in Sources */,
