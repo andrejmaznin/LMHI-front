@@ -14,6 +14,8 @@
 		34A874F526ABBFD60011A40D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34A874F426ABBFD60011A40D /* Assets.xcassets */; };
 		34A874F826ABBFD60011A40D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34A874F726ABBFD60011A40D /* Preview Assets.xcassets */; };
 		34A8750226ABC0CC0011A40D /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A8750126ABC0CC0011A40D /* ProgressBar.swift */; };
+		BCB837A326AEACFD00500B05 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB837A126AEACFD00500B05 /* NetworkingService.swift */; };
+		BCB837A426AEACFD00500B05 /* NetworkingStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB837A226AEACFD00500B05 /* NetworkingStructs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		34A874F726ABBFD60011A40D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		34A874F926ABBFD60011A40D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34A8750126ABC0CC0011A40D /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		BCB837A126AEACFD00500B05 /* NetworkingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		BCB837A226AEACFD00500B05 /* NetworkingStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingStructs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 		34A874EF26ABBFCA0011A40D /* LMHI */ = {
 			isa = PBXGroup;
 			children = (
+				BCB837A026AEACD900500B05 /* Networking */,
 				34A874F026ABBFCA0011A40D /* LMHIApp.swift */,
 				34A8750026ABC0A70011A40D /* Views */,
 				348C351026AD5A07000A4D93 /* Util.swift */,
@@ -84,6 +89,15 @@
 				348C350D26AD5201000A4D93 /* Default.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		BCB837A026AEACD900500B05 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				BCB837A126AEACFD00500B05 /* NetworkingService.swift */,
+				BCB837A226AEACFD00500B05 /* NetworkingStructs.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +172,8 @@
 				34A874F326ABBFCA0011A40D /* ContentView.swift in Sources */,
 				348C350E26AD5201000A4D93 /* Default.swift in Sources */,
 				348C351126AD5A07000A4D93 /* Util.swift in Sources */,
+				BCB837A426AEACFD00500B05 /* NetworkingStructs.swift in Sources */,
+				BCB837A326AEACFD00500B05 /* NetworkingService.swift in Sources */,
 				34A8750226ABC0CC0011A40D /* ProgressBar.swift in Sources */,
 				34A874F126ABBFCA0011A40D /* LMHIApp.swift in Sources */,
 			);
