@@ -6,7 +6,8 @@ struct CheckBox: View {
     var body: some View {
         Image(systemName: checked ? "checkmark.square.fill" : "square")
             .resizable()
-            .foregroundColor(checked ? Color(.systemBlue) : .white)
+            .background(Color(.white))
+            .foregroundColor(checked ? Color(.systemBlue) : Color(.white))
             .frame(width: 30, height: 30)
             .overlay(
                 RoundedRectangle(cornerRadius: 5)
@@ -24,6 +25,6 @@ struct CheckBox: View {
 
 struct CheckBox_Previews: PreviewProvider {
     static var previews: some View {
-        CheckBox(checked: .constant(true))
+        CheckBox(checked: .constant(false))
     }
 }

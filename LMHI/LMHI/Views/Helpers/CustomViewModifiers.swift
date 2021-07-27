@@ -1,15 +1,19 @@
 import SwiftUI
 
-extension View {
-    func formTextField() -> some View {
-        self
+struct FormTextFieldModifier: ViewModifier {
+    let type: FormTextFieldType
+    
+    func body(content: Content) -> some View {
+        content
             .padding()
             .frame(height: 60)
+            .background(Color(.white))
+            .foregroundColor(.black)
             .overlay(
                 RoundedRectangle(cornerRadius: 5)
                     .stroke(Color(.systemGray4), lineWidth: 2)
             )
-            .padding(.top, 10)
-            .padding(.bottom, 10)
+            .autocapitalization(type == .personName ? .words : .none)
+            .disableAutocorrection(true)
     }
 }
