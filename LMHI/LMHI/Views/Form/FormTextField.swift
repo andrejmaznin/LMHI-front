@@ -13,27 +13,21 @@ struct FormTextField: View {
     @Binding var form: [String]
     @Binding var valid: [Bool]
     
-    private var label: String
+    private var label: String {
+        switch type {
+        case .username:
+            return "Username"
+        case .password:
+            return "Password"
+        case .personName:
+            return "Full name"
+        case .email:
+            return "Email"
+        }
+    }
     
     @State private var validationError = ""
     @State private var fieldIsTouched = false
-    
-    init(type: FormTextFieldType, form: Binding<Array<String>>, valid: Binding<Array<Bool>>) {
-        self.type = type
-        self._form = form
-        self._valid = valid
-        
-        switch type {
-        case .username:
-            label = "Username"
-        case .password:
-            label = "Password"
-        case .personName:
-            label = "Full name"
-        case .email:
-            label = "Email"
-        }
-    }
     
     var body: some View {
         VStack {
