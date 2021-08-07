@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		345DD2F226BE468B0056A3E7 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DD2F126BE468B0056A3E7 /* AppState.swift */; };
 		3464F6DB26ADB71A00698D57 /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3464F6DA26ADB71A00698D57 /* FormTextField.swift */; };
 		348C350E26AD5201000A4D93 /* Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C350D26AD5201000A4D93 /* Default.swift */; };
 		348C351126AD5A07000A4D93 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C351026AD5A07000A4D93 /* Util.swift */; };
@@ -20,9 +21,11 @@
 		34A8750226ABC0CC0011A40D /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A8750126ABC0CC0011A40D /* ProgressBar.swift */; };
 		34B5ED9926AF14A500243E68 /* TextFieldError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B5ED9826AF14A500243E68 /* TextFieldError.swift */; };
 		34B5ED9C26AF164C00243E68 /* CustomViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B5ED9B26AF164C00243E68 /* CustomViewExtensions.swift */; };
+		34FF00C926BBEE6300384AF3 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FF00C826BBEE6300384AF3 /* Main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		345DD2F126BE468B0056A3E7 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		3464F6DA26ADB71A00698D57 /* FormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
 		348C350D26AD5201000A4D93 /* Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Default.swift; sourceTree = "<group>"; };
 		348C351026AD5A07000A4D93 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -38,6 +41,7 @@
 		34A8750126ABC0CC0011A40D /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		34B5ED9826AF14A500243E68 /* TextFieldError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldError.swift; sourceTree = "<group>"; };
 		34B5ED9B26AF164C00243E68 /* CustomViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewExtensions.swift; sourceTree = "<group>"; };
+		34FF00C826BBEE6300384AF3 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 				34A874F426ABBFD60011A40D /* Assets.xcassets */,
 				34A874F926ABBFD60011A40D /* Info.plist */,
 				34A874F626ABBFD60011A40D /* Preview Content */,
+				345DD2F126BE468B0056A3E7 /* AppState.swift */,
 			);
 			path = LMHI;
 			sourceTree = "<group>";
@@ -100,24 +105,33 @@
 		34A8750026ABC0A70011A40D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				34B5ED9726AF146600243E68 /* Form */,
 				34A874F226ABBFCA0011A40D /* ContentView.swift */,
-				34A8750126ABC0CC0011A40D /* ProgressBar.swift */,
-				348C350D26AD5201000A4D93 /* Default.swift */,
-				348C351426AD6B87000A4D93 /* SignUp.swift */,
+				34FF00C626BBED7100384AF3 /* Screens */,
+				34B5ED9726AF146600243E68 /* Elements */,
 				348C351726AD6DA3000A4D93 /* Helpers */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		34B5ED9726AF146600243E68 /* Form */ = {
+		34B5ED9726AF146600243E68 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
+				34A8750126ABC0CC0011A40D /* ProgressBar.swift */,
 				3464F6DA26ADB71A00698D57 /* FormTextField.swift */,
 				348C351C26AD879C000A4D93 /* CheckBox.swift */,
 				34B5ED9826AF14A500243E68 /* TextFieldError.swift */,
 			);
-			path = Form;
+			path = Elements;
+			sourceTree = "<group>";
+		};
+		34FF00C626BBED7100384AF3 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				348C351426AD6B87000A4D93 /* SignUp.swift */,
+				348C350D26AD5201000A4D93 /* Default.swift */,
+				34FF00C826BBEE6300384AF3 /* Main.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,9 +209,11 @@
 				348C351926AD6DCA000A4D93 /* CustomViewModifiers.swift in Sources */,
 				34A874F326ABBFCA0011A40D /* ContentView.swift in Sources */,
 				348C351526AD6B87000A4D93 /* SignUp.swift in Sources */,
+				34FF00C926BBEE6300384AF3 /* Main.swift in Sources */,
 				348C350E26AD5201000A4D93 /* Default.swift in Sources */,
 				348C351126AD5A07000A4D93 /* Util.swift in Sources */,
 				34A8750226ABC0CC0011A40D /* ProgressBar.swift in Sources */,
+				345DD2F226BE468B0056A3E7 /* AppState.swift in Sources */,
 				34A874F126ABBFCA0011A40D /* LMHIApp.swift in Sources */,
 				34B5ED9C26AF164C00243E68 /* CustomViewExtensions.swift in Sources */,
 			);

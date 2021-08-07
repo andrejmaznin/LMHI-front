@@ -1,9 +1,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var appState: AppState
+    
     var body: some View {
-        VStack {
-            SignUp()
+        Group {
+            switch appState.isAuthenticated {
+            case .undefined:
+                Text("Loading...")
+            case .signedOut:
+                Text("Login View")
+            case .signedIn:
+                Text("Home View")
+            }
+        }
+        .onAppear {
+            appState.configureAPIStateChangeListener()
         }
     }
 }

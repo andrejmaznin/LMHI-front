@@ -3,8 +3,7 @@ import SwiftUI
 struct Default: View {
     var body: some View {
         Text("LMHI")
-            .font(.title)
-            .fontWeight(.bold)
+            .font(.system(size: 42, weight: .bold, design: .default))
             .padding()
     }
 }

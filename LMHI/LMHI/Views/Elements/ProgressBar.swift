@@ -12,13 +12,13 @@ struct ProgressBar: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { metrics in
             ZStack(alignment: .leading) {
                 Rectangle()
                     .foregroundColor(backgroundColor)
                 
                 Rectangle()
-                    .frame(width: CGFloat(progress) * geometry.size.width)
+                    .frame(width: CGFloat(progress) * metrics.size.width)
                     .foregroundColor(foregroundColor)
                 
                 HStack {
