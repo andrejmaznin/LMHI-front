@@ -7,9 +7,9 @@ struct ContentView: View {
         Group {
             switch appState.isAuthenticated {
             case .undefined:
-                Text("Loading...")
+                LoadingView()
             case .signedOut:
-                Text("Login View")
+                StartView()
             case .signedIn:
                 Text("Home View")
             }

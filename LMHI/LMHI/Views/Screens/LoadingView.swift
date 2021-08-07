@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Default: View {
+struct LoadingView: View {
     var body: some View {
         Text("LMHI")
             .font(.system(size: 42, weight: .bold, design: .default))
@@ -8,8 +8,8 @@ struct Default: View {
     }
 }
 
-struct Default_Previews: PreviewProvider {
+struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
-        Default()
+        LoadingView()
     }
 }

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SignUp: View {
+struct SignUpView: View {
     let inactiveColor = Color(
         red: Util.normalizeColor(230),
         green: Util.normalizeColor(223),
@@ -63,6 +63,11 @@ struct SignUp: View {
             }
             .padding(30)
         }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("Sign Up")
+            }
+        }
     }
     
     func signUp() {
@@ -70,8 +75,8 @@ struct SignUp: View {
     }
 }
 
-struct SignUp_Previews: PreviewProvider {
+struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUp()
+        SignUpView()
     }
 }
