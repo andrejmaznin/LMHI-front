@@ -52,16 +52,8 @@ struct ProgressBar_Previews: PreviewProvider {
             title: "Meditation",
             currentMinutes: 20,
             goalMinutes: 30,
-            foregroundColor: Color(
-                red: Util.normalizeColor(246),
-                green: Util.normalizeColor(207),
-                blue: Util.normalizeColor(69)
-            ),
-            backgroundColor: Color(
-                red: Util.normalizeColor(240),
-                green: Util.normalizeColor(222),
-                blue: Util.normalizeColor(175)
-            )
+            foregroundColor: Color(R: 246, G: 207, B: 69),
+            backgroundColor: Color(R: 240, G: 222, B: 175)
         )
     }
 }

@@ -3,42 +3,50 @@ import SwiftUI
 struct StartView: View {
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Welcome to LMHI!")
-                    .font(.system(size: 32, weight: .bold, design: .default))
+            ZStack {
+                Image("SignUpBackground")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea(.all)
                 
-                Spacer()
-                
-                NavigationLink(destination: SignInView()) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.blue)
-                        
-                        Text("Login")
-                            .font(.system(size: 20, weight: .bold, design: .default))
-                            .foregroundColor(.white)
+                VStack {
+                    Text("Welcome to LMHI!")
+                        .font(.system(size: 32, weight: .bold, design: .default))
+                        .padding(.top)
+                    
+                    Spacer()
+                    
+                    NavigationLink(destination: SignInView()) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.blue)
+                            
+                            Text("Login")
+                                .font(.system(size: 20, weight: .bold, design: .default))
+                                .foregroundColor(.white)
+                        }
+                        .frame(height: 60)
+                        .frame(maxWidth: .infinity)
                     }
-                    .frame(height: 60)
-                    .frame(maxWidth: .infinity)
-                }
-                
-                NavigationLink(destination: SignUpView()) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.green)
-                        
-                        Text("Create Account")
-                            .font(.system(size: 20, weight: .bold, design: .default))
-                            .foregroundColor(.white)
+                    
+                    NavigationLink(destination: SignUpView()) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.green)
+                            
+                            Text("Create Account")
+                                .font(.system(size: 20, weight: .bold, design: .default))
+                                .foregroundColor(.white)
+                        }
+                        .frame(height: 60)
+                        .frame(maxWidth: .infinity)
                     }
-                    .frame(height: 60)
-                    .frame(maxWidth: .infinity)
+                    
+                    Spacer()
                 }
-                
-                Spacer()
+                .padding()
+                .navigationBarHidden(true)
             }
-            .padding()
-            .navigationBarHidden(true)
         }
     }
 }

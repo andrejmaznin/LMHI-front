@@ -3,7 +3,9 @@ import SwiftUI
 struct FormButton: View {
     let action: () -> Void
     let text: String
-    let color: Color
+    
+    var color: Color
+    var disabled: Bool
     
     var body: some View {
         Button(action: action) {
@@ -15,11 +17,12 @@ struct FormButton: View {
                 .foregroundColor(.white)
                 .cornerRadius(10)
         }
+        .disabled(disabled)
     }
 }
 
 struct FormButton_Previews: PreviewProvider {
     static var previews: some View {
-        FormButton(action: {}, text: "Text", color: Color.blue)
+        FormButton(action: {}, text: "Text", color: Color.blue, disabled: false)
     }
 }

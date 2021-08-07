@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct FormTextFieldModifier: ViewModifier {
-    let type: FormTextFieldType
+    let autocapitalization: Bool
     
     func body(content: Content) -> some View {
         content
@@ -13,7 +13,7 @@ struct FormTextFieldModifier: ViewModifier {
                 RoundedRectangle(cornerRadius: 5)
                     .stroke(Color(.systemGray4), lineWidth: 2)
             )
-            .autocapitalization(type == .personName ? .words : .none)
+            .autocapitalization(autocapitalization ? .words : .none)
             .disableAutocorrection(true)
     }
 }

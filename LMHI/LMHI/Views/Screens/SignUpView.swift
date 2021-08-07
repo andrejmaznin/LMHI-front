@@ -1,19 +1,10 @@
 import SwiftUI
 
 struct SignUpView: View {
-    let inactiveColor = Color(
-        red: Util.normalizeColor(230),
-        green: Util.normalizeColor(223),
-        blue: Util.normalizeColor(213)
-    )
-    let activeColor = Color(
-        red: Util.normalizeColor(214),
-        green: Util.normalizeColor(200),
-        blue: Util.normalizeColor(181)
-    )
+    @ObservedObject var VM = SignUpViewModel()
     
-    @State private var form = ["", "", "", ""]
-    @State private var valid = [false, false, false, false, false]
+    let inactiveColor = Color(R: 230, G: 223, B: 213)
+    let activeColor = Color(R: 214, G: 200, B: 181)
     
     var body: some View {
         ZStack {
@@ -26,40 +17,27 @@ struct SignUpView: View {
                 Spacer()
                     .frame(height: 100)
                 
-                FormTextField(type: .personName, form: $form, valid: $valid)
-                FormTextField(type: .email, form: $form, valid: $valid)
+                FormTextField(placeholder: "Full name", prompt: VM.personNamePrompt, field: $VM.personName, action: VM.validatePersonName, isSecure: false, autocapitalization: true)
+                FormTextField(placeholder: "Email", prompt: VM.emailPrompt, field: $VM.email, action: VM.validateEmail, isSecure: false, autocapitalization: false)
 
                 Spacer()
                     .frame(height: 60)
 
-                FormTextField(type: .username, form: $form, valid: $valid)
-                FormTextField(type: .password, form: $form, valid: $valid)
+                FormTextField(placeholder: "Username", prompt: VM.usernamePrompt, field: $VM.username, action: VM.validateUsername, isSecure: false, autocapitalization: false)
+                FormTextField(placeholder: "Password", prompt: VM.passwordPrompt, field: $VM.password, action: VM.validatePassword, isSecure: true, autocapitalization: false)
 
                 HStack() {
-                    CheckBox(checked: $valid[4])
+                    CheckBox(checked: $VM.termsAndConditions)
 
                     Text("Terms and conditions")
-                        .font(.system(size: 18))
-                        .fontWeight(.bold)
+                        .font(.system(size: 18, weight: .bold, design: .default))
                         .foregroundColor(Color(.systemGray))
-                        .onTapGesture { valid[4].toggle() }
+                        .onTapGesture { VM.termsAndConditions.toggle() }
 
                     Spacer()
                 }
 
-                Button(action: { signUp() }) {
-                    Text("Create account")
-                        .font(.system(size: 20))
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.white)
-                        .cornerRadius(10)
-                }
-                .frame(height: 60)
-                .frame(maxWidth: .infinity)
-                .background(Util.arrayAndOperation(valid) ? activeColor : inactiveColor
-                )
-                .disabled(!Util.arrayAndOperation(valid))
-                .padding(.top, 10)
+                FormButton(action: VM.signUp, text: "Create account", color: VM.isFormValid ? activeColor : inactiveColor, disabled: !VM.isFormValid)
             }
             .padding(30)
         }
@@ -68,10 +46,6 @@ struct SignUpView: View {
                 Text("Sign Up")
             }
         }
-    }
-    
-    func signUp() {
-        print("Sign up")
     }
 }
 
