@@ -8,7 +8,7 @@ struct HomeView: View {
             Text("Logged in")
                 .navigationBarTitle("LMHI")
                 .navigationBarItems(trailing: Button("Log Out") {
-                    appState.isAuthenticated = .signedOut
+                    appState.isAuthenticated = false
                 })
         }
     }

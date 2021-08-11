@@ -25,6 +25,9 @@
 		34A874F826ABBFD60011A40D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34A874F726ABBFD60011A40D /* Preview Assets.xcassets */; };
 		34A8750226ABC0CC0011A40D /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A8750126ABC0CC0011A40D /* ProgressBar.swift */; };
 		34B5ED9C26AF164C00243E68 /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B5ED9B26AF164C00243E68 /* CustomExtensions.swift */; };
+		34D68F1626C15B6A00E35F0A /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D68F1526C15B6A00E35F0A /* SignUpModel.swift */; };
+		34D68F1C26C1636E00E35F0A /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D68F1B26C1636E00E35F0A /* NetworkingService.swift */; };
+		34D68F1F26C163C200E35F0A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D68F1E26C163C200E35F0A /* APIService.swift */; };
 		34FF00C926BBEE6300384AF3 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FF00C826BBEE6300384AF3 /* Main.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +52,9 @@
 		34A874F926ABBFD60011A40D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34A8750126ABC0CC0011A40D /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		34B5ED9B26AF164C00243E68 /* CustomExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExtensions.swift; sourceTree = "<group>"; };
+		34D68F1526C15B6A00E35F0A /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
+		34D68F1B26C1636E00E35F0A /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		34D68F1E26C163C200E35F0A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		34FF00C826BBEE6300384AF3 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +110,8 @@
 				345DD2F126BE468B0056A3E7 /* AppState.swift */,
 				34A8750026ABC0A70011A40D /* Views */,
 				345DD30726BE92340056A3E7 /* ViewModels */,
+				34D68F1426C15B1300E35F0A /* Models */,
+				34D68F1926C15DC300E35F0A /* Networking */,
 				345DD2FF26BE6FBD0056A3E7 /* Helpers */,
 				34A874F426ABBFD60011A40D /* Assets.xcassets */,
 				34A874F926ABBFD60011A40D /* Info.plist */,
@@ -139,6 +147,23 @@
 				345DD2FB26BE5E490056A3E7 /* FormButton.swift */,
 			);
 			path = Elements;
+			sourceTree = "<group>";
+		};
+		34D68F1426C15B1300E35F0A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				34D68F1526C15B6A00E35F0A /* SignUpModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		34D68F1926C15DC300E35F0A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				34D68F1B26C1636E00E35F0A /* NetworkingService.swift */,
+				34D68F1E26C163C200E35F0A /* APIService.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		34FF00C626BBED7100384AF3 /* Screens */ = {
@@ -226,8 +251,10 @@
 				348C351D26AD879C000A4D93 /* CheckBox.swift in Sources */,
 				3464F6DB26ADB71A00698D57 /* FormTextField.swift in Sources */,
 				345DD2F926BE55230056A3E7 /* HomeView.swift in Sources */,
+				34D68F1626C15B6A00E35F0A /* SignUpModel.swift in Sources */,
 				345DD30A26BE96080056A3E7 /* SignUpViewModel.swift in Sources */,
 				348C351926AD6DCA000A4D93 /* CustomModifiers.swift in Sources */,
+				34D68F1F26C163C200E35F0A /* APIService.swift in Sources */,
 				34A874F326ABBFCA0011A40D /* ContentView.swift in Sources */,
 				345DD30226BE835B0056A3E7 /* SignInView.swift in Sources */,
 				348C351526AD6B87000A4D93 /* SignUpView.swift in Sources */,
@@ -237,6 +264,7 @@
 				34A8750226ABC0CC0011A40D /* ProgressBar.swift in Sources */,
 				345DD2FC26BE5E490056A3E7 /* FormButton.swift in Sources */,
 				345DD2F226BE468B0056A3E7 /* AppState.swift in Sources */,
+				34D68F1C26C1636E00E35F0A /* NetworkingService.swift in Sources */,
 				34A874F126ABBFCA0011A40D /* LMHIApp.swift in Sources */,
 				34B5ED9C26AF164C00243E68 /* CustomExtensions.swift in Sources */,
 				345DD2F626BE549C0056A3E7 /* StartView.swift in Sources */,

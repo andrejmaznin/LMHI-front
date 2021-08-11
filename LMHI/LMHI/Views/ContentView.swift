@@ -5,17 +5,16 @@ struct ContentView: View {
     
     var body: some View {
         Group {
-            switch appState.isAuthenticated {
-            case .undefined:
+            if appState.isLoading {
                 LoadingView()
-            case .signedOut:
+            } else if appState.isAuthenticated {
+                HomeView()
+            } else {
                 StartView()
-            case .signedIn:
-                Text("Home View")
             }
         }
         .onAppear {
-            appState.configureAPIStateChangeListener()
+            appState.start()
         }
     }
 }

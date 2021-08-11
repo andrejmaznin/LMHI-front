@@ -8,38 +8,64 @@ struct SignUpView: View {
     
     var body: some View {
         ZStack {
-            Image("SignUpBackground")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea(.all)
-            
-            ScrollView {
-                Spacer()
-                    .frame(height: 100)
+            ZStack {
+                Image("Background0")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea(.all)
                 
-                FormTextField(placeholder: "Full name", prompt: VM.personNamePrompt, field: $VM.personName, action: VM.validatePersonName, isSecure: false, autocapitalization: true)
-                FormTextField(placeholder: "Email", prompt: VM.emailPrompt, field: $VM.email, action: VM.validateEmail, isSecure: false, autocapitalization: false)
-
-                Spacer()
-                    .frame(height: 60)
-
-                FormTextField(placeholder: "Username", prompt: VM.usernamePrompt, field: $VM.username, action: VM.validateUsername, isSecure: false, autocapitalization: false)
-                FormTextField(placeholder: "Password", prompt: VM.passwordPrompt, field: $VM.password, action: VM.validatePassword, isSecure: true, autocapitalization: false)
-
-                HStack() {
-                    CheckBox(checked: $VM.termsAndConditions)
-
-                    Text("Terms and conditions")
-                        .font(.system(size: 18, weight: .bold, design: .default))
-                        .foregroundColor(Color(.systemGray))
-                        .onTapGesture { VM.termsAndConditions.toggle() }
+                VStack {
+                    Spacer()
+                    
+                    VStack {
+                        FormTextField(placeholder: "Full name", prompt: VM.personNamePrompt, field: $VM.personName, isSecure: false, autocapitalization: true)
+                        FormTextField(placeholder: "Email", prompt: VM.emailPrompt, field: $VM.email, isSecure: false, autocapitalization: false)
+                    }
 
                     Spacer()
-                }
 
-                FormButton(action: VM.signUp, text: "Create account", color: VM.isFormValid ? activeColor : inactiveColor, disabled: !VM.isFormValid)
+                    VStack {
+                        FormTextField(placeholder: "Username", prompt: VM.usernamePrompt, field: $VM.username, isSecure: false, autocapitalization: false)
+                        FormTextField(placeholder: "Password", prompt: VM.passwordPrompt, field: $VM.password,  isSecure: true, autocapitalization: false)
+                        
+                        HStack {
+                            CheckBox(checked: $VM.termsAndConditions)
+
+                            Text("Terms and conditions")
+                                .font(.system(size: 18, weight: .bold, design: .default))
+                                .foregroundColor(Color(.systemGray))
+                                .onTapGesture { VM.termsAndConditions.toggle() }
+
+                            Spacer()
+                        }
+                        
+                        FormButton(action: VM.signUp, text: "Create account", color: VM.isFormValid ? activeColor : inactiveColor, disabled: !VM.isFormValid)
+                    }
+                    
+                    Spacer()
+                }
+                .padding()
+                .ignoresSafeArea(.keyboard)
             }
-            .padding(30)
+            .brightness(VM.showProgress ? -0.2 : 0)
+            
+            if VM.showProgress {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.white)
+                        .frame(width: 200, height: 100)
+                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                    
+                    VStack {
+                        Text("Loading...")
+                            .bold()
+                            .padding(.bottom, 10)
+                        
+                        ProgressView()
+                            .scaleEffect(2)
+                    }
+                }
+            }
         }
         .toolbar {
             ToolbarItem(placement: .principal) {

@@ -1,13 +1,10 @@
 import Foundation
 
 class AppState: ObservableObject {
-    enum APIAuthState {
-        case undefined, signedOut, signedIn
-    }
+    @Published var isLoading = true
+    @Published var isAuthenticated = false
     
-    @Published var isAuthenticated: APIAuthState = .undefined
-    
-    func configureAPIStateChangeListener() {
-        isAuthenticated = .signedOut
+    func start() {
+        isLoading = false
     }
 }

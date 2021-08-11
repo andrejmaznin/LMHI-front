@@ -4,7 +4,6 @@ struct FormTextField: View {
     let placeholder: String
     let prompt: String
     @Binding var field: String
-    let action: () -> Void
     let isSecure: Bool
     let autocapitalization: Bool
     
@@ -14,9 +13,9 @@ struct FormTextField: View {
         VStack {
             Group {
                 if isSecure {
-                    SecureField(placeholder, text: $field, onCommit: { action() })
+                    SecureField(placeholder, text: $field)
                 } else {
-                    TextField(placeholder, text: $field, onCommit: { action() })
+                    TextField(placeholder, text: $field)
                 }
             }
             .padding()
@@ -50,6 +49,6 @@ struct FormTextField: View {
 
 struct FormTextField_Previews: PreviewProvider {
     static var previews: some View {
-        FormTextField(placeholder: "Username", prompt: "", field: .constant(""), action: {}, isSecure: false, autocapitalization: false)
+        FormTextField(placeholder: "Username", prompt: "", field: .constant(""), isSecure: false, autocapitalization: false)
     }
 }

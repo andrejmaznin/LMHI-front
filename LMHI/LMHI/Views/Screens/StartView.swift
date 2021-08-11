@@ -1,10 +1,11 @@
 import SwiftUI
 
 struct StartView: View {
+    
     var body: some View {
         NavigationView {
             ZStack {
-                Image("SignUpBackground")
+                Image("Background0")
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea(.all)
@@ -13,6 +14,11 @@ struct StartView: View {
                     Text("Welcome to LMHI!")
                         .font(.system(size: 32, weight: .bold, design: .default))
                         .padding(.top)
+                    
+                    Spacer()
+                    
+                    Text("App Info")
+                        .font(.system(size: 24, weight: .regular, design: .default))
                     
                     Spacer()
                     
@@ -40,9 +46,8 @@ struct StartView: View {
                         }
                         .frame(height: 60)
                         .frame(maxWidth: .infinity)
+                        .padding(.bottom)
                     }
-                    
-                    Spacer()
                 }
                 .padding()
                 .navigationBarHidden(true)
