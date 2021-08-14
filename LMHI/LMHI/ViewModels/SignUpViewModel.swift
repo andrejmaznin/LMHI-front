@@ -18,16 +18,26 @@ class SignUpViewModel: ObservableObject {
     
     func signUp() {
         showProgress = true
+        emailPrompt = ""
         
         let signUpModel = SignUpModel(name: personName, hashed_password: Util.hash(password), email: email, info: "")
         APIService.createUser(model: signUpModel) { [unowned self] result in
             print(result)
-            self.personName = ""
-            self.email = ""
-            self.username = ""
-            self.password = ""
-            self.termsAndConditions = false
             self.showProgress = false
+            switch result {
+            case .success:
+                self.personName = ""
+                self.email = ""
+                self.username = ""
+                self.password = ""
+                self.termsAndConditions = false
+            case .failure(let error):
+                if error == APIService.APIError.userAlreadyExists {
+                    self.emailPrompt = "Email already registered"
+                } else {
+                    self.emailPrompt = "Unexpected error"
+                }
+            }
         }
     }
     
