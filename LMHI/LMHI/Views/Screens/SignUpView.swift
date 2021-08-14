@@ -9,10 +9,10 @@ struct SignUpView: View {
     var body: some View {
         ZStack {
             ZStack {
-                Image("Background0")
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea(.all)
+//                Image("Background0")
+//                    .resizable()
+//                    .scaledToFill()
+//                    .ignoresSafeArea(.all)
                 
                 VStack {
                     Spacer()
@@ -22,24 +22,24 @@ struct SignUpView: View {
                         FormTextField(placeholder: "Email", prompt: VM.emailPrompt, field: $VM.email, isSecure: false, autocapitalization: false)
                     }
 
-                    Spacer()
+//                    Spacer()
 
                     VStack {
-                        FormTextField(placeholder: "Username", prompt: VM.usernamePrompt, field: $VM.username, isSecure: false, autocapitalization: false)
-                        FormTextField(placeholder: "Password", prompt: VM.passwordPrompt, field: $VM.password,  isSecure: true, autocapitalization: false)
+                        FormTextField(placeholder: "Password", prompt: VM.usernamePrompt, field: $VM.username, isSecure: true, autocapitalization: false)
+//                        FormTextField(placeholder: "Confirm Password", prompt: VM.passwordPrompt, field: $VM.password,  isSecure: true, autocapitalization: false)
                         
-                        HStack {
-                            CheckBox(checked: $VM.termsAndConditions)
-
-                            Text("Terms and conditions")
-                                .font(.system(size: 18, weight: .bold, design: .default))
-                                .foregroundColor(Color(.systemGray))
-                                .onTapGesture { VM.termsAndConditions.toggle() }
-
-                            Spacer()
-                        }
+//                        HStack {
+//                            CheckBox(checked: $VM.termsAndConditions)
+//
+//                            Text("Terms and conditions")
+//                                .font(.system(size: 18, weight: .bold, design: .default))
+//                                .foregroundColor(Color(.systemGray))
+//                                .onTapGesture { VM.termsAndConditions.toggle() }
+//
+//                            Spacer()
+//                        }
                         
-                        FormButton(action: VM.signUp, text: "Create account", color: VM.isFormValid ? activeColor : inactiveColor, disabled: !VM.isFormValid)
+                        FormButton(action: VM.signUp, text: "Create account", color: activeColor, disabled: false)
                     }
                     
                     Spacer()
@@ -47,7 +47,7 @@ struct SignUpView: View {
                 .padding()
                 .ignoresSafeArea(.keyboard)
             }
-            .brightness(VM.showProgress ? -0.2 : 0)
+//            .brightness(VM.showProgress ? -0.2 : 0)
             
             if VM.showProgress {
                 ZStack {
@@ -57,12 +57,12 @@ struct SignUpView: View {
                         .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                     
                     VStack {
-                        Text("Loading...")
-                            .bold()
-                            .padding(.bottom, 10)
-                        
                         ProgressView()
                             .scaleEffect(2)
+                        
+                        Text("Loading...")
+                            .bold()
+                            .padding(.top, 20)
                     }
                 }
             }

@@ -1,9 +1,12 @@
 import Foundation
 
 class NetworkingService {
-    struct RequestResult {
-        let status: Int
-        let data: Any
+    struct RequestResult: Decodable {
+        let success: String
+    }
+    
+    struct ErrorResult: Decodable, Error {
+        let ERROR: String
     }
     
     enum RequestType: String {
@@ -21,13 +24,13 @@ class NetworkingService {
     
     private static var serverURL = "https://luscherian.herokuapp.com/"
     
-    static func request<T>(requestType: RequestType, endpoint: String, data: T, completion: @escaping (Result<RequestResult, Error>) -> Void) where T: Encodable {
+    static func request<T>(requestType: RequestType, endpoint: String, data: T, completion: @escaping (Result<RequestResult, Error>) -> Void) where T: Encodable, T: Decodable {
         guard let url = URL(string: NetworkingService.serverURL + endpoint) else {
             completion(.failure(NetworkingError.badUrl))
             return
         }
         var request = URLRequest(url: url)
-        guard let body = encode(data) else {
+        guard let body = try? JSONEncoder().encode(data) else {
             completion(.failure(NetworkingError.badEncoding))
             return
         }
@@ -42,6 +45,7 @@ class NetworkingService {
                     completion(.failure(NetworkingError.badResponse))
                     return
                 }
+                print(unwrappedResponse.statusCode)
                 if let unwrappedError = error {
                     completion(.failure(unwrappedError))
                     return
@@ -50,8 +54,10 @@ class NetworkingService {
                     completion(.failure(NetworkingError.badData))
                     return
                 }
-                if let json = decode(unwrappedData) {
-                    completion(.success(RequestResult(status: unwrappedResponse.statusCode, data: json)))
+                if let object = try? JSONDecoder().decode(RequestResult.self, from: unwrappedData) {
+                    completion(.success(object))
+                } else if let errorResult = try? JSONDecoder().decode(ErrorResult.self, from: unwrappedData) {
+                    completion(.failure(errorResult))
                 } else {
                     completion(.failure(NetworkingError.badDecoding))
                 }
@@ -62,9 +68,5 @@ class NetworkingService {
     
     private static func encode<T>(_ data: T) -> Data? where T: Encodable {
         return try? JSONEncoder().encode(data)
-    }
-    
-    private static func decode(_ data: Data) -> Any? {
-        return try? JSONSerialization.jsonObject(with: data, options: [])
     }
 }
