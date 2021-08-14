@@ -1,11 +1,7 @@
 import Foundation
 
 class NetworkingService {
-    struct RequestResult: Decodable {
-        let success: String
-    }
-    
-    struct ErrorResult: Decodable, Error {
+    struct ErrorResult: Decodable, LocalizedError {
         let ERROR: String
     }
     
@@ -24,7 +20,7 @@ class NetworkingService {
     
     private static var serverURL = "https://luscherian.herokuapp.com/"
     
-    static func request<T>(requestType: RequestType, endpoint: String, data: T, completion: @escaping (Result<RequestResult, Error>) -> Void) where T: Encodable, T: Decodable {
+    static func request<T, U>(requestType: RequestType, endpoint: String, data: T, completion: @escaping (Result<U, Error>) -> Void) where T: Encodable, U: Decodable {
         guard let url = URL(string: NetworkingService.serverURL + endpoint) else {
             completion(.failure(NetworkingError.badUrl))
             return
@@ -54,7 +50,7 @@ class NetworkingService {
                     completion(.failure(NetworkingError.badData))
                     return
                 }
-                if let object = try? JSONDecoder().decode(RequestResult.self, from: unwrappedData) {
+                if let object = try? JSONDecoder().decode(U.self, from: unwrappedData) {
                     completion(.success(object))
                 } else if let errorResult = try? JSONDecoder().decode(ErrorResult.self, from: unwrappedData) {
                     completion(.failure(errorResult))
@@ -64,9 +60,5 @@ class NetworkingService {
             }
         }
         task.resume()
-    }
-    
-    private static func encode<T>(_ data: T) -> Data? where T: Encodable {
-        return try? JSONEncoder().encode(data)
     }
 }
