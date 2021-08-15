@@ -11,6 +11,11 @@ class APIService {
         let id: Int
     }
     
+    struct AuthenticationResult: Decodable {
+        let session_id: Int
+        let success: String
+    }
+    
     static func createUser(model: SignUpModel, completion: @escaping (Result<Int, APIError>) -> Void) {
         NetworkingService.request(requestType: .post, endpoint: "users", data: model) { (result: Result<CreateUserResult, Error>) in
             switch result {
@@ -28,6 +33,17 @@ class APIService {
                 } else {
                     completion(.failure(.unexpectedError))
                 }
+            }
+        }
+    }
+    
+    static func authenticate(model: SignInModel, completion: @escaping(Result<Bool, APIError>) -> Void) {
+        NetworkingService.request(requestType: .post, endpoint: "auth", data: model) { (result: Result<Bool, Error>) in
+            switch result {
+            case .success:
+                print("Success")
+            case .failure:
+                print("Failure")
             }
         }
     }
