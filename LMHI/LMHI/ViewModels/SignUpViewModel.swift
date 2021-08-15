@@ -37,7 +37,9 @@ class SignUpViewModel: ObservableObject {
                     case .success:
                         print("SignUp Success")
                         clearFields()
-                        appState
+                        appState.email = signInModel.login
+                        appState.hashedPassword = signInModel.hashed_password
+                        appState.isAuthenticated = true
                     case .failure:
                         self.showAlert = true
                     }
