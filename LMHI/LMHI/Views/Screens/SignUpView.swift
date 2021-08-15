@@ -72,6 +72,9 @@ struct SignUpView: View {
                 Text("Sign Up")
             }
         }
+        .alert(isPresented: $VM.showAlert) {
+            Alert(title: Text("Unexpected error occurred"), dismissButton:  .default(Text("OK")))
+        }
     }
 }
 

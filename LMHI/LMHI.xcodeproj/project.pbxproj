@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34331E9226C8EBB5001E57F6 /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34331E9126C8EBB5001E57F6 /* SignInModel.swift */; };
 		345DD2F226BE468B0056A3E7 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DD2F126BE468B0056A3E7 /* AppState.swift */; };
 		345DD2F626BE549C0056A3E7 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DD2F526BE549C0056A3E7 /* StartView.swift */; };
 		345DD2F926BE55230056A3E7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DD2F826BE55230056A3E7 /* HomeView.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34331E9126C8EBB5001E57F6 /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		345DD2F126BE468B0056A3E7 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		345DD2F526BE549C0056A3E7 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		345DD2F826BE55230056A3E7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				34D68F1526C15B6A00E35F0A /* SignUpModel.swift */,
+				34331E9126C8EBB5001E57F6 /* SignInModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				345DD2FC26BE5E490056A3E7 /* FormButton.swift in Sources */,
 				345DD2F226BE468B0056A3E7 /* AppState.swift in Sources */,
 				34D68F1C26C1636E00E35F0A /* NetworkingService.swift in Sources */,
+				34331E9226C8EBB5001E57F6 /* SignInModel.swift in Sources */,
 				34A874F126ABBFCA0011A40D /* LMHIApp.swift in Sources */,
 				34B5ED9C26AF164C00243E68 /* CustomExtensions.swift in Sources */,
 				345DD2F626BE549C0056A3E7 /* StartView.swift in Sources */,

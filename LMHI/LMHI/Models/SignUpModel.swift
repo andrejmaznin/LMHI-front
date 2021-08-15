@@ -1,6 +1,6 @@
 import Foundation
 
-struct SignUpModel: Encodable, Decodable {
+struct SignUpModel: Encodable {
     let name: String
     let hashed_password: String
     let email: String

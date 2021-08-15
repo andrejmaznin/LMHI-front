@@ -1,7 +1,7 @@
 import Foundation
 
 class NetworkingService {
-    struct ErrorResult: Decodable, LocalizedError {
+    struct ErrorResult: Decodable, Error {
         let ERROR: String
     }
     
