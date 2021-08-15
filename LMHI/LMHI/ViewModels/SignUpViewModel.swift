@@ -1,6 +1,8 @@
 import SwiftUI
 
 class SignUpViewModel: ObservableObject {
+    @EnvironmentObject var appState: AppState
+    
     @Published var personName = ""
     @Published var email = ""
     @Published var username = ""
@@ -34,6 +36,8 @@ class SignUpViewModel: ObservableObject {
                     switch result {
                     case .success:
                         print("SignUp Success")
+                        clearFields()
+                        appState
                     case .failure:
                         self.showAlert = true
                     }
@@ -47,6 +51,19 @@ class SignUpViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func clearFields() {
+        personName = ""
+        email = ""
+        username = ""
+        password = ""
+        termsAndConditions = false
+        
+        personNamePrompt = ""
+        emailPrompt = ""
+        usernamePrompt = ""
+        passwordPrompt = ""
     }
     
     //validation
