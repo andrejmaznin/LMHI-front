@@ -4,6 +4,7 @@ class APIService {
     enum APIError: Error {
         case unexpectedError
         case userAlreadyExists
+        case wrongData
     }
     
     struct CreateUserResult: Decodable {
@@ -20,10 +21,10 @@ class APIService {
         NetworkingService.request(requestType: .post, endpoint: "users", data: model) { (result: Result<CreateUserResult, Error>) in
             switch result {
             case .success(let result):
-                print("Success")
+                print("Creation Success")
                 completion(.success(result.id))
             case .failure(let error):
-                print("Failure")
+                print("Creation Failure")
                 if let handledError = error as? NetworkingService.ErrorResult {
                     if handledError.ERROR == "USER ALREADY EXISTS" {
                         completion(.failure(.userAlreadyExists))
@@ -38,12 +39,22 @@ class APIService {
     }
     
     static func authenticate(model: SignInModel, completion: @escaping(Result<Bool, APIError>) -> Void) {
-        NetworkingService.request(requestType: .post, endpoint: "auth", data: model) { (result: Result<Bool, Error>) in
+        NetworkingService.request(requestType: .post, endpoint: "auth", data: model) { (result: Result<AuthenticationResult, Error>) in
             switch result {
             case .success:
-                print("Success")
-            case .failure:
-                print("Failure")
+                print("Authentication Success")
+                completion(.success(true))
+            case .failure(let error):
+                print("Authentication Failure")
+                if let handledError = error as? NetworkingService.ErrorResult {
+                    if handledError.ERROR == "WRONG USERNAME, LOGIN, PHONE OR PASSWORD" {
+                        completion(.failure(.wrongData))
+                    } else {
+                        completion(.failure(.unexpectedError))
+                    }
+                } else {
+                    completion(.failure(.unexpectedError))
+                }
             }
         }
     }

@@ -28,6 +28,17 @@ class SignUpViewModel: ObservableObject {
             switch result {
             case .success(let id):
                 print(id)
+                let signInModel = SignInModel(id: id, email: signUpModel.email, hashed_password: signUpModel.hashed_password, action: "login")
+                APIService.authenticate(model: signInModel) { [unowned self] result in
+                    print(result)
+                    self.showProgress = false
+                    switch result {
+                    case .success:
+                        print("SignUp Success")
+                    case .failure:
+                        self.showAlert = true
+                    }
+                }
             case .failure(let error):
                 self.showProgress = false
                 if error == APIService.APIError.userAlreadyExists {
