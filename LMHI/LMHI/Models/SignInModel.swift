@@ -1,8 +1,7 @@
 import Foundation
 
 struct SignInModel: Encodable {
-    let id: Int
-    let email: String
-    let hashed_password: String
+    let login: String
     let action: String
+    let hashed_password: String
 }

@@ -26,9 +26,8 @@ class SignUpViewModel: ObservableObject {
         APIService.createUser(model: signUpModel) { [unowned self] result in
             print(result)
             switch result {
-            case .success(let id):
-                print(id)
-                let signInModel = SignInModel(id: id, email: signUpModel.email, hashed_password: signUpModel.hashed_password, action: "login")
+            case .success:
+                let signInModel = SignInModel(login: signUpModel.email, action: "login", hashed_password: signUpModel.hashed_password)
                 APIService.authenticate(model: signInModel) { [unowned self] result in
                     print(result)
                     self.showProgress = false

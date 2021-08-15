@@ -17,12 +17,12 @@ class APIService {
         let success: String
     }
     
-    static func createUser(model: SignUpModel, completion: @escaping (Result<Int, APIError>) -> Void) {
+    static func createUser(model: SignUpModel, completion: @escaping (Result<Bool, APIError>) -> Void) {
         NetworkingService.request(requestType: .post, endpoint: "users", data: model) { (result: Result<CreateUserResult, Error>) in
             switch result {
-            case .success(let result):
+            case .success:
                 print("Creation Success")
-                completion(.success(result.id))
+                completion(.success(true))
             case .failure(let error):
                 print("Creation Failure")
                 if let handledError = error as? NetworkingService.ErrorResult {
