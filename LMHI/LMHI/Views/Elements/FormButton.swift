@@ -3,7 +3,6 @@ import SwiftUI
 struct FormButton: View {
     let action: () -> Void
     let text: String
-    
     var color: Color
     var disabled: Bool
     

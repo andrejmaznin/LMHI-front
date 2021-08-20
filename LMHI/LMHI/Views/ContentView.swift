@@ -3,11 +3,13 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var appState: AppState
     
+    @AppStorage("isAuthenticated") var isAuthenticated = false
+    
     var body: some View {
         Group {
             if appState.isLoading {
                 LoadingView()
-            } else if appState.isAuthenticated {
+            } else if isAuthenticated {
                 HomeView()
             } else {
                 StartView()

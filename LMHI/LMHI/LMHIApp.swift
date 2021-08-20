@@ -2,7 +2,7 @@ import SwiftUI
 
 @main
 struct LMHIApp: App {
-    var appState = AppState()
+    @StateObject private var appState = AppState()
     
     var body: some Scene {
         WindowGroup {

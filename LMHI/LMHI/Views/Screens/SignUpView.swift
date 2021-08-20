@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct SignUpView: View {
+    @EnvironmentObject var appState: AppState
+    
     @ObservedObject var VM = SignUpViewModel()
     
     let inactiveColor = Color(R: 230, G: 223, B: 213)
@@ -49,7 +51,7 @@ struct SignUpView: View {
             }
 //            .brightness(VM.showProgress ? -0.2 : 0)
             
-            if VM.showProgress {
+            if VM.showLoading {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.white)
@@ -73,7 +75,7 @@ struct SignUpView: View {
             }
         }
         .alert(isPresented: $VM.showAlert) {
-            Alert(title: Text("Unexpected error occurred"), dismissButton:  .default(Text("OK")))
+            Alert(title: Text("Account creation error"), message: Text("Unexpected error"), dismissButton:  .default(Text("OK")))
         }
     }
 }

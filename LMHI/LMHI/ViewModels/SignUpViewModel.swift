@@ -1,51 +1,46 @@
 import SwiftUI
 
 class SignUpViewModel: ObservableObject {
-    @EnvironmentObject var appState: AppState
-    
     @Published var personName = ""
     @Published var email = ""
     @Published var username = ""
     @Published var password = ""
     @Published var termsAndConditions = false
     
+    @Published var showLoading = false
+    @Published var showAlert = false
+    
     var personNamePrompt = ""
     var emailPrompt = ""
     var usernamePrompt = ""
     var passwordPrompt = ""
     
-    @Published var showProgress = false
-    @Published var showAlert = false
-    
     var validFieldsCounter = 0
     
     func signUp() {
-        showProgress = true
-        
-        emailPrompt = ""
-        
+        self.showLoading = true
         let signUpModel = SignUpModel(name: personName, hashed_password: Util.hash(password), email: email, info: "")
         APIService.createUser(model: signUpModel) { [unowned self] result in
             print(result)
+            clearFields()
+            self.showLoading = false
             switch result {
             case .success:
                 let signInModel = SignInModel(login: signUpModel.email, action: "login", hashed_password: signUpModel.hashed_password)
-                APIService.authenticate(model: signInModel) { [unowned self] result in
+                APIService.authenticate(model: signInModel) { result in
                     print(result)
-                    self.showProgress = false
                     switch result {
                     case .success:
                         print("SignUp Success")
-                        clearFields()
-                        appState.email = signInModel.login
-                        appState.hashedPassword = signInModel.hashed_password
-                        appState.isAuthenticated = true
+                        UserDefaults.standard.set(signUpModel.name, forKey: "personName")
+                        UserDefaults.standard.set(signInModel.login, forKey: "email")
+                        UserDefaults.standard.set(signInModel.hashed_password, forKey: "hashedPassword")
+                        UserDefaults.standard.set(true, forKey: "isAuthenticated")
                     case .failure:
                         self.showAlert = true
                     }
                 }
             case .failure(let error):
-                self.showProgress = false
                 if error == APIService.APIError.userAlreadyExists {
                     self.emailPrompt = "Email already registered"
                 } else {

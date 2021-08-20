@@ -1,15 +1,18 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var appState: AppState
-    
     var body: some View {
         NavigationView {
-            Text("Logged in")
-                .navigationBarTitle("LMHI")
-                .navigationBarItems(trailing: Button("Log Out") {
-                    appState.isAuthenticated = false
-                })
+            VStack {
+                Text("Logged in as \(UserDefaults.standard.string(forKey: "personName")!)")
+                Text(UserDefaults.standard.string(forKey: "email")!)
+            }
+            .navigationBarHidden(true)
+//            .navigationBarItems(trailing: Button("Log Out") {
+//                UserDefaults.standard.set("", forKey: "email")
+//                UserDefaults.standard.set("", forKey: "hashedPassword")
+//                UserDefaults.standard.set(false, forKey: "isAuthenticated")
+//            })
         }
     }
 }

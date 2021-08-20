@@ -50,8 +50,8 @@ struct StartView: View {
                     }
                 }
                 .padding()
-                .navigationBarHidden(true)
             }
+            .navigationBarHidden(true)
         }
     }
 }
