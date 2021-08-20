@@ -7,12 +7,20 @@ struct HomeView: View {
                 Text("Logged in as \(UserDefaults.standard.string(forKey: "personName")!)")
                 Text(UserDefaults.standard.string(forKey: "email")!)
             }
-            .navigationBarHidden(true)
-//            .navigationBarItems(trailing: Button("Log Out") {
-//                UserDefaults.standard.set("", forKey: "email")
-//                UserDefaults.standard.set("", forKey: "hashedPassword")
-//                UserDefaults.standard.set(false, forKey: "isAuthenticated")
-//            })
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("LMHI")
+                }
+                
+                ToolbarItem(placement:  .navigationBarTrailing) {
+                    Button("Log Out") {
+                        UserDefaults.standard.set("", forKey: "personName")
+                        UserDefaults.standard.set("", forKey: "email")
+                        UserDefaults.standard.set("", forKey: "hashedPassword")
+                        UserDefaults.standard.set(false, forKey: "isAuthenticated")
+                    }
+                }
+            }
         }
     }
 }
