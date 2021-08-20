@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct SignInView: View {
+    
     @State var field: String = ""
     
     var body: some View {

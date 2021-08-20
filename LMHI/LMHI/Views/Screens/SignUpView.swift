@@ -18,7 +18,7 @@ struct SignUpView: View {
                     }
 
                     VStack {
-                        FormTextField(placeholder: "Password", prompt: VM.usernamePrompt, field: $VM.username, isSecure: true, autocapitalization: false)
+                        FormTextField(placeholder: "Password", prompt: VM.passwordPrompt, field: $VM.password, isSecure: true, autocapitalization: false)
                         
                         FormButton(action: VM.signUp, text: "Create account", color: activeColor, disabled: false)
                     }
