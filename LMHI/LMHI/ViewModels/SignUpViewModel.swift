@@ -3,7 +3,6 @@ import SwiftUI
 class SignUpViewModel: ObservableObject {
     @Published var personName = ""
     @Published var email = ""
-    @Published var username = ""
     @Published var password = ""
     @Published var termsAndConditions = false
     
@@ -12,13 +11,10 @@ class SignUpViewModel: ObservableObject {
     
     var personNamePrompt = ""
     var emailPrompt = ""
-    var usernamePrompt = ""
     var passwordPrompt = ""
     
-    var validFieldsCounter = 0
-    
     func signUp() {
-        self.showLoading = true
+        showLoading = true
         let signUpModel = SignUpModel(name: personName, hashed_password: Util.hash(password), email: email, info: "")
         APIService.createUser(model: signUpModel) { [unowned self] result in
             print(result)
@@ -41,7 +37,7 @@ class SignUpViewModel: ObservableObject {
                     }
                 }
             case .failure(let error):
-                if error == APIService.APIError.userAlreadyExists {
+                if error == .userAlreadyExists {
                     self.emailPrompt = "Email already registered"
                 } else {
                     self.showAlert = true
@@ -53,13 +49,11 @@ class SignUpViewModel: ObservableObject {
     func clearFields() {
         personName = ""
         email = ""
-        username = ""
         password = ""
         termsAndConditions = false
         
         personNamePrompt = ""
         emailPrompt = ""
-        usernamePrompt = ""
         passwordPrompt = ""
     }
     
@@ -90,31 +84,6 @@ class SignUpViewModel: ObservableObject {
         return true
     }
     
-    func validateUsername() -> Bool {
-        if username.isEmpty {
-            usernamePrompt = "Enter username"
-            return false
-        }
-        if !Util.evaluateRegEx(regEx: "[A-Z0-9a-z_]+", value: username) {
-            usernamePrompt = "Username must contain only letters, numbers or underscores"
-            return false
-        }
-        if !Util.evaluateRegEx(regEx: "[0-9]*[A-Za-z][A-Z0-9a-z_]*", value: username) {
-            usernamePrompt = "Username must contain at least one letter"
-            return false
-        }
-        if username.count < 4 {
-            usernamePrompt = "Username is too short"
-            return false
-        }
-        if username.count > 30 {
-            usernamePrompt = "Username is too long"
-            return false
-        }
-        usernamePrompt = ""
-        return true
-    }
-    
     func validatePassword() -> Bool {
         if password.isEmpty {
             passwordPrompt = "Enter password"
@@ -133,6 +102,6 @@ class SignUpViewModel: ObservableObject {
     }
     
     var isFormValid: Bool {
-        validatePersonName() && validateEmail() && validateUsername() && validatePassword() && termsAndConditions
+        validatePersonName() && validateEmail() && validatePassword() && termsAndConditions
     }
 }

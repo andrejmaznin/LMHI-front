@@ -53,7 +53,7 @@ struct SignUpView: View {
             }
         }
         .alert(isPresented: $VM.showAlert) {
-            Alert(title: Text("Account creation error"), message: Text("Unexpected error"), dismissButton:  .default(Text("OK")))
+            Alert(title: Text("Account creation failure"), message: Text("Unexpected error. Check your internet connection"), dismissButton:  .default(Text("OK")))
         }
     }
 }
