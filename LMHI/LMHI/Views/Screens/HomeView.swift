@@ -14,10 +14,20 @@ struct HomeView: View {
                 
                 ToolbarItem(placement:  .navigationBarTrailing) {
                     Button("Log Out") {
-                        UserDefaults.standard.set("", forKey: "personName")
-                        UserDefaults.standard.set("", forKey: "email")
-                        UserDefaults.standard.set("", forKey: "hashedPassword")
-                        UserDefaults.standard.set(false, forKey: "isAuthenticated")
+                        let signOutModel = SignOutModel(login: UserDefaults.standard.string(forKey: "email")!, id: UserDefaults.standard.integer(forKey: "sessionID"))
+                        APIService.exit(model: signOutModel) { result in
+                            print(result)
+                            switch result {
+                            case .success:
+                                print("Exit Success")
+                                UserDefaults.standard.set(0, forKey: "sessionID")
+                                UserDefaults.standard.set("", forKey: "email")
+                                UserDefaults.standard.set("", forKey: "hashedPassword")
+                                UserDefaults.standard.set(false, forKey: "isAuthenticated")
+                            case .failure:
+                                print("Exit Failure")
+                            }
+                        }
                     }
                 }
             }

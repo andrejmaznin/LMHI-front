@@ -12,15 +12,16 @@ class SignInViewModel: ObservableObject {
     
     func signIn() {
         showLoading = true
-        let signInModel = SignInModel(login: email, action: "login", hashed_password: Util.hash(password))
+        let signInModel = SignInModel(login: email, hashed_password: Util.hash(password))
         APIService.authenticate(model: signInModel) { result in
             print(result)
             self.clearPrompts()
             self.showLoading = false
             switch result {
-            case .success:
+            case .success(let id):
                 print("SignIn Success")
                 self.clearFields()
+                UserDefaults.standard.set(id, forKey: "sessionID")
                 UserDefaults.standard.set(signInModel.login, forKey: "email")
                 UserDefaults.standard.set(signInModel.hashed_password, forKey: "hashedPassword")
                 UserDefaults.standard.set(true, forKey: "isAuthenticated")

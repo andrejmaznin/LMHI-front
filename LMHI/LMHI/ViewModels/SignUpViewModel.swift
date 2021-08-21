@@ -22,14 +22,14 @@ class SignUpViewModel: ObservableObject {
             self.showLoading = false
             switch result {
             case .success:
-                let signInModel = SignInModel(login: signUpModel.email, action: "login", hashed_password: signUpModel.hashed_password)
+                let signInModel = SignInModel(login: signUpModel.email, hashed_password: signUpModel.hashed_password)
                 APIService.authenticate(model: signInModel) { result in
                     print(result)
                     switch result {
-                    case .success:
+                    case .success(let id):
                         print("SignUp Success")
                         clearFields()
-                        UserDefaults.standard.set(signUpModel.name, forKey: "personName")
+                        UserDefaults.standard.set(id, forKey: "sessionID")
                         UserDefaults.standard.set(signInModel.login, forKey: "email")
                         UserDefaults.standard.set(signInModel.hashed_password, forKey: "hashedPassword")
                         UserDefaults.standard.set(true, forKey: "isAuthenticated")

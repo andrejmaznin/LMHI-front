@@ -18,6 +18,10 @@ class APIService {
         let success: String
     }
     
+    struct ExitResult: Decodable {
+        let success: String
+    }
+    
     static func createUser(model: SignUpModel, completion: @escaping (Result<Bool, APIError>) -> Void) {
         NetworkingService.request(requestType: .post, endpoint: "users", data: model) { (result: Result<CreateUserResult, Error>) in
             switch result {
@@ -39,12 +43,12 @@ class APIService {
         }
     }
     
-    static func authenticate(model: SignInModel, completion: @escaping(Result<Bool, APIError>) -> Void) {
+    static func authenticate(model: SignInModel, completion: @escaping(Result<Int, APIError>) -> Void) {
         NetworkingService.request(requestType: .post, endpoint: "auth", data: model) { (result: Result<AuthenticationResult, Error>) in
             switch result {
-            case .success:
+            case .success(let authResult):
                 print("Authentication Success")
-                completion(.success(true))
+                completion(.success(authResult.session_id))
             case .failure(let error):
                 print("Authentication Failure")
                 if let handledError = error as? NetworkingService.ErrorResult {
@@ -59,6 +63,22 @@ class APIService {
                 } else {
                     completion(.failure(.unexpectedError))
                 }
+            }
+        }
+    }
+    
+    static func exit(model: SignOutModel, completion: @escaping(Result<Bool, APIError>) -> Void) {
+        NetworkingService.request(requestType: .post, endpoint: "auth", data: model) { (result: Result<ExitResult, Error>) in
+            switch result {
+            case .success:
+                print("Exit Success")
+                completion(.success(true))
+            case .failure(let error):
+                print("Exit Failure")
+                if let handledError = error as? NetworkingService.ErrorResult {
+                    print(handledError.ERROR)
+                }
+                completion(.failure(.unexpectedError))
             }
         }
     }
