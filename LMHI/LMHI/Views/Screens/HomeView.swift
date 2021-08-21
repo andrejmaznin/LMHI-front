@@ -4,7 +4,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Logged in as \(UserDefaults.standard.string(forKey: "personName")!)")
+                Text("Logged in")
                 Text(UserDefaults.standard.string(forKey: "email")!)
             }
             .toolbar {

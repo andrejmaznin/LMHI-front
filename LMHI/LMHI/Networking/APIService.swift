@@ -4,7 +4,8 @@ class APIService {
     enum APIError: Error {
         case unexpectedError
         case userAlreadyExists
-        case wrongData
+        case wrongEmail
+        case wrongPassword
     }
     
     struct CreateUserResult: Decodable {
@@ -47,9 +48,12 @@ class APIService {
             case .failure(let error):
                 print("Authentication Failure")
                 if let handledError = error as? NetworkingService.ErrorResult {
-                    if handledError.ERROR == "WRONG USERNAME, LOGIN, PHONE OR PASSWORD" {
-                        completion(.failure(.wrongData))
-                    } else {
+                    switch handledError.ERROR {
+                    case "NO USER":
+                        completion(.failure(.wrongEmail))
+                    case "WRONG USERNAME, LOGIN, PHONE OR PASSWORD":
+                        completion(.failure(.wrongPassword))
+                    default:
                         completion(.failure(.unexpectedError))
                     }
                 } else {

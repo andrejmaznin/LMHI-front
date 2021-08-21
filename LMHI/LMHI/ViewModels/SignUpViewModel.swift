@@ -18,7 +18,7 @@ class SignUpViewModel: ObservableObject {
         let signUpModel = SignUpModel(name: personName, hashed_password: Util.hash(password), email: email, info: "")
         APIService.createUser(model: signUpModel) { [unowned self] result in
             print(result)
-            clearFields()
+            clearPrompts()
             self.showLoading = false
             switch result {
             case .success:
@@ -28,6 +28,7 @@ class SignUpViewModel: ObservableObject {
                     switch result {
                     case .success:
                         print("SignUp Success")
+                        clearFields()
                         UserDefaults.standard.set(signUpModel.name, forKey: "personName")
                         UserDefaults.standard.set(signInModel.login, forKey: "email")
                         UserDefaults.standard.set(signInModel.hashed_password, forKey: "hashedPassword")
@@ -51,7 +52,9 @@ class SignUpViewModel: ObservableObject {
         email = ""
         password = ""
         termsAndConditions = false
-        
+    }
+    
+    func clearPrompts() {
         personNamePrompt = ""
         emailPrompt = ""
         passwordPrompt = ""

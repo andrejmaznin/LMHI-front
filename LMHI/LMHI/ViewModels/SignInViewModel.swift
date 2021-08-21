@@ -15,18 +15,22 @@ class SignInViewModel: ObservableObject {
         let signInModel = SignInModel(login: email, action: "login", hashed_password: Util.hash(password))
         APIService.authenticate(model: signInModel) { result in
             print(result)
-            self.clearFields()
+            self.clearPrompts()
             self.showLoading = false
             switch result {
             case .success:
                 print("SignIn Success")
+                self.clearFields()
                 UserDefaults.standard.set(signInModel.login, forKey: "email")
                 UserDefaults.standard.set(signInModel.hashed_password, forKey: "hashedPassword")
                 UserDefaults.standard.set(true, forKey: "isAuthenticated")
             case .failure(let error):
-                if error == .wrongData {
-                    self.emailPrompt = "Wrong email or password"
-                } else {
+                switch error {
+                case .wrongEmail:
+                    self.emailPrompt = "Wrong email"
+                case .wrongPassword:
+                    self.passwordPrompt = "Wrong password"
+                default:
                     self.showAlert = true
                 }
             }
@@ -36,7 +40,9 @@ class SignInViewModel: ObservableObject {
     func clearFields() {
         email = ""
         password = ""
-        
+    }
+    
+    func clearPrompts() {
         emailPrompt = ""
         passwordPrompt = ""
     }
