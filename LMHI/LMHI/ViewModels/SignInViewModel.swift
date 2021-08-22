@@ -24,7 +24,7 @@ class SignInViewModel: ObservableObject {
                 UserDefaults.standard.set(id, forKey: "sessionID")
                 UserDefaults.standard.set(signInModel.login, forKey: "email")
                 UserDefaults.standard.set(signInModel.hashed_password, forKey: "hashedPassword")
-                UserDefaults.standard.set(true, forKey: "isAuthenticated")
+                UserDefaults.standard.set(ContentViewModel.State.home.rawValue, forKey: "currentState")
             case .failure(let error):
                 switch error {
                 case .wrongEmail:

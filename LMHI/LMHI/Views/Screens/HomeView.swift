@@ -23,7 +23,7 @@ struct HomeView: View {
                                 UserDefaults.standard.set(0, forKey: "sessionID")
                                 UserDefaults.standard.set("", forKey: "email")
                                 UserDefaults.standard.set("", forKey: "hashedPassword")
-                                UserDefaults.standard.set(false, forKey: "isAuthenticated")
+                                UserDefaults.standard.set(ContentViewModel.State.start.rawValue, forKey: "currentState")
                             case .failure:
                                 print("Exit Failure")
                             }

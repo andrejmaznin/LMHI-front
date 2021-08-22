@@ -1,22 +1,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var appState: AppState
+    @ObservedObject var VM = ContentViewModel()
     
-    @AppStorage("isAuthenticated") var isAuthenticated = false
+    @AppStorage("currentState") var currentStateRawValue = ContentViewModel.State.start.rawValue
+    
+    var currentState: ContentViewModel.State {
+        ContentViewModel.State(rawValue: currentStateRawValue)!
+    }
     
     var body: some View {
         Group {
-            if appState.isLoading {
-                LoadingView()
-            } else if isAuthenticated {
-                HomeView()
-            } else {
+            switch currentState {
+            case .start:
                 StartView()
+            case .test:
+                TestView()
+            case .home:
+                HomeView()
             }
-        }
-        .onAppear {
-            appState.start()
         }
     }
 }
