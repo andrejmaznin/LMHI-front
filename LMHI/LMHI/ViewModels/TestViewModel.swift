@@ -27,7 +27,13 @@ class TestViewModel: ObservableObject {
     
     var currentShade = 0
     var currentChoice = 0
-    var currentState = [0, 0, 0, 0]
+    var currentState = [
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+    ]
     
     init() {
         leftColor = colors[currentShade][sequence[currentShade][currentChoice].0]
@@ -38,22 +44,22 @@ class TestViewModel: ObservableObject {
         print(choice)
         switch choice {
         case .left:
-            currentState[sequence[currentShade][currentChoice].0] += 1
+            currentState[currentShade][sequence[currentShade][currentChoice].0] += 1
         case .right:
-            currentState[sequence[currentShade][currentChoice].1] += 1
+            currentState[currentShade][sequence[currentShade][currentChoice].1] += 1
         }
         
         currentChoice += 1
         if currentChoice > 5 {
             currentChoice = 0
             currentShade += 1
-            print(currentState)
-            currentState = [0, 0, 0, 0]
         }
         if currentShade > 4 {
-            print("Test completed")
             currentChoice = 0
             currentShade = 0
+            
+            print("Test completed")
+            print(currentState)
         }
         
         leftColor = colors[currentShade][sequence[currentShade][currentChoice].0]
