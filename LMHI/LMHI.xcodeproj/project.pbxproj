@@ -32,6 +32,7 @@
 		34D68F1C26C1636E00E35F0A /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D68F1B26C1636E00E35F0A /* NetworkingService.swift */; };
 		34D68F1F26C163C200E35F0A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D68F1E26C163C200E35F0A /* APIService.swift */; };
 		34EDB1B626D219B500623995 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB1B526D219B500623995 /* TestView.swift */; };
+		34F060B126DB9AF8004817CD /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F060B026DB9AF8004817CD /* TestViewModel.swift */; };
 		34FF00C926BBEE6300384AF3 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FF00C826BBEE6300384AF3 /* Main.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		34D68F1B26C1636E00E35F0A /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		34D68F1E26C163C200E35F0A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		34EDB1B526D219B500623995 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		34F060B026DB9AF8004817CD /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
 		34FF00C826BBEE6300384AF3 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +95,7 @@
 				345DD2F126BE468B0056A3E7 /* ContentViewModel.swift */,
 				345DD30926BE96080056A3E7 /* SignUpViewModel.swift */,
 				34D6209D26CFF92B00466B59 /* SignInViewModel.swift */,
+				34F060B026DB9AF8004817CD /* TestViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				34D6209E26CFF92B00466B59 /* SignInViewModel.swift in Sources */,
 				345DD30226BE835B0056A3E7 /* SignInView.swift in Sources */,
 				348C351526AD6B87000A4D93 /* SignUpView.swift in Sources */,
+				34F060B126DB9AF8004817CD /* TestViewModel.swift in Sources */,
 				34EDB1B626D219B500623995 /* TestView.swift in Sources */,
 				34FF00C926BBEE6300384AF3 /* Main.swift in Sources */,
 				348C350E26AD5201000A4D93 /* LoadingView.swift in Sources */,
