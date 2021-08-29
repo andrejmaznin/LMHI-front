@@ -60,6 +60,18 @@ class TestViewModel: ObservableObject {
             
             print("Test completed")
             print(currentState)
+            
+            let testResultsModel = TestResultsModel(results: currentState)
+            APIService.submitTestResults(model: testResultsModel) { result in
+                print(result)
+                switch result {
+                case .success:
+                    print("Test Success")
+                    UserDefaults.standard.set(ContentViewModel.State.home.rawValue, forKey: "currentState")
+                case .failure:
+                    print("Test Failure")
+                }
+            }
         }
         
         leftColor = colors[currentShade][sequence[currentShade][currentChoice].0]

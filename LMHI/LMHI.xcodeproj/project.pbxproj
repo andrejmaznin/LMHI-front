@@ -33,6 +33,7 @@
 		34D68F1F26C163C200E35F0A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D68F1E26C163C200E35F0A /* APIService.swift */; };
 		34EDB1B626D219B500623995 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB1B526D219B500623995 /* TestView.swift */; };
 		34F060B126DB9AF8004817CD /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F060B026DB9AF8004817CD /* TestViewModel.swift */; };
+		34F060B426DBADAB004817CD /* TestResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F060B326DBADAB004817CD /* TestResultsModel.swift */; };
 		34FF00C926BBEE6300384AF3 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FF00C826BBEE6300384AF3 /* Main.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		34D68F1E26C163C200E35F0A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		34EDB1B526D219B500623995 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		34F060B026DB9AF8004817CD /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
+		34F060B326DBADAB004817CD /* TestResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsModel.swift; sourceTree = "<group>"; };
 		34FF00C826BBEE6300384AF3 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,6 +169,7 @@
 				34D620A026D0CB6300466B59 /* SignOutModel.swift */,
 				34D68F1526C15B6A00E35F0A /* SignUpModel.swift */,
 				34331E9126C8EBB5001E57F6 /* SignInModel.swift */,
+				34F060B326DBADAB004817CD /* TestResultsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				34EDB1B626D219B500623995 /* TestView.swift in Sources */,
 				34FF00C926BBEE6300384AF3 /* Main.swift in Sources */,
 				348C350E26AD5201000A4D93 /* LoadingView.swift in Sources */,
+				34F060B426DBADAB004817CD /* TestResultsModel.swift in Sources */,
 				348C351126AD5A07000A4D93 /* Util.swift in Sources */,
 				34A8750226ABC0CC0011A40D /* ProgressBar.swift in Sources */,
 				345DD2FC26BE5E490056A3E7 /* FormButton.swift in Sources */,
