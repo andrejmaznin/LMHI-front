@@ -59,9 +59,9 @@ class TestViewModel: ObservableObject {
             currentShade = 0
             
             print("Test completed")
-            print(currentState)
+            print(parseResults(currentState))
             
-            let testResultsModel = TestResultsModel(results: currentState)
+            let testResultsModel = TestResultsModel(results: parseResults(currentState))
             APIService.submitTestResults(model: testResultsModel) { result in
                 print(result)
                 switch result {
@@ -76,5 +76,16 @@ class TestViewModel: ObservableObject {
         
         leftColor = colors[currentShade][sequence[currentShade][currentChoice].0]
         rightColor = colors[currentShade][sequence[currentShade][currentChoice].1]
+    }
+    
+    func parseResults(_ state: [[Int]]) -> [String] {
+        var result = ["main", "blue", "green", "red", "yellow"]
+        for i in (0...4) {
+            for j in (0...3) {
+                result[i] += String(state[i][j])
+            }
+        }
+        
+        return result
     }
 }

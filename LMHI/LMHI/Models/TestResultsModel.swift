@@ -1,5 +1,5 @@
 import Foundation
 
 struct TestResultsModel: Encodable {
-    let results: [[Int]]
+    let results: [String]
 }
