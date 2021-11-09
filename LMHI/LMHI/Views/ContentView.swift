@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var VM = ContentViewModel()
+    @ObservedObject private var VM = ContentViewModel()
     
-    @AppStorage("currentState") var currentStateRawValue = ContentViewModel.State.start.rawValue
+    @AppStorage("currentState") private var currentStateRawValue = ContentViewModel.State.start.rawValue
     
-    var currentState: ContentViewModel.State {
+    private var currentState: ContentViewModel.State {
         ContentViewModel.State(rawValue: currentStateRawValue)!
     }
     

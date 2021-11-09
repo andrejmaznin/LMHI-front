@@ -20,6 +20,7 @@
 		348C351526AD6B87000A4D93 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C351426AD6B87000A4D93 /* SignUpView.swift */; };
 		348C351926AD6DCA000A4D93 /* CustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C351826AD6DCA000A4D93 /* CustomModifiers.swift */; };
 		348C351D26AD879C000A4D93 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C351C26AD879C000A4D93 /* CheckBox.swift */; };
+		349BC90B273AD74300606951 /* NavigationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BC90A273AD74300606951 /* NavigationButtonView.swift */; };
 		34A874F126ABBFCA0011A40D /* LMHIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A874F026ABBFCA0011A40D /* LMHIApp.swift */; };
 		34A874F326ABBFCA0011A40D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A874F226ABBFCA0011A40D /* ContentView.swift */; };
 		34A874F526ABBFD60011A40D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34A874F426ABBFD60011A40D /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		348C351426AD6B87000A4D93 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		348C351826AD6DCA000A4D93 /* CustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifiers.swift; sourceTree = "<group>"; };
 		348C351C26AD879C000A4D93 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		349BC90A273AD74300606951 /* NavigationButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonView.swift; sourceTree = "<group>"; };
 		34A874ED26ABBFCA0011A40D /* LMHI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LMHI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34A874F026ABBFCA0011A40D /* LMHIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMHIApp.swift; sourceTree = "<group>"; };
 		34A874F226ABBFCA0011A40D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				3464F6DA26ADB71A00698D57 /* FormTextField.swift */,
 				348C351C26AD879C000A4D93 /* CheckBox.swift */,
 				345DD2FB26BE5E490056A3E7 /* FormButton.swift */,
+				349BC90A273AD74300606951 /* NavigationButtonView.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				345DD2FC26BE5E490056A3E7 /* FormButton.swift in Sources */,
 				345DD2F226BE468B0056A3E7 /* ContentViewModel.swift in Sources */,
 				34EDBB8D27341C9700DCF54B /* ResultView.swift in Sources */,
+				349BC90B273AD74300606951 /* NavigationButtonView.swift in Sources */,
 				34D68F1C26C1636E00E35F0A /* NetworkingService.swift in Sources */,
 				34331E9226C8EBB5001E57F6 /* SignInModel.swift in Sources */,
 				34A874F126ABBFCA0011A40D /* LMHIApp.swift in Sources */,
