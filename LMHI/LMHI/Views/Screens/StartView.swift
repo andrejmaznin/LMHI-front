@@ -5,41 +5,26 @@ struct StartView: View {
         NavigationView {
             VStack {
                 Text("Welcome to LMHI!")
-                    .font(.system(size: 32, weight: .bold, design: .default))
+                    .font(Fonts.title)
                     .padding(.top)
                 
                 Spacer()
                 
                 Text("App Info")
-                    .font(.system(size: 24, weight: .regular, design: .default))
+                    .font(Fonts.regular)
                 
                 Spacer()
                 
-                NavigationLink(destination: SignInView()) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.blue)
-                        
-                        Text("Login")
-                            .font(.system(size: 20, weight: .bold, design: .default))
-                            .foregroundColor(.white)
-                    }
-                    .frame(height: 60)
-                    .frame(maxWidth: .infinity)
+                NavigationButton(destination: SignInView(), backgroundColor: .blue) {
+                    Text("Login")
+                        .font(Fonts.label)
+                        .foregroundColor(.white)
                 }
                 
-                NavigationLink(destination: SignUpView()) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.green)
-                        
-                        Text("Create Account")
-                            .font(.system(size: 20, weight: .bold, design: .default))
-                            .foregroundColor(.white)
-                    }
-                    .frame(height: 60)
-                    .frame(maxWidth: .infinity)
-                    .padding(.bottom)
+                NavigationButton(destination: SignUpView(), backgroundColor: .green) {
+                    Text("Create Account")
+                        .font(Fonts.label)
+                        .foregroundColor(.white)
                 }
             }
             .padding()
