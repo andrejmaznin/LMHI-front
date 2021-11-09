@@ -1,37 +1,35 @@
 import SwiftUI
 
-struct TestView: View {
-    @ObservedObject var VM = TestViewModel()
-    
+struct TestResultsView: View {
     var body: some View {
         NavigationView {
-            HStack {
+            ScrollView {
                 Rectangle()
-                    .foregroundColor(VM.leftColor)
+                    .foregroundColor(Color(R: 0, G: 73, B: 131))
                     .cornerRadius(30.0)
-                    .aspectRatio(0.6, contentMode: .fit)
-                    .frame(width: UIScreen.main.bounds.width / 3)
-                    .onTapGesture {
-                        VM.process(.left)
-                    }
-                
-                Spacer()
-                    .frame(width: 30)
-                
+                    .aspectRatio(1.2, contentMode: .fit)
+                    .padding()
                 Rectangle()
-                    .foregroundColor(VM.rightColor)
+                    .foregroundColor(Color(R: 29, G: 151, B: 114))
                     .cornerRadius(30.0)
-                    .aspectRatio(0.6, contentMode: .fit)
-                    .frame(width: UIScreen.main.bounds.width / 3)
-                    .onTapGesture {
-                        VM.process(.right)
-                    }
+                    .aspectRatio(1.2, contentMode: .fit)
+                    .padding()
+                Rectangle()
+                    .foregroundColor(Color(R: 241, G: 47, B: 35))
+                    .cornerRadius(30.0)
+                    .aspectRatio(1.2, contentMode: .fit)
+                    .padding()
+                Rectangle()
+                    .foregroundColor(Color(R: 242, G: 221, B: 0))
+                    .cornerRadius(30.0)
+                    .aspectRatio(1.2, contentMode: .fit)
+                    .padding()
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Text("Test")
+                    Text("Test Results")
                 }
-                
+
                 ToolbarItem(placement:  .navigationBarTrailing) {
                     Button("Log Out") {
                         let signOutModel = SignOutModel(login: UserDefaults.standard.string(forKey: "email")!, id: UserDefaults.standard.integer(forKey: "sessionID"))
@@ -55,8 +53,8 @@ struct TestView: View {
     }
 }
 
-struct TestView_Previews: PreviewProvider {
+struct TestResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        TestView()
+        TestResultsView()
     }
 }

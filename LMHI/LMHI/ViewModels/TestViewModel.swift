@@ -67,7 +67,7 @@ class TestViewModel: ObservableObject {
                 switch result {
                 case .success:
                     print("Test Success")
-                    UserDefaults.standard.set(ContentViewModel.State.home.rawValue, forKey: "currentState")
+                    UserDefaults.standard.set(ContentViewModel.State.testResults.rawValue, forKey: "currentState")
                 case .failure:
                     print("Test Failure")
                 }

@@ -8,6 +8,7 @@ class NetworkingService {
     enum RequestType: String {
         case get = "GET"
         case post = "POST"
+        case patch = "PATCH"
     }
     
     enum NetworkingError: Error {
@@ -43,6 +44,7 @@ class NetworkingService {
                 }
                 print(unwrappedResponse.statusCode)
                 if let unwrappedError = error {
+                    print("some error")
                     completion(.failure(unwrappedError))
                     return
                 }

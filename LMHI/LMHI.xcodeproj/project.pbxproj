@@ -32,8 +32,11 @@
 		34D68F1C26C1636E00E35F0A /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D68F1B26C1636E00E35F0A /* NetworkingService.swift */; };
 		34D68F1F26C163C200E35F0A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D68F1E26C163C200E35F0A /* APIService.swift */; };
 		34EDB1B626D219B500623995 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB1B526D219B500623995 /* TestView.swift */; };
+		34EDBB8D27341C9700DCF54B /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EDBB8C27341C9700DCF54B /* ResultView.swift */; };
+		34EDBB8F27341CF600DCF54B /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EDBB8E27341CF600DCF54B /* ResultViewModel.swift */; };
 		34F060B126DB9AF8004817CD /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F060B026DB9AF8004817CD /* TestViewModel.swift */; };
 		34F060B426DBADAB004817CD /* TestResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F060B326DBADAB004817CD /* TestResultsModel.swift */; };
+		34F4800026E331A5002FA890 /* TestResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F47FFF26E331A5002FA890 /* TestResultsView.swift */; };
 		34FF00C926BBEE6300384AF3 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FF00C826BBEE6300384AF3 /* Main.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,8 +68,11 @@
 		34D68F1B26C1636E00E35F0A /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		34D68F1E26C163C200E35F0A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		34EDB1B526D219B500623995 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		34EDBB8C27341C9700DCF54B /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		34EDBB8E27341CF600DCF54B /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
 		34F060B026DB9AF8004817CD /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
 		34F060B326DBADAB004817CD /* TestResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsModel.swift; sourceTree = "<group>"; };
+		34F47FFF26E331A5002FA890 /* TestResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsView.swift; sourceTree = "<group>"; };
 		34FF00C826BBEE6300384AF3 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +104,7 @@
 				345DD30926BE96080056A3E7 /* SignUpViewModel.swift */,
 				34D6209D26CFF92B00466B59 /* SignInViewModel.swift */,
 				34F060B026DB9AF8004817CD /* TestViewModel.swift */,
+				34EDBB8E27341CF600DCF54B /* ResultViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -193,6 +200,8 @@
 				345DD2F526BE549C0056A3E7 /* StartView.swift */,
 				345DD2F826BE55230056A3E7 /* HomeView.swift */,
 				34EDB1B526D219B500623995 /* TestView.swift */,
+				34F47FFF26E331A5002FA890 /* TestResultsView.swift */,
+				34EDBB8C27341C9700DCF54B /* ResultView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -273,6 +282,7 @@
 				345DD30A26BE96080056A3E7 /* SignUpViewModel.swift in Sources */,
 				348C351926AD6DCA000A4D93 /* CustomModifiers.swift in Sources */,
 				34D620A126D0CB6300466B59 /* SignOutModel.swift in Sources */,
+				34F4800026E331A5002FA890 /* TestResultsView.swift in Sources */,
 				34D68F1F26C163C200E35F0A /* APIService.swift in Sources */,
 				34A874F326ABBFCA0011A40D /* ContentView.swift in Sources */,
 				34D6209E26CFF92B00466B59 /* SignInViewModel.swift in Sources */,
@@ -287,9 +297,11 @@
 				34A8750226ABC0CC0011A40D /* ProgressBar.swift in Sources */,
 				345DD2FC26BE5E490056A3E7 /* FormButton.swift in Sources */,
 				345DD2F226BE468B0056A3E7 /* ContentViewModel.swift in Sources */,
+				34EDBB8D27341C9700DCF54B /* ResultView.swift in Sources */,
 				34D68F1C26C1636E00E35F0A /* NetworkingService.swift in Sources */,
 				34331E9226C8EBB5001E57F6 /* SignInModel.swift in Sources */,
 				34A874F126ABBFCA0011A40D /* LMHIApp.swift in Sources */,
+				34EDBB8F27341CF600DCF54B /* ResultViewModel.swift in Sources */,
 				34B5ED9C26AF164C00243E68 /* CustomExtensions.swift in Sources */,
 				345DD2F626BE549C0056A3E7 /* StartView.swift in Sources */,
 			);
@@ -421,6 +433,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"LMHI/Preview Content\"";
+				DEVELOPMENT_TEAM = WYLRTAGG5K;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = LMHI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -442,6 +455,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"LMHI/Preview Content\"";
+				DEVELOPMENT_TEAM = WYLRTAGG5K;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = LMHI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

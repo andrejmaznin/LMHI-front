@@ -92,7 +92,7 @@ class APIService {
     }
     
     static func submitTestResults(model: TestResultsModel, completion: @escaping(Result<Bool, APIError>) -> Void) {
-        NetworkingService.request(requestType: .post, endpoint: "results", data: model) { (result: Result<TestSubmitionResult, Error>) in
+        NetworkingService.request(requestType: .post, endpoint: "result", data: model) { (result: Result<TestSubmitionResult, Error>) in
             switch result {
             case .success:
                 print("Test Results Submition Success")

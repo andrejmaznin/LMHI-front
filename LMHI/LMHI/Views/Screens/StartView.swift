@@ -5,10 +5,6 @@ struct StartView: View {
     var body: some View {
         NavigationView {
             ZStack {
-//                Image("Background0")
-//                    .resizable()
-//                    .scaledToFill()
-//                    .ignoresSafeArea(.all)
                 
                 VStack {
                     Text("Welcome to LMHI!")
