@@ -23,24 +23,9 @@ struct SignInView: View {
             .padding()
             .ignoresSafeArea(.keyboard)
             
-            if VM.showLoading {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.white)
-                        .frame(width: 200, height: 100)
-                        .shadow(radius: 10)
-                    
-                    VStack {
-                        ProgressView()
-                            .scaleEffect(2)
-                        
-                        Text("Loading...")
-                            .bold()
-                            .padding(.top, 20)
-                    }
-                }
-            }
+            LoadingCover(isPresented: VM.showLoading)
         }
+        .navigationBarBackButtonHidden(VM.showLoading ? true : false)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("Sign In")
