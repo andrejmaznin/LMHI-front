@@ -13,14 +13,11 @@ struct SignUpView: View {
                     Spacer()
                     
                     VStack {
-                        FormTextField(placeholder: "Full name", prompt: VM.personNamePrompt, field: $VM.personName, isSecure: false, autocapitalization: true)
-                        FormTextField(placeholder: "Email", prompt: VM.emailPrompt, field: $VM.email, isSecure: false, autocapitalization: false)
+                        
                     }
 
                     VStack {
-                        FormTextField(placeholder: "Password", prompt: VM.passwordPrompt, field: $VM.password, isSecure: true, autocapitalization: false)
                         
-                        FormButton(action: VM.signUp, text: "Create account", color: activeColor, disabled: false)
                     }
                     
                     Spacer()

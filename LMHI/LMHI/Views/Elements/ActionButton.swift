@@ -1,17 +1,18 @@
 import SwiftUI
 
-struct NavigationButton<Destination: View, Content: View>: View {
-    var destination: Destination
+struct ActionButton<Content: View>: View {
+    var action: () -> Void
     var cornerRadius: CGFloat = 10.0
     var backgroundColor: Color = .clear
     var width: CGFloat? = nil
     var height: CGFloat? = 60.0
     var maxWidth: CGFloat? = .infinity
     var maxHeight: CGFloat? = nil
+    var isDisabled: Bool = false
     var content: () -> Content
     
     var body: some View {
-        NavigationLink(destination: destination) {
+        Button(action: action) {
             ZStack {
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .fill(backgroundColor)
@@ -21,12 +22,13 @@ struct NavigationButton<Destination: View, Content: View>: View {
             .frame(width: width, height: height)
             .frame(maxWidth: maxWidth, maxHeight: maxHeight)
         }
+        .disabled(isDisabled)
     }
 }
 
-struct NavigationButton_Previews: PreviewProvider {
+struct ActionButton_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationButton(destination: SignInView()) {
+        ActionButton(action: {}) {
             Text("Text")
         }
     }

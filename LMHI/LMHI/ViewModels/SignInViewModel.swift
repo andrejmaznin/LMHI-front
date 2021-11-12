@@ -3,9 +3,10 @@ import SwiftUI
 class SignInViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
-    
+    @Published var isCorrect = false
     @Published var showLoading = false
     @Published var showAlert = false
+    
     
     var emailPrompt = ""
     var passwordPrompt = ""

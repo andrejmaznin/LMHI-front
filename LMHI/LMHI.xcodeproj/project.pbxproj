@@ -11,7 +11,6 @@
 		345DD2F226BE468B0056A3E7 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DD2F126BE468B0056A3E7 /* ContentViewModel.swift */; };
 		345DD2F626BE549C0056A3E7 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DD2F526BE549C0056A3E7 /* StartView.swift */; };
 		345DD2F926BE55230056A3E7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DD2F826BE55230056A3E7 /* HomeView.swift */; };
-		345DD2FC26BE5E490056A3E7 /* FormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DD2FB26BE5E490056A3E7 /* FormButton.swift */; };
 		345DD30226BE835B0056A3E7 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DD30126BE835B0056A3E7 /* SignInView.swift */; };
 		345DD30A26BE96080056A3E7 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DD30926BE96080056A3E7 /* SignUpViewModel.swift */; };
 		3464F6DB26ADB71A00698D57 /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3464F6DA26ADB71A00698D57 /* FormTextField.swift */; };
@@ -28,6 +27,7 @@
 		34A874F826ABBFD60011A40D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34A874F726ABBFD60011A40D /* Preview Assets.xcassets */; };
 		34A8750226ABC0CC0011A40D /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A8750126ABC0CC0011A40D /* ProgressBar.swift */; };
 		34B5ED9C26AF164C00243E68 /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B5ED9B26AF164C00243E68 /* CustomExtensions.swift */; };
+		34D568E6273EDDA200118A39 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D568E5273EDDA200118A39 /* ActionButton.swift */; };
 		34D6209E26CFF92B00466B59 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D6209D26CFF92B00466B59 /* SignInViewModel.swift */; };
 		34D620A126D0CB6300466B59 /* SignOutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D620A026D0CB6300466B59 /* SignOutModel.swift */; };
 		34D68F1626C15B6A00E35F0A /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D68F1526C15B6A00E35F0A /* SignUpModel.swift */; };
@@ -47,7 +47,6 @@
 		345DD2F126BE468B0056A3E7 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		345DD2F526BE549C0056A3E7 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		345DD2F826BE55230056A3E7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		345DD2FB26BE5E490056A3E7 /* FormButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormButton.swift; sourceTree = "<group>"; };
 		345DD30126BE835B0056A3E7 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		345DD30926BE96080056A3E7 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		3464F6DA26ADB71A00698D57 /* FormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
@@ -66,6 +65,7 @@
 		34A874F926ABBFD60011A40D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34A8750126ABC0CC0011A40D /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		34B5ED9B26AF164C00243E68 /* CustomExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExtensions.swift; sourceTree = "<group>"; };
+		34D568E5273EDDA200118A39 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		34D6209D26CFF92B00466B59 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		34D620A026D0CB6300466B59 /* SignOutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutModel.swift; sourceTree = "<group>"; };
 		34D68F1526C15B6A00E35F0A /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
@@ -170,8 +170,8 @@
 				34A8750126ABC0CC0011A40D /* ProgressBar.swift */,
 				3464F6DA26ADB71A00698D57 /* FormTextField.swift */,
 				348C351C26AD879C000A4D93 /* CheckBox.swift */,
-				345DD2FB26BE5E490056A3E7 /* FormButton.swift */,
 				349BC90A273AD74300606951 /* NavigationButton.swift */,
+				34D568E5273EDDA200118A39 /* ActionButton.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -281,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34D568E6273EDDA200118A39 /* ActionButton.swift in Sources */,
 				348C351D26AD879C000A4D93 /* CheckBox.swift in Sources */,
 				3464F6DB26ADB71A00698D57 /* FormTextField.swift in Sources */,
 				345DD2F926BE55230056A3E7 /* HomeView.swift in Sources */,
@@ -301,7 +302,6 @@
 				34F060B426DBADAB004817CD /* TestResultsModel.swift in Sources */,
 				348C351126AD5A07000A4D93 /* Util.swift in Sources */,
 				34A8750226ABC0CC0011A40D /* ProgressBar.swift in Sources */,
-				345DD2FC26BE5E490056A3E7 /* FormButton.swift in Sources */,
 				345DD2F226BE468B0056A3E7 /* ContentViewModel.swift in Sources */,
 				34EDBB8D27341C9700DCF54B /* ResultView.swift in Sources */,
 				349BC90B273AD74300606951 /* NavigationButton.swift in Sources */,

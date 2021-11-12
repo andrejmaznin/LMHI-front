@@ -1,40 +1,63 @@
 import SwiftUI
 
 struct FormTextField: View {
-    let placeholder: String
-    let prompt: String
-    @Binding var field: String
-    let isSecure: Bool
-    let autocapitalization: Bool
+    @Environment(\.colorScheme) private var colorScheme
     
-    @State private var wasTouched = false
+    @Binding var data: String
+    
+    var cornerRadius: CGFloat = 10.0
+    var strokeWidth: CGFloat = 2.0
+    var placeholder: String = ""
+    var isSecure: Bool = false
+    var keyboardType: UIKeyboardType = .default
+    var autocapitalization: Bool = false
+    var width: CGFloat? = nil
+    var height: CGFloat? = 60.0
+    var maxWidth: CGFloat? = .infinity
+    var maxHeight: CGFloat? = nil
+    var prompt: String = ""
     
     var body: some View {
         VStack {
-            Group {
-                if isSecure {
-                    SecureField(placeholder, text: $field)
-                } else {
-                    TextField(placeholder, text: $field)
+            ZStack {
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .fill(colorScheme == .dark ? Color("Madison") : .white)
+                
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .stroke(Color(.systemGray4), lineWidth: strokeWidth)
+                
+                HStack {
+                    Group {
+                        if data.isEmpty {
+                            Text(placeholder)
+                                .foregroundColor(Color(.systemGray))
+                        }
+                    }
+                    
+                    Spacer()
                 }
+                .padding()
+                
+                Group {
+                    if isSecure {
+                        SecureField("", text: $data)
+                    } else {
+                        TextField("", text: $data)
+                    }
+                }
+                .padding()
+                .disableAutocorrection(true)
+                .keyboardType(keyboardType)
+                .autocapitalization(autocapitalization ? .words : .none)
             }
-            .padding()
-            .frame(height: 60)
-            .frame(maxWidth: .infinity)
-            .background(Color(.white))
-            .foregroundColor(.black)
-            .overlay(
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color(.systemGray4), lineWidth: 2)
-            )
-            .disableAutocorrection(true)
-            .autocapitalization(autocapitalization ? .words : .none)
+            .frame(width: width, height: height)
+            .frame(maxWidth: maxWidth, maxHeight: maxHeight)
             
             if !prompt.isEmpty {
                 HStack {
                     Text(prompt)
-                        .font(.system(size: 16))
-                        .foregroundColor(Color.red)
+                        .font(Fonts.caption)
+                        .foregroundColor(.red)
                         .multilineTextAlignment(.leading)
                         .fixedSize(horizontal: false, vertical: true)
                     
@@ -49,6 +72,6 @@ struct FormTextField: View {
 
 struct FormTextField_Previews: PreviewProvider {
     static var previews: some View {
-        FormTextField(placeholder: "Username", prompt: "", field: .constant(""), isSecure: false, autocapitalization: false)
+        FormTextField(data: .constant(""))
     }
 }

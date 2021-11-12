@@ -1,27 +1,27 @@
 import SwiftUI
 
 struct SignInView: View {
-    @ObservedObject var VM = SignInViewModel()
-    
-    let inactiveColor = Color(R: 230, G: 223, B: 213)
-    let activeColor = Color(R: 214, G: 200, B: 181)
+    @ObservedObject private var VM = SignInViewModel()
     
     var body: some View {
         ZStack {
-            ZStack {
-                VStack {
-                    Spacer()
-                    
-                    FormTextField(placeholder: "Email", prompt: VM.emailPrompt, field: $VM.email, isSecure: false, autocapitalization: false)
-                    FormTextField(placeholder: "Password", prompt: VM.passwordPrompt, field: $VM.password, isSecure: true, autocapitalization: false)
-                    
-                    FormButton(action: VM.signIn, text: "Log In", color: activeColor, disabled: false)
-                    
-                    Spacer()
+            VStack {
+                Spacer()
+                
+                FormTextField(data: $VM.email, placeholder: "Email", keyboardType: .emailAddress, prompt: VM.emailPrompt)
+                
+                FormTextField(data: $VM.password, placeholder: "Password", isSecure: true, prompt: VM.passwordPrompt)
+                
+                ActionButton(action: VM.signIn, backgroundColor: VM.isCorrect ? Color("StarkWhite") : Color("VistaWhite"), isDisabled: !VM.isCorrect) {
+                    Text("Log In")
+                        .font(Fonts.label)
+                        .foregroundColor(.white)
                 }
-                .padding()
-                .ignoresSafeArea(.keyboard)
+                
+                Spacer()
             }
+            .padding()
+            .ignoresSafeArea(.keyboard)
             
             if VM.showLoading {
                 ZStack {
