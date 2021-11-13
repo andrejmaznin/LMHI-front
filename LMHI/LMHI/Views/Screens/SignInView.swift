@@ -8,9 +8,9 @@ struct SignInView: View {
             VStack {
                 Spacer()
                 
-                FormTextField(data: $VM.email, placeholder: "Email", keyboardType: .emailAddress, prompt: VM.emailPrompt)
+                FormTextField(data: $VM.email, placeholder: "Email", keyboardType: .emailAddress, validator: VM.validateEmail, prompt: VM.emailPrompt)
                 
-                FormTextField(data: $VM.password, placeholder: "Password", isSecure: true, prompt: VM.passwordPrompt)
+                FormTextField(data: $VM.password, placeholder: "Password", isSecure: true, validator: VM.validatePassword, prompt: VM.passwordPrompt)
                 
                 ActionButton(action: VM.signIn, backgroundColor: VM.isFormCorrect ? Color("StarkWhite") : Color("VistaWhite"), isDisabled: !VM.isFormCorrect) {
                     Text("Log In")

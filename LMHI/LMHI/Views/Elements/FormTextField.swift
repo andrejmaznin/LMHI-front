@@ -11,6 +11,7 @@ struct FormTextField: View {
     var isSecure: Bool = false
     var keyboardType: UIKeyboardType = .default
     var autocapitalization: Bool = false
+    var validator: (String) -> Void = {value in}
     var width: CGFloat? = nil
     var height: CGFloat? = 60.0
     var maxWidth: CGFloat? = .infinity
@@ -49,6 +50,9 @@ struct FormTextField: View {
                 .disableAutocorrection(true)
                 .keyboardType(keyboardType)
                 .autocapitalization(autocapitalization ? .words : .none)
+                .onChange(of: data) { value in
+                    validator(value)
+                }
             }
             .frame(width: width, height: height)
             .frame(maxWidth: maxWidth, maxHeight: maxHeight)

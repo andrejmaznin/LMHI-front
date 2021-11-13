@@ -5,11 +5,21 @@ class SignInViewModel: ObservableObject {
     
     @Published var email = ""
     @Published var password = ""
+    @Published var emailPrompt = ""
+    @Published var passwordPrompt = ""
     @Published var isFormCorrect = false
     @Published var showLoadingCover = false
     @Published var showAlert = false
-    @Published var emailPrompt = ""
-    @Published var passwordPrompt = ""
+    
+    func validateEmail(email: String) {
+        emailPrompt = Form.validateEmail(email: email)
+        isFormCorrect = isFormCorrect && emailPrompt.isEmpty
+    }
+    
+    func validatePassword(password: String) {
+        passwordPrompt = Form.validatePassword(password: password)
+        isFormCorrect = isFormCorrect && passwordPrompt.isEmpty
+    }
     
     func signIn() {
         showLoadingCover = true
@@ -37,14 +47,6 @@ class SignInViewModel: ObservableObject {
                 }
             }
         }
-    }
-    
-    func validateForm() -> Bool {
-        if appModel.isInDebugMode {
-            return true
-        }
-        
-        return false
     }
     
     func clearFields() {
