@@ -12,7 +12,7 @@ struct SignInView: View {
                 
                 FormTextField(data: $VM.password, placeholder: "Password", isSecure: true, prompt: VM.passwordPrompt)
                 
-                ActionButton(action: VM.signIn, backgroundColor: VM.isCorrect ? Color("StarkWhite") : Color("VistaWhite"), isDisabled: !VM.isCorrect) {
+                ActionButton(action: VM.signIn, backgroundColor: VM.isFormCorrect ? Color("StarkWhite") : Color("VistaWhite"), isDisabled: !VM.isFormCorrect) {
                     Text("Log In")
                         .font(Fonts.label)
                         .foregroundColor(.white)
@@ -23,9 +23,9 @@ struct SignInView: View {
             .padding()
             .ignoresSafeArea(.keyboard)
             
-            LoadingCover(isPresented: VM.showLoading)
+            LoadingCover(isPresented: VM.showLoadingCover)
         }
-        .navigationBarBackButtonHidden(VM.showLoading ? true : false)
+        .navigationBarBackButtonHidden(VM.showLoadingCover ? true : false)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("Sign In")

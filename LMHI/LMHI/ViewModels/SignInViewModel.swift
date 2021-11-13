@@ -1,23 +1,23 @@
 import SwiftUI
 
 class SignInViewModel: ObservableObject {
+    @EnvironmentObject var appModel: AppModel
+    
     @Published var email = ""
     @Published var password = ""
-    @Published var isCorrect = false
-    @Published var showLoading = false
+    @Published var isFormCorrect = false
+    @Published var showLoadingCover = false
     @Published var showAlert = false
-    
-    
-    var emailPrompt = ""
-    var passwordPrompt = ""
+    @Published var emailPrompt = ""
+    @Published var passwordPrompt = ""
     
     func signIn() {
-        showLoading = true
+        showLoadingCover = true
         let signInModel = SignInModel(login: email, hashed_password: Util.hash(password))
         APIService.authenticate(model: signInModel) { result in
             print(result)
             self.clearPrompts()
-            self.showLoading = false
+            self.showLoadingCover = false
             switch result {
             case .success(let id):
                 print("SignIn Success")
@@ -37,6 +37,14 @@ class SignInViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func validateForm() -> Bool {
+        if appModel.isInDebugMode {
+            return true
+        }
+        
+        return false
     }
     
     func clearFields() {

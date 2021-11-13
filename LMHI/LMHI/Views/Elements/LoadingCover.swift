@@ -8,9 +8,8 @@ struct LoadingCover: View {
     var cornerRadius: CGFloat = 10.0
     var shadowRadius: CGFloat = 20.0
     var progressIconScale: CGFloat = 2.0
-    var padding: CGFloat = 20.0
-    var width: CGFloat? = 200.0
-    var height: CGFloat? = 100.0
+    var width: CGFloat = 200.0
+    var height: CGFloat = 100.0
     
     var body: some View {
         Group {
@@ -31,7 +30,7 @@ struct LoadingCover: View {
                             
                             Text("Loading...")
                                 .font(Fonts.boldCaption)
-                                .padding(.top, padding)
+                                .padding(.top, height / 5.0)
                         }
                     }
                     .frame(width: width, height: height)

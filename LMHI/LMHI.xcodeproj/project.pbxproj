@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		34331E9226C8EBB5001E57F6 /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34331E9126C8EBB5001E57F6 /* SignInModel.swift */; };
+		3456E542273FE2150054E3E6 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3456E541273FE2150054E3E6 /* AppModel.swift */; };
+		3456E544273FE4F60054E3E6 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3456E543273FE4F60054E3E6 /* Form.swift */; };
 		345DD2F226BE468B0056A3E7 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DD2F126BE468B0056A3E7 /* ContentViewModel.swift */; };
 		345DD2F626BE549C0056A3E7 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DD2F526BE549C0056A3E7 /* StartView.swift */; };
 		345DD2F926BE55230056A3E7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DD2F826BE55230056A3E7 /* HomeView.swift */; };
@@ -45,6 +47,8 @@
 
 /* Begin PBXFileReference section */
 		34331E9126C8EBB5001E57F6 /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
+		3456E541273FE2150054E3E6 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		3456E543273FE4F60054E3E6 /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 		345DD2F126BE468B0056A3E7 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		345DD2F526BE549C0056A3E7 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		345DD2F826BE55230056A3E7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 				34B5ED9B26AF164C00243E68 /* CustomExtensions.swift */,
 				348C351826AD6DCA000A4D93 /* CustomModifiers.swift */,
 				349BC90C273ADF4300606951 /* Fonts.swift */,
+				3456E543273FE4F60054E3E6 /* Form.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 				34D68F1526C15B6A00E35F0A /* SignUpModel.swift */,
 				34331E9126C8EBB5001E57F6 /* SignInModel.swift */,
 				34F060B326DBADAB004817CD /* TestResultsModel.swift */,
+				3456E541273FE2150054E3E6 /* AppModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -297,6 +303,7 @@
 				34D568E8273EE8FA00118A39 /* LoadingCover.swift in Sources */,
 				34A874F326ABBFCA0011A40D /* ContentView.swift in Sources */,
 				34D6209E26CFF92B00466B59 /* SignInViewModel.swift in Sources */,
+				3456E542273FE2150054E3E6 /* AppModel.swift in Sources */,
 				345DD30226BE835B0056A3E7 /* SignInView.swift in Sources */,
 				348C351526AD6B87000A4D93 /* SignUpView.swift in Sources */,
 				34F060B126DB9AF8004817CD /* TestViewModel.swift in Sources */,
@@ -306,6 +313,7 @@
 				34F060B426DBADAB004817CD /* TestResultsModel.swift in Sources */,
 				348C351126AD5A07000A4D93 /* Util.swift in Sources */,
 				34A8750226ABC0CC0011A40D /* ProgressBar.swift in Sources */,
+				3456E544273FE4F60054E3E6 /* Form.swift in Sources */,
 				345DD2F226BE468B0056A3E7 /* ContentViewModel.swift in Sources */,
 				34EDBB8D27341C9700DCF54B /* ResultView.swift in Sources */,
 				349BC90B273AD74300606951 /* NavigationButton.swift in Sources */,
