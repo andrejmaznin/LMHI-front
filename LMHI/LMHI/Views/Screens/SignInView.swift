@@ -12,7 +12,7 @@ struct SignInView: View {
                 
                 FormTextField(data: $VM.password, placeholder: "Password", isSecure: true, validator: VM.validatePassword, prompt: VM.passwordPrompt)
                 
-                ActionButton(action: VM.signIn, backgroundColor: VM.isFormCorrect ? Color("StarkWhite") : Color("VistaWhite"), isDisabled: !VM.isFormCorrect) {
+                ActionButton(action: VM.signIn, backgroundColor: VM.validateForm() ? Color("StarkWhite") : Color("VistaWhite"), isDisabled: !VM.validateForm()) {
                     Text("Log In")
                         .font(Fonts.label)
                         .foregroundColor(.white)

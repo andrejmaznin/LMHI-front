@@ -1,37 +1,44 @@
 import SwiftUI
 
 class SignInViewModel: ObservableObject {
-    @EnvironmentObject var appModel: AppModel
-    
     @Published var email = ""
     @Published var password = ""
     @Published var emailPrompt = ""
     @Published var passwordPrompt = ""
-    @Published var isFormCorrect = false
     @Published var showLoadingCover = false
     @Published var showAlert = false
     
     func validateEmail(email: String) {
         emailPrompt = Form.validateEmail(email: email)
-        isFormCorrect = isFormCorrect && emailPrompt.isEmpty
     }
     
     func validatePassword(password: String) {
-        passwordPrompt = Form.validatePassword(password: password)
-        isFormCorrect = isFormCorrect && passwordPrompt.isEmpty
+        if password.isEmpty {
+            passwordPrompt = "Enter password"
+        } else {
+            passwordPrompt = ""
+        }
+    }
+    
+    func validateForm() -> Bool {
+        if AppState.isInDebugMode {
+            return true
+        }
+        
+        return !email.isEmpty && emailPrompt.isEmpty && !password.isEmpty && passwordPrompt.isEmpty
     }
     
     func signIn() {
         showLoadingCover = true
         let signInModel = SignInModel(login: email, hashed_password: Util.hash(password))
         APIService.authenticate(model: signInModel) { result in
-            print(result)
-            self.clearPrompts()
+            AppState.debugLog(result)
             self.showLoadingCover = false
             switch result {
             case .success(let id):
-                print("SignIn Success")
-                self.clearFields()
+                AppState.debugLog("SignIn Success")
+                self.email = ""
+                self.password = ""
                 UserDefaults.standard.set(id, forKey: "sessionID")
                 UserDefaults.standard.set(signInModel.login, forKey: "email")
                 UserDefaults.standard.set(signInModel.hashed_password, forKey: "hashedPassword")
@@ -47,15 +54,5 @@ class SignInViewModel: ObservableObject {
                 }
             }
         }
-    }
-    
-    func clearFields() {
-        email = ""
-        password = ""
-    }
-    
-    func clearPrompts() {
-        emailPrompt = ""
-        passwordPrompt = ""
     }
 }

@@ -6,7 +6,7 @@ class Form {
         if email.isEmpty {
             result = "Enter email address"
         }
-        if !Util.evaluateRegEx(regEx: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,32}", value: email) {
+        if !Util.evaluateRegEx(regEx: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{1,8}", value: email) {
             result = "Enter valid email address"
         }
         
