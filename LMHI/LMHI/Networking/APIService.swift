@@ -23,11 +23,8 @@ class APIService {
     }
     
     struct TestSubmitionResult: Decodable {
-        let main: String
-        let blue: String
-        let green: String
-        let red: String
-        let yellow: String
+        let results: [String]
+        let success: String
     }
     
     static func createUser(model: SignUpModel, completion: @escaping (Result<Bool, APIError>) -> Void) {
@@ -84,7 +81,7 @@ class APIService {
                 AppState.debugLog("Exit Success")
                 completion(.success(true))
             case .failure(let error):
-                AppState.debugLog("Exit Failure")
+                print("Exit Failure")
                 if let handledError = error as? NetworkingService.ErrorResult {
                     print(handledError.ERROR)
                 }
@@ -93,16 +90,18 @@ class APIService {
         }
     }
     
-    static func submitTestResults(model: TestResultsModel, completion: @escaping(Result<Bool, APIError>) -> Void) {
+    static func submitTestResults(model: TestResultsModel, completion: @escaping(Result<[String], APIError>) -> Void) {
         NetworkingService.request(requestType: .post, endpoint: "result", data: model) { (result: Result<TestSubmitionResult, Error>) in
             switch result {
-            case .success:
-                print("Test Results Submition Success")
+            case .success(let result):
+                AppState.debugLog("Test Results Submition Success")
+                completion(.success(result.results))
             case .failure(let error):
                 print("Test Results Submition Failure")
                 if let handledError = error as? NetworkingService.ErrorResult {
                     print(handledError.ERROR)
                 }
+                print(error)
                 completion(.failure(.unexpectedError))
             }
         }

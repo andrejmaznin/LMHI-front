@@ -9,7 +9,7 @@ extension Color {
         if let color = UIColor(named: name) {
             self.init(color)
         } else {
-            fatalError("Trying to initialize with nonexistent color")
+            fatalError("Trying to initialize with nonexistent color " + name)
         }
     }
 }

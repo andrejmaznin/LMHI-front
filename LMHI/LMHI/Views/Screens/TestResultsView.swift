@@ -1,14 +1,21 @@
 import SwiftUI
 
 struct TestResultsView: View {
+    @AppStorage("testMainResult") private var result: String = ""
+    
     var body: some View {
         NavigationView {
             ScrollView {
-                Rectangle()
-                    .foregroundColor(Color(R: 0, G: 73, B: 131))
-                    .cornerRadius(30.0)
-                    .aspectRatio(1.2, contentMode: .fit)
-                    .padding()
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(Color(R: 0, G: 73, B: 131))
+                        .cornerRadius(30.0)
+                        .aspectRatio(1.2, contentMode: .fit)
+                        .padding()
+                    
+                    Text(result)
+                }
+                
                 Rectangle()
                     .foregroundColor(Color(R: 29, G: 151, B: 114))
                     .cornerRadius(30.0)
