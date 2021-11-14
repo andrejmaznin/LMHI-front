@@ -3,15 +3,9 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject private var VM = ContentViewModel()
     
-    @AppStorage("currentState") private var currentStateRawValue = ContentViewModel.State.start.rawValue
-    
-    private var currentState: ContentViewModel.State {
-        ContentViewModel.State(rawValue: currentStateRawValue)!
-    }
-    
     var body: some View {
         Group {
-            switch currentState {
+            switch VM.getState() {
             case .start:
                 StartView()
             case .test:
