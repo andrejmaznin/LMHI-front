@@ -39,10 +39,10 @@ class SignInViewModel: ObservableObject {
                 AppState.debugLog("SignIn Success")
                 self.email = ""
                 self.password = ""
-                UserDefaults.standard.set(id, forKey: "sessionID")
-                UserDefaults.standard.set(signInModel.login, forKey: "email")
-                UserDefaults.standard.set(signInModel.hashed_password, forKey: "hashedPassword")
-                UserDefaults.standard.set(ContentViewModel.State.home.rawValue, forKey: "currentState")
+                AppState.store(key: "sessionID", value: id)
+                AppState.store(key: "email", value: signInModel.login)
+                AppState.store(key: "hashedPassword", value: signInModel.hashed_password)
+                AppState.store(key: "currentState", value: ContentViewModel.State.home.rawValue)
             case .failure(let error):
                 switch error {
                 case .wrongEmail:
