@@ -9,7 +9,7 @@ class SignInViewModel: ObservableObject {
     @Published var showAlert = false
     
     func validateEmail(email: String) {
-        emailPrompt = Form.validateEmail(email: email)
+        emailPrompt = Form.validateEmail(email)
     }
     
     func validatePassword(password: String) {
@@ -31,7 +31,7 @@ class SignInViewModel: ObservableObject {
     func signIn() {
         showLoadingCover = true
         let signInModel = SignInModel(login: email, hashed_password: Util.hash(password))
-        APIService.authenticate(model: signInModel) { result in
+        APIService.authenticate(model: signInModel) { [unowned self] result in
             AppState.debugLog(result)
             self.showLoadingCover = false
             switch result {

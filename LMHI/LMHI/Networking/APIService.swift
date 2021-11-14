@@ -34,14 +34,15 @@ class APIService {
         NetworkingService.request(requestType: .post, endpoint: "users", data: model) { (result: Result<CreateUserResult, Error>) in
             switch result {
             case .success:
-                print("Creation Success")
+                AppState.debugLog("Creation Success")
                 completion(.success(true))
             case .failure(let error):
-                print("Creation Failure")
+                AppState.debugLog("Creation Failure")
                 if let handledError = error as? NetworkingService.ErrorResult {
                     if handledError.ERROR == "USER ALREADY EXISTS" {
                         completion(.failure(.userAlreadyExists))
                     } else {
+                        print(handledError.ERROR)
                         completion(.failure(.unexpectedError))
                     }
                 } else {
@@ -55,10 +56,10 @@ class APIService {
         NetworkingService.request(requestType: .post, endpoint: "auth", data: model) { (result: Result<AuthenticationResult, Error>) in
             switch result {
             case .success(let authResult):
-                print("Authentication Success")
+                AppState.debugLog("Authentication Success")
                 completion(.success(authResult.session_id))
             case .failure(let error):
-                print("Authentication Failure")
+                AppState.debugLog("Authentication Failure")
                 if let handledError = error as? NetworkingService.ErrorResult {
                     switch handledError.ERROR {
                     case "NO USER":
@@ -66,6 +67,7 @@ class APIService {
                     case "WRONG USERNAME, LOGIN, PHONE OR PASSWORD":
                         completion(.failure(.wrongPassword))
                     default:
+                        print(handledError.ERROR)
                         completion(.failure(.unexpectedError))
                     }
                 } else {
@@ -79,10 +81,10 @@ class APIService {
         NetworkingService.request(requestType: .post, endpoint: "auth", data: model) { (result: Result<ExitResult, Error>) in
             switch result {
             case .success:
-                print("Exit Success")
+                AppState.debugLog("Exit Success")
                 completion(.success(true))
             case .failure(let error):
-                print("Exit Failure")
+                AppState.debugLog("Exit Failure")
                 if let handledError = error as? NetworkingService.ErrorResult {
                     print(handledError.ERROR)
                 }

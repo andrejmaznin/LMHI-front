@@ -1,7 +1,19 @@
 import SwiftUI
 
 class Form {
-    static func validateEmail(email: String) -> String {
+    static func validateFullName(_ fullName: String) -> String {
+        var result = ""
+        if fullName.isEmpty {
+            result = "Enter your name"
+        }
+        if !Util.evaluateRegEx(regEx: "[A-Za-z'-]+", value: fullName) || fullName.count < 3 || fullName.count > 32 {
+            result = "Enter valid name"
+        }
+        
+        return result
+    }
+    
+    static func validateEmail(_ email: String) -> String {
         var result = ""
         if email.isEmpty {
             result = "Enter email address"
@@ -13,7 +25,7 @@ class Form {
         return result
     }
     
-    static func validatePassword(password: String) -> String {
+    static func validatePassword(_ password: String) -> String {
         var result = ""
         if password.isEmpty {
             result = "Enter password"

@@ -1,49 +1,43 @@
 import SwiftUI
 
-struct SignUpView: View {
-    @ObservedObject var VM = SignUpViewModel()
-    
-    let inactiveColor = Color(R: 230, G: 223, B: 213)
-    let activeColor = Color(R: 214, G: 200, B: 181)
+struct SignUpView: View {    
+    @ObservedObject private var VM = SignUpViewModel()
     
     var body: some View {
         ZStack {
-            ZStack {
-                VStack {
-                    Spacer()
-                    
-                    VStack {
-                        
-                    }
+            VStack {
+                Spacer()
+                
+                FormTextField(data: $VM.fullName, placeholder: "Full name", autocapitalization: true, validator: VM.validateFullName, prompt: VM.fullNamePrompt)
+                
+                FormTextField(data: $VM.email, placeholder: "Email", keyboardType: .emailAddress, validator: VM.validateEmail, prompt: VM.emailPrompt)
+                
+                FormTextField(data: $VM.password, placeholder: "Password", isSecure: true, validator: VM.validatePassword, prompt: VM.passwordPrompt)
+                
+                HStack {
+                    CheckBox(checked: $VM.termsAndConditions)
 
-                    VStack {
-                        
-                    }
-                    
+                    Text("Terms and conditions")
+                        .font(Fonts.caption)
+                        .foregroundColor(Color(.systemGray))
+
                     Spacer()
                 }
-                .padding()
-                .ignoresSafeArea(.keyboard)
-            }
-            
-            if VM.showLoading {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.white)
-                        .frame(width: 200, height: 100)
-                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                    
-                    VStack {
-                        ProgressView()
-                            .scaleEffect(2)
-                        
-                        Text("Loading...")
-                            .bold()
-                            .padding(.top, 20)
-                    }
+                
+                ActionButton(action: VM.signUp, backgroundColor: VM.validateForm() ? Color("StarkWhite") : Color("VistaWhite"), isDisabled: !VM.validateForm()) {
+                    Text("Create account")
+                        .font(Fonts.label)
+                        .foregroundColor(.white)
                 }
+                
+                Spacer()
             }
+            .padding()
+            .ignoresSafeArea(.keyboard)
+            
+            LoadingCover(isPresented: VM.showLoadingCover)
         }
+        .navigationBarBackButtonHidden(VM.showLoadingCover ? true : false)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("Sign Up")
