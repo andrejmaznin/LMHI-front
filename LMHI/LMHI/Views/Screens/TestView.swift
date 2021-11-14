@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct TestView: View {
-    @ObservedObject var VM = TestViewModel()
+    @ObservedObject private var VM = TestViewModel()
     
     var body: some View {
         NavigationView {

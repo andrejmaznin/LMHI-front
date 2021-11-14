@@ -52,7 +52,7 @@ class SignUpViewModel: ObservableObject {
                         AppState.store(key: "sessionID", value: id)
                         AppState.store(key: "email", value: signInModel.login)
                         AppState.store(key: "hashedPassword", value: signInModel.hashed_password)
-                        AppState.store(key: "currentState", value: ContentViewModel.State.home.rawValue)
+                        AppState.store(key: "currentState", value: ContentViewModel.State.test.rawValue)
                     case .failure:
                         self.showAlert = true
                     }
