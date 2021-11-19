@@ -49,7 +49,7 @@ struct ResulltItemButton<Destination: View>: View {
 
 struct ResulltItemButton_Previews: PreviewProvider {
     static var previews: some View {
-        ResulltItemButton(destination: ResultItemView(), image: Image("Books"), color: Color("Highball"), text: "Стремления, мотивированные самопониманием")
+        ResulltItemButton(destination: ResultItemView(title: "", resultName: "testMainResult"), image: Image("Books"), color: Color("Highball"), text: "Стремления, мотивированные самопониманием")
             .frame(height: 137)
             .padding()
     }

@@ -1,7 +1,7 @@
 import SwiftUI
 
 class AppState {
-    static var isInDebugMode: Bool = true
+    static var isInDebugMode: Bool = false
     static private var storage = UserDefaults.standard
     
     static func debugLog<Data>(_ data: Data) {
@@ -12,6 +12,10 @@ class AppState {
     
     static func store<Data>(key: String, value: Data) {
         storage.set(value, forKey: key)
+    }
+    
+    static func load<Data>(key: String, defaultValue: Data) -> Data {
+        return storage.object(forKey: key) as? Data ?? defaultValue
     }
     
     static func logOut() {
