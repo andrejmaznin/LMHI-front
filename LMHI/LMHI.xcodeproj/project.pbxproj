@@ -35,6 +35,8 @@
 		34D68F1626C15B6A00E35F0A /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D68F1526C15B6A00E35F0A /* SignUpModel.swift */; };
 		34D68F1C26C1636E00E35F0A /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D68F1B26C1636E00E35F0A /* NetworkingService.swift */; };
 		34D68F1F26C163C200E35F0A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D68F1E26C163C200E35F0A /* APIService.swift */; };
+		34DC6D512747DDE5004B3F22 /* ResulltItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DC6D502747DDE5004B3F22 /* ResulltItemButton.swift */; };
+		34DC6D532747DE24004B3F22 /* ResultItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DC6D522747DE24004B3F22 /* ResultItemView.swift */; };
 		34EBB713274044BA003C03D1 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EBB712274044BA003C03D1 /* AppState.swift */; };
 		34EDB1B626D219B500623995 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EDB1B526D219B500623995 /* TestView.swift */; };
 		34EDBB8D27341C9700DCF54B /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EDBB8C27341C9700DCF54B /* ResultView.swift */; };
@@ -76,6 +78,8 @@
 		34D68F1526C15B6A00E35F0A /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		34D68F1B26C1636E00E35F0A /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		34D68F1E26C163C200E35F0A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		34DC6D502747DDE5004B3F22 /* ResulltItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResulltItemButton.swift; sourceTree = "<group>"; };
+		34DC6D522747DE24004B3F22 /* ResultItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultItemView.swift; sourceTree = "<group>"; };
 		34EBB712274044BA003C03D1 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		34EDB1B526D219B500623995 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		34EDBB8C27341C9700DCF54B /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 				349BC90A273AD74300606951 /* NavigationButton.swift */,
 				34D568E5273EDDA200118A39 /* ActionButton.swift */,
 				34D568E7273EE8FA00118A39 /* LoadingCover.swift */,
+				34DC6D502747DDE5004B3F22 /* ResulltItemButton.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 				34EDB1B526D219B500623995 /* TestView.swift */,
 				34F47FFF26E331A5002FA890 /* TestResultsView.swift */,
 				34EDBB8C27341C9700DCF54B /* ResultView.swift */,
+				34DC6D522747DE24004B3F22 /* ResultItemView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -314,6 +320,7 @@
 				34A8750226ABC0CC0011A40D /* ProgressBar.swift in Sources */,
 				3456E544273FE4F60054E3E6 /* Form.swift in Sources */,
 				34EBB713274044BA003C03D1 /* AppState.swift in Sources */,
+				34DC6D532747DE24004B3F22 /* ResultItemView.swift in Sources */,
 				345DD2F226BE468B0056A3E7 /* ContentViewModel.swift in Sources */,
 				34EDBB8D27341C9700DCF54B /* ResultView.swift in Sources */,
 				349BC90B273AD74300606951 /* NavigationButton.swift in Sources */,
@@ -321,6 +328,7 @@
 				34D68F1C26C1636E00E35F0A /* NetworkingService.swift in Sources */,
 				34331E9226C8EBB5001E57F6 /* SignInModel.swift in Sources */,
 				34A874F126ABBFCA0011A40D /* LMHIApp.swift in Sources */,
+				34DC6D512747DDE5004B3F22 /* ResulltItemButton.swift in Sources */,
 				34EDBB8F27341CF600DCF54B /* ResultViewModel.swift in Sources */,
 				34B5ED9C26AF164C00243E68 /* CustomExtensions.swift in Sources */,
 				345DD2F626BE549C0056A3E7 /* StartView.swift in Sources */,
