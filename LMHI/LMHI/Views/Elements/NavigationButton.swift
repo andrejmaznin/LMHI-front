@@ -13,14 +13,14 @@ struct NavigationButton<Destination: View, Content: View>: View {
     var body: some View {
         NavigationLink(destination: destination) {
             ZStack {
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .fill(backgroundColor)
+                backgroundColor
                 
                 content()
             }
             .frame(width: width, height: height)
             .frame(maxWidth: maxWidth, maxHeight: maxHeight)
         }
+        .cornerRadius(cornerRadius)
     }
 }
 
