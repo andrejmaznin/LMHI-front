@@ -57,7 +57,7 @@ class TestViewModel: ObservableObject {
             AppState.debugLog(parseResults(currentState))
             
             showLoadingCover = true
-            let testResultsModel = TestResultsModel(results: parseResults(currentState))
+            let testResultsModel = parseResults(currentState)
             APIService.submitTestResults(model: testResultsModel) { [unowned self] result in
                 AppState.debugLog(result)
                 self.showLoadingCover = false
@@ -79,14 +79,14 @@ class TestViewModel: ObservableObject {
         rightColor = colors[currentShade][sequence[currentChoice].1]
     }
     
-    func parseResults(_ state: [[Int]]) -> [String] {
-        var result = ["main", "blue", "green", "red", "yellow"]
+    func parseResults(_ state: [[Int]]) -> TestResultsModel {
+        var result = ["", "", "", "", ""]
         for i in (0...4) {
             for j in (0...3) {
                 result[i] += String(state[i][j])
             }
         }
         
-        return result
+        return TestResultsModel(main: result[0], blue: result[1], green: result[2], red: result[3], yellow: result[4])
     }
 }

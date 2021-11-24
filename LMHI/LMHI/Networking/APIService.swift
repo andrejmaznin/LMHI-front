@@ -28,7 +28,7 @@ class APIService {
     }
     
     static func createUser(model: SignUpModel, completion: @escaping (Result<Bool, APIError>) -> Void) {
-        NetworkingService.request(requestType: .post, endpoint: "users", data: model) { (result: Result<CreateUserResult, Error>) in
+        NetworkingService.POSTRequest(endpoint: "users", data: model) { (result: Result<CreateUserResult, Error>) in
             switch result {
             case .success:
                 AppState.debugLog("Creation Success")
@@ -50,7 +50,7 @@ class APIService {
     }
     
     static func authenticate(model: SignInModel, completion: @escaping(Result<Int, APIError>) -> Void) {
-        NetworkingService.request(requestType: .post, endpoint: "auth", data: model) { (result: Result<AuthenticationResult, Error>) in
+        NetworkingService.POSTRequest(endpoint: "auth", data: model) { (result: Result<AuthenticationResult, Error>) in
             switch result {
             case .success(let authResult):
                 AppState.debugLog("Authentication Success")
@@ -75,7 +75,7 @@ class APIService {
     }
     
     static func exit(model: SignOutModel, completion: @escaping(Result<Bool, APIError>) -> Void) {
-        NetworkingService.request(requestType: .post, endpoint: "auth", data: model) { (result: Result<ExitResult, Error>) in
+        NetworkingService.POSTRequest(endpoint: "auth", data: model) { (result: Result<ExitResult, Error>) in
             switch result {
             case .success:
                 AppState.debugLog("Exit Success")
@@ -91,7 +91,7 @@ class APIService {
     }
     
     static func submitTestResults(model: TestResultsModel, completion: @escaping(Result<[String], APIError>) -> Void) {
-        NetworkingService.request(requestType: .post, endpoint: "result", data: model) { (result: Result<TestSubmitionResult, Error>) in
+        NetworkingService.POSTRequest(endpoint: "result", data: model) { (result: Result<TestSubmitionResult, Error>) in
             switch result {
             case .success(let result):
                 AppState.debugLog("Test Results Submition Success")

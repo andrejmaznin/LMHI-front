@@ -5,12 +5,6 @@ class NetworkingService {
         let ERROR: String
     }
     
-    enum RequestType: String {
-        case get = "GET"
-        case post = "POST"
-        case patch = "PATCH"
-    }
-    
     enum NetworkingError: Error {
         case badUrl
         case badResponse
@@ -21,18 +15,19 @@ class NetworkingService {
     
     private static var serverURL = "https://luscherian.herokuapp.com/"
     
-    static func request<T, U>(requestType: RequestType, endpoint: String, data: T, completion: @escaping (Result<U, Error>) -> Void) where T: Encodable, U: Decodable {
+    static func POSTRequest<T, U>(endpoint: String, data: T, completion: @escaping (Result<U, Error>) -> Void) where T: Encodable, U: Decodable {
         guard let url = URL(string: NetworkingService.serverURL + endpoint) else {
             completion(.failure(NetworkingError.badUrl))
             return
         }
+        
         var request = URLRequest(url: url)
         guard let body = try? JSONEncoder().encode(data) else {
             completion(.failure(NetworkingError.badEncoding))
             return
         }
         request.httpBody = body
-        request.httpMethod = requestType.rawValue
+        request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let session = URLSession.shared
