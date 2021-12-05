@@ -24,6 +24,8 @@ struct ResultItemView: View {
                 .font(Fonts.label)
                 .multilineTextAlignment(.center)
             
+            SuggestionItem(suggestion: "Медитация")
+            
             Spacer()
         }
         .padding()
