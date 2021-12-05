@@ -20,6 +20,10 @@ struct ResultItemView: View {
             Text(text)
                 .multilineTextAlignment(.leading)
             
+            Text("Наши предложения")
+                .font(Fonts.label)
+                .multilineTextAlignment(.center)
+            
             Spacer()
         }
         .padding()
