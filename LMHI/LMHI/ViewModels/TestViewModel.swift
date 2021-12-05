@@ -62,12 +62,12 @@ class TestViewModel: ObservableObject {
                 AppState.debugLog(result)
                 self.showLoadingCover = false
                 switch result {
-                case .success(let results):
-                    AppState.store(key: "testMainResult", value: results[0])
-                    AppState.store(key: "testBlueResult", value: results[1])
-                    AppState.store(key: "testGreenResult", value: results[2])
-                    AppState.store(key: "testRedResult", value: results[3])
-                    AppState.store(key: "testYellowResult", value: results[4])
+                case .success(let result):
+                    AppState.store(key: "testMainResult", value: result.main)
+                    AppState.store(key: "testBlueResult", value: result.blue)
+                    AppState.store(key: "testGreenResult", value: result.green)
+                    AppState.store(key: "testRedResult", value: result.red)
+                    AppState.store(key: "testYellowResult", value: result.yellow)
                     AppState.store(key: "currentState", value: ContentViewModel.State.testResults.rawValue)
                 case .failure:
                     self.showAlert = true

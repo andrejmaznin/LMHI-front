@@ -23,7 +23,15 @@ class APIService {
     }
     
     struct TestSubmitionResult: Decodable {
-        let results: [String]
+        struct Result: Decodable {
+            let main: String
+            let blue: String
+            let green: String
+            let red: String
+            let yellow: String
+        }
+        
+        let result: Result
         let success: String
     }
     
@@ -90,12 +98,12 @@ class APIService {
         }
     }
     
-    static func submitTestResults(model: TestResultsModel, completion: @escaping(Result<[String], APIError>) -> Void) {
-        NetworkingService.POSTRequest(endpoint: "result", data: model) { (result: Result<TestSubmitionResult, Error>) in
+    static func submitTestResults(model: TestResultsModel, completion: @escaping(Result<TestSubmitionResult.Result, APIError>) -> Void) {
+        NetworkingService.GETRequest(endpoint: "result", URLParameters: model.data) { (result: Result<TestSubmitionResult, Error>) in
             switch result {
             case .success(let result):
                 AppState.debugLog("Test Results Submition Success")
-                completion(.success(result.results))
+                completion(.success(result.result))
             case .failure(let error):
                 print("Test Results Submition Failure")
                 if let handledError = error as? NetworkingService.ErrorResult {
