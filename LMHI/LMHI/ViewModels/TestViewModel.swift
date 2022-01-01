@@ -8,6 +8,7 @@ class TestViewModel: ObservableObject {
     
     @Published var leftColor: Color
     @Published var rightColor: Color
+    @Published var testCompleted = false
     @Published var showLoadingCover = false
     @Published var showAlert = false
     
@@ -36,13 +37,13 @@ class TestViewModel: ObservableObject {
     }
     
     func process(_ choice: Choice) {
-        AppState.debugLog(choice)
         switch choice {
         case .left:
             currentState[currentShade][sequence[currentChoice].0] += 1
         case .right:
             currentState[currentShade][sequence[currentChoice].1] += 1
         }
+        AppState.debugLog(currentState)
         
         currentChoice += 1
         if currentChoice > 5 {
@@ -52,12 +53,13 @@ class TestViewModel: ObservableObject {
         if currentShade > 4 {
             currentChoice = 0
             currentShade = 0
-            
-            AppState.debugLog("Test completed")
-            AppState.debugLog(parseResults(currentState))
-            
+            testCompleted = true
             showLoadingCover = true
             let testResultsModel = parseResults(currentState)
+            
+            AppState.debugLog("Test completed")
+            AppState.debugLog(testResultsModel)
+            
             APIService.submitTestResults(model: testResultsModel) { [unowned self] result in
                 AppState.debugLog(result)
                 self.showLoadingCover = false
