@@ -1,12 +1,24 @@
 import SwiftUI
 
 struct HomeView: View {
+    @ObservedObject private var VM = HomeViewModel()
+    
     var body: some View {
         NavigationView {
             VStack {
-                Text("Logged in")
-                Text(UserDefaults.standard.string(forKey: "email")!)
+                ScrollView(showsIndicators: false) {
+                    ForEach(0..<VM.moodCriterias.count, id: \.self) { id in
+                        Picker(title: VM.moodCriterias[id], currentSelection: $VM.selections[id])
+                    }
+                }
+                
+                NavigationButton(destination: HabitsView(), backgroundColor: Color("GovernorBay")) {
+                    Text("Экран с привычками")
+                        .foregroundColor(.white)
+                        .font(Fonts.label)
+                }
             }
+            .padding()
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("LMHI")
@@ -20,10 +32,11 @@ struct HomeView: View {
                             switch result {
                             case .success:
                                 print("Exit Success")
-                                UserDefaults.standard.set(0, forKey: "sessionID")
-                                UserDefaults.standard.set("", forKey: "email")
-                                UserDefaults.standard.set("", forKey: "hashedPassword")
-                                UserDefaults.standard.set(ContentViewModel.State.start.rawValue, forKey: "currentState")
+                                AppState.store(key: "sessionID", value: 0)
+                                AppState.store(key: "email", value: "")
+                                AppState.store(key: "hashedPassword", value: "")
+                                AppState.store(key: "hashedPassword", value: "")
+                                AppState.setState(.start)
                             case .failure:
                                 print("Exit Failure")
                             }

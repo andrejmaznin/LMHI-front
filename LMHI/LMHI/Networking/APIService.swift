@@ -35,6 +35,11 @@ class APIService {
         let success: String
     }
     
+    struct MoodCriteria: Decodable {
+        let id: Int
+        let name: String
+    }
+    
     static func createUser(model: SignUpModel, completion: @escaping (Result<Bool, APIError>) -> Void) {
         NetworkingService.POSTRequest(endpoint: "users", data: model) { (result: Result<CreateUserResult, Error>) in
             switch result {
@@ -106,6 +111,27 @@ class APIService {
                 completion(.success(result.result))
             case .failure(let error):
                 print("Test Results Submition Failure")
+                if let handledError = error as? NetworkingService.ErrorResult {
+                    print(handledError.ERROR)
+                }
+                print(error)
+                completion(.failure(.unexpectedError))
+            }
+        }
+    }
+    
+    static func getMoodCriterias(completion: @escaping(Result<[String], APIError>) -> Void) {
+        NetworkingService.GETRequest(endpoint: "mood_criteria") { (result: Result<[MoodCriteria], Error>) in
+            switch result {
+            case .success(let result):
+                AppState.debugLog("Successfully Received Mood Criterias")
+                var res: [String] = []
+                for criteria in result {
+                    res.append(criteria.name)
+                }
+                completion(.success(res))
+            case .failure(let error):
+                print("Failed to Receive Mood Criterias")
                 if let handledError = error as? NetworkingService.ErrorResult {
                     print(handledError.ERROR)
                 }

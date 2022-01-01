@@ -16,13 +16,13 @@ struct TestResultsView: View {
                     .font(Fonts.title)
                 
                 VStack(spacing: spacing) {
-                    ResulltItemButton(destination: ResultItemView(title: titles[0], resultName: "testYellowResult"), image: Image("Books"), color: Color("Highball"), text: titles[0])
+                    ResulltItemButton(title: titles[0], resultName: "testYellowResult", image: Image("Books"), color: Color("Highball"))
                     
-                    ResulltItemButton(destination: ResultItemView(title: titles[1], resultName: "testBlueResult"), image: Image("Family"), color: Color("GovernorBay"), text: titles[1])
+                    ResulltItemButton(title: titles[1], resultName: "testBlueResult", image: Image("Family"), color: Color("GovernorBay"))
                     
-                    ResulltItemButton(destination: ResultItemView(title: titles[2], resultName: "testGreenResult"), image: Image("Runner"), color: Color("Parsley"), text: titles[2])
+                    ResulltItemButton(title: titles[2], resultName: "testGreenResult", image: Image("Runner"), color: Color("Parsley"))
                     
-                    ResulltItemButton(destination: ResultItemView(title: titles[3], resultName: "testRedResult"), image: Image("Meditation"), color: Color("MandarianOrange"), text: titles[3])
+                    ResulltItemButton(title: titles[3], resultName: "testRedResult", image: Image("Meditation"), color: Color("MandarianOrange"))
                 }
                 
                 Spacer()

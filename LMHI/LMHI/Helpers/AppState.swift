@@ -18,6 +18,10 @@ class AppState {
         return storage.object(forKey: key) as? Data ?? defaultValue
     }
     
+    static func setState(_ state: ContentViewModel.State) {
+        store(key: "currentState", value: state.rawValue)
+    }
+    
     static func logOut() {
         let signOutModel = SignOutModel(login: UserDefaults.standard.string(forKey: "email")!, id: UserDefaults.standard.integer(forKey: "sessionID"))
         APIService.exit(model: signOutModel) { result in
