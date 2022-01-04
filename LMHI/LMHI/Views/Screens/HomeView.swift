@@ -6,13 +6,25 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                ScrollView(showsIndicators: false) {
-                    ForEach(0..<VM.moodCriterias.count, id: \.self) { id in
-                        Picker(title: VM.moodCriterias[id], currentSelection: $VM.selections[id])
+                HStack {
+                    NavigationButton(destination: HabitsView(), backgroundColor: Color("GovernorBay"), height: 120.0) {
+                        Text("Тест")
+                            .foregroundColor(.white)
+                            .font(Fonts.label)
+                    }
+                    
+                    NavigationButton(destination: HabitsView(), backgroundColor: Color("GovernorBay"), height: 120.0) {
+                        Text("Медитация")
+                            .foregroundColor(.white)
+                            .font(Fonts.label)
                     }
                 }
                 
-                NavigationButton(destination: HabitsView(), backgroundColor: Color("GovernorBay")) {
+//                ForEach(0..<VM.moodCriterias.count, id: \.self) { id in
+                    Picker(title: "Мотивация", currentSelection: $VM.tempSelect)
+//                }
+                
+                NavigationButton(destination: HabitsView(), backgroundColor: Color("GovernorBay"), height: 120.0) {
                     Text("Экран с привычками")
                         .foregroundColor(.white)
                         .font(Fonts.label)

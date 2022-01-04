@@ -3,13 +3,16 @@ import SwiftUI
 struct Picker: View {
     let cornerRadius: CGFloat = 40.0
     let color: Color = Color("GovernorBay")
+    let strokeWidth: CGFloat = 2.0
+    let title: String
     let lineColor: Color = Color("PinkSwan")
     let lineHeight: CGFloat = 5.0
-    let strokeWidth: CGFloat = 2.0
-    let circleDiameter: CGFloat = 20.0
-    var linePadding: CGFloat = 60.0
-    var topPadding: CGFloat = 60.0
-    var title: String
+    let horizontalPadding: CGFloat = 50.0
+    let unselectedCircleDiameter: CGFloat = 20.0
+    let unselectedCircleStroke: CGFloat = 5.0
+    let selectedCircleDiameter: CGFloat = 30.0
+    let selectedCircleStroke: CGFloat = 6.0
+    let labels = ["--", "-", "0", "+", "++"]
     let aspectRatio: CGFloat = 3.15
     let maxWidth: CGFloat? = UIScreen.main.bounds.width
     let maxHeight: CGFloat? = nil
@@ -25,47 +28,66 @@ struct Picker: View {
                 Text(title)
                     .foregroundColor(color)
                     .font(Fonts.label)
-                    .padding(.top)
                 
-                Spacer()
-            }
-            
-            VStack {
-                Rectangle()
-                    .foregroundColor(lineColor)
-                    .frame(height: lineHeight)
-                    .padding(.top, topPadding)
-                
-                Spacer()
-            }
-            .padding(.horizontal, linePadding)
-            
-            VStack {
-                HStack {
-                    ChoiceElement(label: "--", id: -2, currentSelection: $currentSelection)
+                ZStack {
+                    Rectangle()
+                        .padding(.horizontal, horizontalPadding)
+                        .foregroundColor(lineColor)
+                        .frame(height: lineHeight)
                     
-                    Spacer()
+                    HStack {
+                        ForEach(0..<5, id: \.self) { i in
+                            if i > 0 {
+                                Spacer()
+                            }
+                            
+                            Circle()
+                                .fill(Color("Whisper"))
+                                .frame(width: unselectedCircleDiameter, height: unselectedCircleDiameter)
+                                .background(Circle().stroke(.black, lineWidth: unselectedCircleStroke))
+                        }
+                    }
+                    .padding(.horizontal, horizontalPadding - unselectedCircleDiameter / 2.0)
                     
-                    ChoiceElement(label: "-", id: -1, currentSelection: $currentSelection)
-                    
-                    Spacer()
-                    
-                    ChoiceElement(label: "0", id: 0, currentSelection: $currentSelection)
-                    
-                    Spacer()
-                    
-                    ChoiceElement(label: "+", id: 1, currentSelection: $currentSelection)
-                    
-                    Spacer()
-                    
-                    ChoiceElement(label: "++", id: 2, currentSelection: $currentSelection)
+                    HStack {
+                        ForEach(-2...2, id: \.self) { i in
+                            if i > -2 {
+                                Spacer()
+                            }
+                            
+                            Circle()
+                                .fill(.white)
+                                .frame(width: selectedCircleDiameter, height: selectedCircleDiameter)
+                                .background(Circle().stroke(color, lineWidth: selectedCircleStroke))
+                                .opacity(currentSelection == i ? 1.0 : 0.0)
+                                .onTapGesture {
+                                    currentSelection = i
+                                }
+                        }
+                    }
+                    .padding(.horizontal, horizontalPadding - selectedCircleDiameter / 2.0)
+//                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .padding(.top, topPadding - (30.0 - lineHeight) / 2.0)
                 
-                Spacer()
+                HStack {
+                    ForEach(labels, id: \.self) { label in
+                        if label != labels[0] {
+                            Spacer()
+                        }
+                        
+                        VStack(alignment: .center) {
+                            Text(label)
+                                .allowsTightening(true)
+                                .minimumScaleFactor(0.1)
+                                .foregroundColor(color)
+                                .font(Fonts.label)
+                        }
+                        .frame(width: selectedCircleDiameter, height: selectedCircleDiameter)
+                    }
+                }
+                .padding(.horizontal, horizontalPadding - selectedCircleDiameter / 2.0)
             }
-            .padding(.horizontal, linePadding - 10.0)
-            .frame(maxWidth: .infinity)
+            .padding(.vertical)
         }
         .frame(maxWidth: maxWidth, maxHeight: maxHeight)
         .aspectRatio(aspectRatio, contentMode: .fit)
@@ -79,28 +101,30 @@ struct ChoiceElement: View {
     let unselectedCircleDiameter: CGFloat = 20.0
     let selectedCircleDiameter: CGFloat = 30.0
     let color: Color = Color("GovernorBay")
-    var label: String
     var id: Int
     
     @Binding var currentSelection: Int
     
+    var currentDiameter: CGFloat {
+        currentSelection == id ? selectedCircleDiameter : unselectedCircleDiameter
+    }
+    
+    var currentStroke: CGFloat {
+        currentSelection == id ? selectedStrokeWidth : unselectedStrokeWidth
+    }
+    
     var body: some View {
-        VStack {
-            ZStack {
-                Circle()
-                    .stroke(currentSelection == id ? color : strokeColor, lineWidth: currentSelection == id ? selectedStrokeWidth : unselectedStrokeWidth)
-                
-                Circle()
-                    .foregroundColor(Color("Whisper"))
-            }
-            .frame(width: currentSelection == id ? selectedCircleDiameter : unselectedCircleDiameter, height: currentSelection == id ? selectedCircleDiameter : unselectedCircleDiameter)
-            .onTapGesture {
-                currentSelection = id
-            }
+        ZStack {
+            Circle()
+                .stroke(currentSelection == id ? color : strokeColor, lineWidth: currentStroke)
             
-            Text(label)
-                .foregroundColor(color)
-                .font(Fonts.label)
+            Circle()
+                .foregroundColor(Color("Whisper"))
+        }
+        .offset(x: -currentDiameter / 2.0)
+        .frame(width: currentDiameter, height: currentDiameter)
+        .onTapGesture {
+            currentSelection = id
         }
     }
 }

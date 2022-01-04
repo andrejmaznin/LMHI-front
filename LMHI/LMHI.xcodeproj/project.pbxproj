@@ -47,7 +47,6 @@
 		34F060B126DB9AF8004817CD /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F060B026DB9AF8004817CD /* TestViewModel.swift */; };
 		34F060B426DBADAB004817CD /* TestResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F060B326DBADAB004817CD /* TestResultsModel.swift */; };
 		34F4800026E331A5002FA890 /* TestResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F47FFF26E331A5002FA890 /* TestResultsView.swift */; };
-		34FF00C926BBEE6300384AF3 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FF00C826BBEE6300384AF3 /* Main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,7 +92,6 @@
 		34F060B026DB9AF8004817CD /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
 		34F060B326DBADAB004817CD /* TestResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsModel.swift; sourceTree = "<group>"; };
 		34F47FFF26E331A5002FA890 /* TestResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsView.swift; sourceTree = "<group>"; };
-		34FF00C826BBEE6300384AF3 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,7 +223,6 @@
 				345DD30126BE835B0056A3E7 /* SignInView.swift */,
 				348C351426AD6B87000A4D93 /* SignUpView.swift */,
 				348C350D26AD5201000A4D93 /* LoadingView.swift */,
-				34FF00C826BBEE6300384AF3 /* Main.swift */,
 				345DD2F526BE549C0056A3E7 /* StartView.swift */,
 				345DD2F826BE55230056A3E7 /* HomeView.swift */,
 				34EDB1B526D219B500623995 /* TestView.swift */,
@@ -325,7 +322,6 @@
 				348C351526AD6B87000A4D93 /* SignUpView.swift in Sources */,
 				34F060B126DB9AF8004817CD /* TestViewModel.swift in Sources */,
 				34EDB1B626D219B500623995 /* TestView.swift in Sources */,
-				34FF00C926BBEE6300384AF3 /* Main.swift in Sources */,
 				348C350E26AD5201000A4D93 /* LoadingView.swift in Sources */,
 				34F060B426DBADAB004817CD /* TestResultsModel.swift in Sources */,
 				348C351126AD5A07000A4D93 /* Util.swift in Sources */,
