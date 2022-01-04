@@ -36,8 +36,8 @@ struct Picker: View {
                         .frame(height: lineHeight)
                     
                     HStack {
-                        ForEach(0..<5, id: \.self) { i in
-                            if i > 0 {
+                        ForEach(-2...2, id: \.self) { i in
+                            if i > -2 {
                                 Spacer()
                             }
                             
@@ -45,6 +45,9 @@ struct Picker: View {
                                 .fill(Color("Whisper"))
                                 .frame(width: unselectedCircleDiameter, height: unselectedCircleDiameter)
                                 .background(Circle().stroke(.black, lineWidth: unselectedCircleStroke))
+                                .onTapGesture {
+                                    currentSelection = i
+                                }
                         }
                     }
                     .padding(.horizontal, horizontalPadding - unselectedCircleDiameter / 2.0)
@@ -60,9 +63,6 @@ struct Picker: View {
                                 .frame(width: selectedCircleDiameter, height: selectedCircleDiameter)
                                 .background(Circle().stroke(color, lineWidth: selectedCircleStroke))
                                 .opacity(currentSelection == i ? 1.0 : 0.0)
-                                .onTapGesture {
-                                    currentSelection = i
-                                }
                         }
                     }
                     .padding(.horizontal, horizontalPadding - selectedCircleDiameter / 2.0)
