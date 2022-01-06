@@ -35,7 +35,8 @@ struct MoodDiary: View {
 //                    }
 //            )
 //        }
-        .animation(.easeInOut, value: offset == 0)
+            .animation(.easeInOut, value: offset == 0)
+        }
     }
 }
 
