@@ -65,7 +65,11 @@ class NetworkingService {
                     completion(.failure(NetworkingError.badData))
                     return
                 }
-                AppState.debugLog(try! JSONSerialization.jsonObject(with: unwrappedData, options: []))
+                do {
+                    AppState.debugLog(try JSONSerialization.jsonObject(with: unwrappedData, options: []))
+                } catch {
+                    print(error)
+                }
                 if let object = try? JSONDecoder().decode(T.self, from: unwrappedData) {
                     completion(.success(object))
                 } else if let errorResult = try? JSONDecoder().decode(ErrorResult.self, from: unwrappedData) {

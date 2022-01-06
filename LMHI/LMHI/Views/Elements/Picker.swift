@@ -66,7 +66,6 @@ struct Picker: View {
                         }
                     }
                     .padding(.horizontal, horizontalPadding - selectedCircleDiameter / 2.0)
-//                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 
                 HStack {

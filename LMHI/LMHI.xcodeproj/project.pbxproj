@@ -47,6 +47,7 @@
 		34F060B126DB9AF8004817CD /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F060B026DB9AF8004817CD /* TestViewModel.swift */; };
 		34F060B426DBADAB004817CD /* TestResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F060B326DBADAB004817CD /* TestResultsModel.swift */; };
 		34F4800026E331A5002FA890 /* TestResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F47FFF26E331A5002FA890 /* TestResultsView.swift */; };
+		34F58DCD27871C5B005F1A94 /* MoodDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58DCC27871C5B005F1A94 /* MoodDiary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		34F060B026DB9AF8004817CD /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
 		34F060B326DBADAB004817CD /* TestResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsModel.swift; sourceTree = "<group>"; };
 		34F47FFF26E331A5002FA890 /* TestResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsView.swift; sourceTree = "<group>"; };
+		34F58DCC27871C5B005F1A94 /* MoodDiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodDiary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				34DC6D502747DDE5004B3F22 /* ResulltItemButton.swift */,
 				34DF1FB7275CF20E00435B53 /* SuggestionItem.swift */,
 				343070EB278065A100D57317 /* Picker.swift */,
+				34F58DCC27871C5B005F1A94 /* MoodDiary.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				34A874F126ABBFCA0011A40D /* LMHIApp.swift in Sources */,
 				34DC6D512747DDE5004B3F22 /* ResulltItemButton.swift in Sources */,
 				34B5ED9C26AF164C00243E68 /* CustomExtensions.swift in Sources */,
+				34F58DCD27871C5B005F1A94 /* MoodDiary.swift in Sources */,
 				345DD2F626BE549C0056A3E7 /* StartView.swift in Sources */,
 				34DF1FB8275CF20E00435B53 /* SuggestionItem.swift in Sources */,
 			);
