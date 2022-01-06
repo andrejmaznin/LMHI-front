@@ -48,6 +48,9 @@
 		34F060B426DBADAB004817CD /* TestResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F060B326DBADAB004817CD /* TestResultsModel.swift */; };
 		34F4800026E331A5002FA890 /* TestResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F47FFF26E331A5002FA890 /* TestResultsView.swift */; };
 		34F58DCD27871C5B005F1A94 /* MoodDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58DCC27871C5B005F1A94 /* MoodDiary.swift */; };
+		34F58DCF27875397005F1A94 /* TestsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58DCE27875397005F1A94 /* TestsMenuView.swift */; };
+		34F58DD12787563E005F1A94 /* CompletedTestBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58DD02787563E005F1A94 /* CompletedTestBox.swift */; };
+		34F58DD32787635F005F1A94 /* TestsMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58DD22787635F005F1A94 /* TestsMenuViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +97,9 @@
 		34F060B326DBADAB004817CD /* TestResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsModel.swift; sourceTree = "<group>"; };
 		34F47FFF26E331A5002FA890 /* TestResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultsView.swift; sourceTree = "<group>"; };
 		34F58DCC27871C5B005F1A94 /* MoodDiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodDiary.swift; sourceTree = "<group>"; };
+		34F58DCE27875397005F1A94 /* TestsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsMenuView.swift; sourceTree = "<group>"; };
+		34F58DD02787563E005F1A94 /* CompletedTestBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTestBox.swift; sourceTree = "<group>"; };
+		34F58DD22787635F005F1A94 /* TestsMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsMenuViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +134,7 @@
 				34D6209D26CFF92B00466B59 /* SignInViewModel.swift */,
 				34F060B026DB9AF8004817CD /* TestViewModel.swift */,
 				343070EF2780882600D57317 /* HomeViewModel.swift */,
+				34F58DD22787635F005F1A94 /* TestsMenuViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -195,6 +202,7 @@
 				34DF1FB7275CF20E00435B53 /* SuggestionItem.swift */,
 				343070EB278065A100D57317 /* Picker.swift */,
 				34F58DCC27871C5B005F1A94 /* MoodDiary.swift */,
+				34F58DD02787563E005F1A94 /* CompletedTestBox.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -232,6 +240,7 @@
 				34F47FFF26E331A5002FA890 /* TestResultsView.swift */,
 				34DC6D522747DE24004B3F22 /* ResultItemView.swift */,
 				343070F127808F6B00D57317 /* HabitsView.swift */,
+				34F58DCE27875397005F1A94 /* TestsMenuView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -316,6 +325,7 @@
 				348C351926AD6DCA000A4D93 /* CustomModifiers.swift in Sources */,
 				34D620A126D0CB6300466B59 /* SignOutModel.swift in Sources */,
 				34F4800026E331A5002FA890 /* TestResultsView.swift in Sources */,
+				34F58DD32787635F005F1A94 /* TestsMenuViewModel.swift in Sources */,
 				34D68F1F26C163C200E35F0A /* APIService.swift in Sources */,
 				343070F02780882600D57317 /* HomeViewModel.swift in Sources */,
 				34D568E8273EE8FA00118A39 /* LoadingCover.swift in Sources */,
@@ -330,6 +340,7 @@
 				348C351126AD5A07000A4D93 /* Util.swift in Sources */,
 				34A8750226ABC0CC0011A40D /* ProgressBar.swift in Sources */,
 				3456E544273FE4F60054E3E6 /* Form.swift in Sources */,
+				34F58DCF27875397005F1A94 /* TestsMenuView.swift in Sources */,
 				34EBB713274044BA003C03D1 /* AppState.swift in Sources */,
 				34DC6D532747DE24004B3F22 /* ResultItemView.swift in Sources */,
 				343070EC278065A100D57317 /* Picker.swift in Sources */,
@@ -342,6 +353,7 @@
 				34DC6D512747DDE5004B3F22 /* ResulltItemButton.swift in Sources */,
 				34B5ED9C26AF164C00243E68 /* CustomExtensions.swift in Sources */,
 				34F58DCD27871C5B005F1A94 /* MoodDiary.swift in Sources */,
+				34F58DD12787563E005F1A94 /* CompletedTestBox.swift in Sources */,
 				345DD2F626BE549C0056A3E7 /* StartView.swift in Sources */,
 				34DF1FB8275CF20E00435B53 /* SuggestionItem.swift in Sources */,
 			);

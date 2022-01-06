@@ -1,35 +1,34 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject private var VM = HomeViewModel()
-    
     let spacing: CGFloat = 20.0
     let color = Color("StarkWhite")
+    let height: CGFloat = 120.0
     
     var body: some View {
         NavigationView {
             ZStack {
                 VStack(spacing: spacing) {
-                    NavigationButton(destination: HabitsView(), backgroundColor: color, height: 120.0) {
+                    NavigationButton(destination: TestsMenuView(), backgroundColor: color, height: height) {
                         Text("Тест")
                             .foregroundColor(.white)
                             .font(Fonts.label)
                     }
                     
-                    NavigationButton(destination: HabitsView(), backgroundColor: color, height: 120.0) {
+                    NavigationButton(destination: HabitsView(), backgroundColor: color, height: height) {
                         Text("Медитация")
                             .foregroundColor(.white)
                             .font(Fonts.label)
                     }
                     
-                    NavigationButton(destination: HabitsView(), backgroundColor: color, height: 120.0) {
-                        Text("MoodDiary")
+                    NavigationButton(destination: HabitsView(), backgroundColor: color, height: height) {
+                        Text("Дневник насторения")
                             .foregroundColor(.white)
                             .font(Fonts.label)
                     }
                     
-                    NavigationButton(destination: HabitsView(), backgroundColor: color, height: 120.0) {
-                        Text("Экран с привычками")
+                    NavigationButton(destination: HabitsView(), backgroundColor: color, height: height) {
+                        Text("Привычки")
                             .foregroundColor(.white)
                             .font(Fonts.label)
                     }
