@@ -43,16 +43,16 @@ class SignUpViewModel: ObservableObject {
                 APIService.authenticate(model: signInModel) { [unowned self] result in
                     AppState.debugLog(result)
                     switch result {
-                    case .success(let id):
+                    case .success(let token):
                         AppState.debugLog("SignUp Success")
                         self.fullName = ""
                         self.email = ""
                         self.password = ""
                         self.termsAndConditions = false
-                        AppState.store(key: "sessionID", value: id)
+                        AppState.store(key: "token", value: token)
                         AppState.store(key: "email", value: signInModel.login)
                         AppState.store(key: "hashedPassword", value: signInModel.hashed_password)
-                        AppState.store(key: "currentState", value: ContentViewModel.State.test.rawValue)
+                        AppState.setState(.test)
                     case .failure:
                         self.showAlert = true
                     }

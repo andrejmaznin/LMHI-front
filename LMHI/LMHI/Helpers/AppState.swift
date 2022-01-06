@@ -23,19 +23,10 @@ class AppState {
     }
     
     static func logOut() {
-        let signOutModel = SignOutModel(login: UserDefaults.standard.string(forKey: "email")!, id: UserDefaults.standard.integer(forKey: "sessionID"))
-        APIService.exit(model: signOutModel) { result in
-            print(result)
-            switch result {
-            case .success:
-                print("Exit Success")
-                UserDefaults.standard.set(0, forKey: "sessionID")
-                UserDefaults.standard.set("", forKey: "email")
-                UserDefaults.standard.set("", forKey: "hashedPassword")
-                UserDefaults.standard.set(ContentViewModel.State.start.rawValue, forKey: "currentState")
-            case .failure:
-                print("Exit Failure")
-            }
-        }
+        AppState.debugLog("Exit Success")
+        AppState.store(key: "token", value: "")
+        AppState.store(key: "email", value: "")
+        AppState.store(key: "hashedPassword", value: "")
+        AppState.setState(.start)
     }
 }

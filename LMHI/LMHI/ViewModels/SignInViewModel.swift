@@ -35,14 +35,14 @@ class SignInViewModel: ObservableObject {
             AppState.debugLog(result)
             self.showLoadingCover = false
             switch result {
-            case .success(let id):
+            case .success(let token):
                 AppState.debugLog("SignIn Success")
                 self.email = ""
                 self.password = ""
-                AppState.store(key: "sessionID", value: id)
+                AppState.store(key: "token", value: token)
                 AppState.store(key: "email", value: signInModel.login)
                 AppState.store(key: "hashedPassword", value: signInModel.hashed_password)
-                AppState.store(key: "currentState", value: ContentViewModel.State.home.rawValue)
+                AppState.setState(.home)
             case .failure(let error):
                 switch error {
                 case .wrongEmail:

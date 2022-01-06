@@ -51,6 +51,7 @@
 		34F58DCF27875397005F1A94 /* TestsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58DCE27875397005F1A94 /* TestsMenuView.swift */; };
 		34F58DD12787563E005F1A94 /* CompletedTestBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58DD02787563E005F1A94 /* CompletedTestBox.swift */; };
 		34F58DD32787635F005F1A94 /* TestsMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58DD22787635F005F1A94 /* TestsMenuViewModel.swift */; };
+		34F58DD527876B44005F1A94 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58DD427876B44005F1A94 /* MeditationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		34F58DCE27875397005F1A94 /* TestsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsMenuView.swift; sourceTree = "<group>"; };
 		34F58DD02787563E005F1A94 /* CompletedTestBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTestBox.swift; sourceTree = "<group>"; };
 		34F58DD22787635F005F1A94 /* TestsMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsMenuViewModel.swift; sourceTree = "<group>"; };
+		34F58DD427876B44005F1A94 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +243,7 @@
 				34DC6D522747DE24004B3F22 /* ResultItemView.swift */,
 				343070F127808F6B00D57317 /* HabitsView.swift */,
 				34F58DCE27875397005F1A94 /* TestsMenuView.swift */,
+				34F58DD427876B44005F1A94 /* MeditationView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34F58DD527876B44005F1A94 /* MeditationView.swift in Sources */,
 				34D568E6273EDDA200118A39 /* ActionButton.swift in Sources */,
 				348C351D26AD879C000A4D93 /* CheckBox.swift in Sources */,
 				3464F6DB26ADB71A00698D57 /* FormTextField.swift in Sources */,

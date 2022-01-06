@@ -15,7 +15,7 @@ struct HomeView: View {
                             .font(Fonts.label)
                     }
                     
-                    NavigationButton(destination: HabitsView(), backgroundColor: color, height: height) {
+                    NavigationButton(destination: MeditationView(), backgroundColor: color, height: height) {
                         Text("Медитация")
                             .foregroundColor(.white)
                             .font(Fonts.label)

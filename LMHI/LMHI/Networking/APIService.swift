@@ -9,13 +9,11 @@ class APIService {
     }
     
     struct CreateUserResult: Decodable {
-        let success: String
-        let id: Int
+        let token: String
     }
     
     struct AuthenticationResult: Decodable {
-        let session_id: Int
-        let success: String
+        let token: String
     }
     
     struct ExitResult: Decodable {
@@ -62,12 +60,12 @@ class APIService {
         }
     }
     
-    static func authenticate(model: SignInModel, completion: @escaping(Result<Int, APIError>) -> Void) {
+    static func authenticate(model: SignInModel, completion: @escaping(Result<String, APIError>) -> Void) {
         NetworkingService.POSTRequest(endpoint: "auth", data: model) { (result: Result<AuthenticationResult, Error>) in
             switch result {
             case .success(let authResult):
                 AppState.debugLog("Authentication Success")
-                completion(.success(authResult.session_id))
+                completion(.success(authResult.token))
             case .failure(let error):
                 AppState.debugLog("Authentication Failure")
                 if let handledError = error as? NetworkingService.ErrorResult {
@@ -83,22 +81,6 @@ class APIService {
                 } else {
                     completion(.failure(.unexpectedError))
                 }
-            }
-        }
-    }
-    
-    static func exit(model: SignOutModel, completion: @escaping(Result<Bool, APIError>) -> Void) {
-        NetworkingService.POSTRequest(endpoint: "auth", data: model) { (result: Result<ExitResult, Error>) in
-            switch result {
-            case .success:
-                AppState.debugLog("Exit Success")
-                completion(.success(true))
-            case .failure(let error):
-                print("Exit Failure")
-                if let handledError = error as? NetworkingService.ErrorResult {
-                    print(handledError.ERROR)
-                }
-                completion(.failure(.unexpectedError))
             }
         }
     }
