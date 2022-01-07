@@ -26,17 +26,7 @@ struct ResultItemView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                Text("Result")
-            }
-            
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Group {
-                    if AppState.isInDebugMode {
-                        Button("Log Out") {
-                            AppState.logOut()
-                        }
-                    }
-                }
+                Text("Результат")
             }
         }
     }

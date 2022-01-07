@@ -6,11 +6,18 @@ class TestViewModel: ObservableObject {
         case right
     }
     
+    enum TestState {
+        case initial
+        case completed
+        case resultsReceived
+    }
+    
     @Published var leftColor: Color
     @Published var rightColor: Color
-    @Published var testCompleted = false
+    @Published var testState = TestState.initial
     @Published var showLoadingCover = false
     @Published var showAlert = false
+    @Published var results: [String] = []
     
     let colors = [
         [Color("DarkestBlue"), Color("BluishGreen"), Color("Red"), Color("Yellow")],
@@ -53,7 +60,7 @@ class TestViewModel: ObservableObject {
         if currentShade > 4 {
             currentChoice = 0
             currentShade = 0
-            testCompleted = true
+            testState = .completed
             showLoadingCover = true
             let testResultsModel = parseResults(currentState)
             
@@ -68,12 +75,8 @@ class TestViewModel: ObservableObject {
                     if result.blue == "ERROR" && result.green == "ERROR" && result.red == "ERROR" && result.yellow == "ERROR" {
                         AppState.setState(.home)
                     } else {
-                        AppState.store(key: "testMainResult", value: result.main)
-                        AppState.store(key: "testBlueResult", value: result.blue)
-                        AppState.store(key: "testGreenResult", value: result.green)
-                        AppState.store(key: "testRedResult", value: result.red)
-                        AppState.store(key: "testYellowResult", value: result.yellow)
-                        AppState.setState(.testResults)
+                        results = [result.main, result.blue, result.green, result.red, result.yellow]
+                        testState = .resultsReceived
                     }
                 case .failure:
                     self.showAlert = true

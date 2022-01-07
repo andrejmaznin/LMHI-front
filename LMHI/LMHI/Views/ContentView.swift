@@ -10,8 +10,6 @@ struct ContentView: View {
                 StartView()
             case .test:
                 TestView()
-            case .testResults:
-                TestResultsView()
             case .home:
                 HomeView()
             }
