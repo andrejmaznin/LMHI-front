@@ -27,6 +27,9 @@ struct TestsMenuView: View {
                 .navigationTitle("Тесты")
             }
         }
+        .alert(isPresented: $VM.showAlert) {
+            Alert(title: Text("Failed to Recieve Tests Results"), message: Text("Unexpected error. Check your internet connection"), dismissButton:  .default(Text("OK")))
+        }
     }
 }
 

@@ -13,21 +13,21 @@ class NetworkingService {
         case badDecoding
     }
     
-    static func GETRequest<T>(endpoint: String, URLParameters: [String: Any] = [:], completion: @escaping (Result<T, Error>) -> Void) where T: Decodable {
-        request(endpoint: endpoint, URLParameters: URLParameters, data: nil, method: "GET", contentType: "application/x-www-form-urlencoded", completion: completion)
+    static func GETRequest<T>(endpoint: String, URLParameters: [String: Any] = [:], headers: [String: Any] = [:], completion: @escaping (Result<T, Error>) -> Void) where T: Decodable {
+        request(endpoint: endpoint, URLParameters: URLParameters, headers: headers, data: nil, method: "GET", contentType: "application/x-www-form-urlencoded", completion: completion)
     }
     
-    static func POSTRequest<T, U>(endpoint: String, URLParameters: [String: Any] = [:], data: T, completion: @escaping (Result<U, Error>) -> Void) where T: Encodable, U: Decodable {
+    static func POSTRequest<T, U>(endpoint: String, URLParameters: [String: Any] = [:], data: T, headers: [String: Any] = [:], completion: @escaping (Result<U, Error>) -> Void) where T: Encodable, U: Decodable {
         guard let JSONData = try? JSONEncoder().encode(data) else {
             completion(.failure(NetworkingError.badEncoding))
             return
         }
-        request(endpoint: endpoint, URLParameters: URLParameters, data: JSONData, method: "POST", contentType: "application/json", completion: completion)
+        request(endpoint: endpoint, URLParameters: URLParameters, headers: headers, data: JSONData, method: "POST", contentType: "application/json", completion: completion)
     }
     
     private static let serverURL = "https://luscherian.herokuapp.com/"
     
-    private static func request<T>(endpoint: String, URLParameters: [String: Any] = [:], data: Data?, method: String, contentType: String, completion: @escaping (Result<T, Error>) -> Void) where T: Decodable {
+    private static func request<T>(endpoint: String, URLParameters: [String: Any] = [:], headers: [String: Any] = [:], data: Data?, method: String, contentType: String, completion: @escaping (Result<T, Error>) -> Void) where T: Decodable {
         guard let domainComponent = URLComponents(string: NetworkingService.serverURL + endpoint) else {
             completion(.failure(NetworkingError.badUrl))
             return
@@ -48,6 +48,9 @@ class NetworkingService {
         
         request.httpMethod = method
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        for header in headers {
+            request.setValue(String(describing: header.value), forHTTPHeaderField: header.key)
+        }
         
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in

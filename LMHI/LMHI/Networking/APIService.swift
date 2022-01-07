@@ -28,6 +28,15 @@ class APIService {
         let result: Result
     }
     
+    struct TestResult: Decodable {
+        let time: Int
+        let main: String
+        let blue: String
+        let green: String
+        let red: String
+        let yellow: String
+    }
+    
     struct MoodCriteria: Decodable {
         let id: Int
         let name: String
@@ -88,6 +97,23 @@ class APIService {
                 completion(.success(result.result))
             case .failure(let error):
                 print("Test Results Submition Failure")
+                if let handledError = error as? NetworkingService.ErrorResult {
+                    print(handledError.ERROR)
+                }
+                print(error)
+                completion(.failure(.unexpectedError))
+            }
+        }
+    }
+    
+    static func getAllTestResults(model: AllTestsResultsModel, completion: @escaping(Result<[TestResult], APIError>) -> Void) {
+        NetworkingService.GETRequest(endpoint: "test_result", headers: model.data) { (result: Result<[TestResult], Error>) in
+            switch result {
+            case .success(let result):
+                AppState.debugLog("Successfully Received All Tests Results")
+                completion(.success(result))
+            case .failure(let error):
+                print("Failed to Receive All Tests Results")
                 if let handledError = error as? NetworkingService.ErrorResult {
                     print(handledError.ERROR)
                 }
