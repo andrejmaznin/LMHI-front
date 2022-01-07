@@ -16,10 +16,6 @@ class APIService {
         let token: String
     }
     
-    struct ExitResult: Decodable {
-        let success: String
-    }
-    
     struct TestSubmitionResult: Decodable {
         struct Result: Decodable {
             let main: String
@@ -30,7 +26,6 @@ class APIService {
         }
         
         let result: Result
-        let success: String
     }
     
     struct MoodCriteria: Decodable {

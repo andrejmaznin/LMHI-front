@@ -10,6 +10,7 @@ struct TestsMenuView: View {
         Group {
             if VM.loading {
                 LoadingCover()
+                    .navigationBarBackButtonHidden(true)
             } else {
                 VStack(alignment: .leading) {
                     NavigationButton(destination: HabitsView(), backgroundColor: .green, height: buttonHeight) {

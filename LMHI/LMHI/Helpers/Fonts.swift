@@ -1,6 +1,7 @@
 import SwiftUI
 
 class Fonts {
+    static let time = Font.system(size: 80, weight: .regular, design: .monospaced)
     static let title = Font.system(size: 32, weight: .bold, design: .default)
     static let regular = Font.system(size: 24, weight: .regular, design: .default)
     static let bold = Font.system(size: 24, weight: .bold, design: .default)
