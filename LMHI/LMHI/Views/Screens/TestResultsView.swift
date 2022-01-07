@@ -23,6 +23,12 @@ struct TestResultsView: View {
                     ResulltItemButton(title: titles[2], resultName: "testGreenResult", image: Image("Runner"), color: Color("Parsley"))
                     
                     ResulltItemButton(title: titles[3], resultName: "testRedResult", image: Image("Meditation"), color: Color("MandarianOrange"))
+                    
+                    ActionButton(action: { AppState.setState(.home) }, backgroundColor: Color("StarkWhite")) {
+                        Text("Далее")
+                            .font(Fonts.label)
+                            .foregroundColor(.white)
+                    }
                 }
                 
                 Spacer()

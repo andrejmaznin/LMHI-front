@@ -13,7 +13,7 @@ struct TestsMenuView: View {
                     .navigationBarBackButtonHidden(true)
             } else {
                 VStack(alignment: .leading) {
-                    NavigationButton(destination: HabitsView(), backgroundColor: .green, height: buttonHeight) {
+                    ActionButton (action: { AppState.setState(.test) }, backgroundColor: .green, height: buttonHeight) {
                         Text("Пройти цветовой тест")
                             .foregroundColor(.white)
                             .font(Fonts.label)
