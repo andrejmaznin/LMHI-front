@@ -17,22 +17,13 @@ class APIService {
     }
     
     struct TestSubmitionResult: Decodable {
-        struct Result: Decodable {
-            let main: String
-            let blue: String
-            let green: String
-            let red: String
-            let yellow: String
-        }
-        
-        let result: Result
+        let id: Int
     }
     
     struct TestResult: Decodable {
-        let time: Int
-        let main: String
         let blue: String
         let green: String
+        let main: String
         let red: String
         let yellow: String
     }
@@ -40,6 +31,10 @@ class APIService {
     struct MoodCriteria: Decodable {
         let id: Int
         let name: String
+    }
+    
+    struct HabitNotesSubmitionResult: Decodable {
+        let success: Bool
     }
     
     static func createUser(model: SignUpModel, completion: @escaping (Result<Bool, APIError>) -> Void) {
@@ -89,14 +84,30 @@ class APIService {
         }
     }
     
-    static func submitTestResults(model: TestResultsModel, completion: @escaping(Result<TestSubmitionResult.Result, APIError>) -> Void) {
-        NetworkingService.GETRequest(endpoint: "result", URLParameters: model.data) { (result: Result<TestSubmitionResult, Error>) in
+    static func submitTestResults(model: TestResultsModel, token: String, completion: @escaping(Result<Int, APIError>) -> Void) {
+        NetworkingService.POSTRequest(endpoint: "test_result", data: model, headers: ["token": token]) { (result: Result<TestSubmitionResult, Error>) in
             switch result {
             case .success(let result):
                 AppState.debugLog("Test Results Submition Success")
-                completion(.success(result.result))
+                completion(.success(result.id))
             case .failure(let error):
                 print("Test Results Submition Failure")
+                if let handledError = error as? NetworkingService.ErrorResult {
+                    print(handledError.ERROR)
+                }
+                print(error)
+                completion(.failure(.unexpectedError))
+            }
+        }
+    }
+    
+    static func getTestResultInterpretation(model: TestResultInterpretationModel, completion: @escaping(Result<TestResult, APIError>) -> Void) {
+        NetworkingService.GETRequest(endpoint: "test_result", URLParameters: model.data) { (result: Result<TestResult, Error>) in
+            switch result {
+            case .success(let result):
+                completion(.success(result))
+            case .failure(let error):
+                print("Failed to Get Interpretation")
                 if let handledError = error as? NetworkingService.ErrorResult {
                     print(handledError.ERROR)
                 }
@@ -135,6 +146,40 @@ class APIService {
                 completion(.success(res))
             case .failure(let error):
                 print("Failed to Receive Mood Criterias")
+                if let handledError = error as? NetworkingService.ErrorResult {
+                    print(handledError.ERROR)
+                }
+                print(error)
+                completion(.failure(.unexpectedError))
+            }
+        }
+    }
+    
+    static func getHabits(completion: @escaping(Result<[HabitModel], APIError>) -> Void) {
+        NetworkingService.GETRequest(endpoint: "habit") { (result: Result<[HabitModel], Error>) in
+            switch result {
+            case .success(let result):
+                AppState.debugLog("Successfully Received Habits")
+                completion(.success(result))
+            case .failure(let error):
+                print("Failed to Receive Habits")
+                if let handledError = error as? NetworkingService.ErrorResult {
+                    print(handledError.ERROR)
+                }
+                print(error)
+                completion(.failure(.unexpectedError))
+            }
+        }
+    }
+    
+    static func submitHabitNotes(model: HabitNoteModel, completion: @escaping(Result<Bool, APIError>) -> Void) {
+        NetworkingService.POSTRequest(endpoint: "habit_diary", data: model) { (result: Result<HabitNotesSubmitionResult, Error>) in
+            switch result {
+            case .success:
+                AppState.debugLog("Successfully Submited Habit Notes")
+                completion(.success(true))
+            case .failure(let error):
+                print("Failed to Submit Habit Notes")
                 if let handledError = error as? NetworkingService.ErrorResult {
                     print(handledError.ERROR)
                 }

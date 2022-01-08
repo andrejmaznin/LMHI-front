@@ -62,26 +62,7 @@ class TestViewModel: ObservableObject {
             currentShade = 0
             testState = .completed
             showLoadingCover = true
-            let testResultsModel = parseResults(currentState)
-            
-            AppState.debugLog("Test completed")
-            AppState.debugLog(testResultsModel)
-            
-            APIService.submitTestResults(model: testResultsModel) { [unowned self] result in
-                AppState.debugLog(result)
-                self.showLoadingCover = false
-                switch result {
-                case .success(let result):
-                    if result.blue == "ERROR" && result.green == "ERROR" && result.red == "ERROR" && result.yellow == "ERROR" {
-                        AppState.setState(.home)
-                    } else {
-                        results = [result.main, result.blue, result.green, result.red, result.yellow]
-                        testState = .resultsReceived
-                    }
-                case .failure:
-                    self.showAlert = true
-                }
-            }
+            getResultID()
         }
         
         leftColor = colors[currentShade][sequence[currentChoice].0]
@@ -89,13 +70,52 @@ class TestViewModel: ObservableObject {
     }
     
     func parseResults(_ state: [[Int]]) -> TestResultsModel {
-        var result = ["", "", "", "", ""]
+        var result = [0, 0, 0, 0, 0]
         for i in (0...4) {
             for j in (0...3) {
-                result[i] += String(state[i][j])
+                result[i] *= 10
+                result[i] += state[i][j]
             }
         }
         
-        return TestResultsModel(main: result[0], blue: result[1], green: result[2], red: result[3], yellow: result[4])
+        return TestResultsModel(result)
+    }
+    
+    func getResultID() {
+        let testResultsModel = parseResults(currentState)
+        
+        AppState.debugLog("Test completed")
+        AppState.debugLog(testResultsModel)
+        
+        APIService.submitTestResults(model: testResultsModel, token: AppState.load(key: "token", defaultValue: "")) { [unowned self] result in
+            AppState.debugLog(result)
+            self.showLoadingCover = false
+            switch result {
+            case .success(let id):
+                print(id)
+                getInterpretation(id)
+//                    if result.blue == "ERROR" && result.green == "ERROR" && result.red == "ERROR" && result.yellow == "ERROR" {
+//                        AppState.setState(.home)
+//                    } else {
+//                        results = [result.main, result.blue, result.green, result.red, result.yellow]
+//                        testState = .resultsReceived
+//                    }
+            case .failure:
+                self.showAlert = true
+            }
+        }
+    }
+    
+    func getInterpretation(_ id: Int) {
+        let model = TestResultInterpretationModel(id)
+        APIService.getTestResultInterpretation(model: model) { result in
+            switch result {
+            case .success(let result):
+                self.results = [result.main, result.blue, result.green, result.red, result.yellow]
+                self.testState = .resultsReceived
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }

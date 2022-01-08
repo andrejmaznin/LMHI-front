@@ -13,7 +13,7 @@ class TestsMenuViewModel: ObservableObject {
             self.loading = false
             switch result {
             case .success(let result):
-                print("Recieved")
+                print(result)
             case .failure:
                 self.showAlert = true
             }

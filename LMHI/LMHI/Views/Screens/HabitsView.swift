@@ -3,7 +3,7 @@ import SwiftUI
 struct HabitsView: View {
     var body: some View {
         VStack {
-            Text("Track your habbits")
+            Text("Track your habits")
                 .font(Fonts.title)
             
             Spacer()

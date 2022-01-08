@@ -1,9 +1,14 @@
 import Foundation
 
-struct TestResultsModel {
-    let data: [String: String]
+struct TestResultsModel: Encodable {
+    struct TestResult: Encodable {
+        let finished: Bool
+        let result: [Int]
+    }
     
-    init(main: String, blue: String, green: String, red: String, yellow: String) {
-        data = ["main": main, "blue": blue, "green": green, "red": red, "yellow": yellow]
+    let test_result: TestResult
+    
+    init(_ result: [Int]) {
+        self.test_result = TestResult(finished: true, result: result)
     }
 }

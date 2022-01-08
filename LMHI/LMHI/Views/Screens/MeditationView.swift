@@ -7,6 +7,7 @@ struct MeditationView: View {
     
     @State private var player: AVAudioPlayer!
     @State private var currentTrack: Int
+    @State private var delegate: AVDelegate
     
     private var tracks = ["meditation_cloudy", "meditation_a_new_leaf", "meditation_sky", "meditation_water"]
     
@@ -14,6 +15,7 @@ struct MeditationView: View {
         VM = MeditationViewModel()
         self.player = AVAudioPlayer()
         self.currentTrack = Int.random(in: 0..<tracks.count)
+        self.delegate = AVDelegate()
     }
     
     var body: some View {
@@ -49,8 +51,26 @@ struct MeditationView: View {
         .navigationBarBackButtonHidden(VM.stopwatchMode == .running)
         .navigationTitle("Медитация")
         .onAppear {
+            NotificationCenter.default.addObserver(forName: NSNotification.Name("Finished"), object: nil, queue: .main) { _ in
+                AppState.debugLog("Finished playing current track")
+                var nextTrack = Int.random(in: 0..<tracks.count)
+                while nextTrack == currentTrack {
+                    nextTrack = Int.random(in: 0..<tracks.count)
+                }
+                currentTrack = nextTrack
+                if let path = Bundle.main.path(forResource: tracks[currentTrack], ofType: "mp3") {
+                    player = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                    player.prepareToPlay()
+                    AppState.debugLog("Successfully loaded track \(tracks[currentTrack])")
+                } else {
+                    fatalError("Couldn't load file \(tracks[currentTrack])!")
+                }
+                player.play()
+            }
+            
             if let path = Bundle.main.path(forResource: tracks[currentTrack], ofType: "mp3") {
                 player = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                player.delegate = delegate
                 player.prepareToPlay()
                 AppState.debugLog("Successfully loaded track \(tracks[currentTrack])")
             } else {
@@ -68,5 +88,11 @@ struct MeditationView: View {
 struct MeditationView_Previews: PreviewProvider {
     static var previews: some View {
         MeditationView()
+    }
+}
+
+class AVDelegate: NSObject, AVAudioPlayerDelegate {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        NotificationCenter.default.post(name: Notification.Name("Finished"), object: nil)
     }
 }

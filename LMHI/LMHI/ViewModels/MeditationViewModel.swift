@@ -37,7 +37,16 @@ class MeditationViewModel: ObservableObject {
     func stop() {
         stopwatchMode = .finished
         timer.invalidate()
-        //send result to server
+        
+        let model = HabitNoteModel(id: 9, minutes * 60 + seconds)
+        APIService.submitHabitNotes(model: model) { result in
+            switch result {
+            case .success:
+                AppState.debugLog("Submited Habit Notes")
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     func reset() {
