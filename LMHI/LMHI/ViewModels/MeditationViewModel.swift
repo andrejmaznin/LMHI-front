@@ -39,7 +39,7 @@ class MeditationViewModel: ObservableObject {
         timer.invalidate()
         
         let model = HabitNoteModel(id: 9, minutes * 60 + seconds)
-        APIService.submitHabitNotes(model: model) { result in
+        APIService.submitHabitNotes(model: model, token: AppState.load(key: "token", defaultValue: "")) { result in
             switch result {
             case .success:
                 AppState.debugLog("Submited Habit Notes")

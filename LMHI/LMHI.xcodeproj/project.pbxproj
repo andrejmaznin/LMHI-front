@@ -61,7 +61,8 @@
 		34F58DD12787563E005F1A94 /* CompletedTestBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58DD02787563E005F1A94 /* CompletedTestBox.swift */; };
 		34F58DD32787635F005F1A94 /* TestsMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58DD22787635F005F1A94 /* TestsMenuViewModel.swift */; };
 		34F58DD527876B44005F1A94 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58DD427876B44005F1A94 /* MeditationView.swift */; };
-		34FB5A0F2789619F00406970 /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB5A0E2789619E00406970 /* HabitModel.swift */; };
+		34FB5A11278962F700406970 /* HabitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB5A10278962F700406970 /* HabitsViewModel.swift */; };
+		34FB5A13278966CD00406970 /* MoodDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB5A12278966CD00406970 /* MoodDiaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,7 +122,8 @@
 		34F58DD02787563E005F1A94 /* CompletedTestBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTestBox.swift; sourceTree = "<group>"; };
 		34F58DD22787635F005F1A94 /* TestsMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsMenuViewModel.swift; sourceTree = "<group>"; };
 		34F58DD427876B44005F1A94 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
-		34FB5A0E2789619E00406970 /* HabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitModel.swift; sourceTree = "<group>"; };
+		34FB5A10278962F700406970 /* HabitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewModel.swift; sourceTree = "<group>"; };
+		34FB5A12278966CD00406970 /* MoodDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodDiaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				343070EF2780882600D57317 /* HomeViewModel.swift */,
 				34F58DD22787635F005F1A94 /* TestsMenuViewModel.swift */,
 				34C7F2B327881A6A00E5B3D6 /* MeditationViewModel.swift */,
+				34FB5A10278962F700406970 /* HabitsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -254,7 +257,6 @@
 				34C7F2C027886C3D00E5B3D6 /* AllTestsResultsModel.swift */,
 				34C7F2C227889E5400E5B3D6 /* HabitNoteModel.swift */,
 				34C7F2C42788BD2900E5B3D6 /* TestResultInterpretationModel.swift */,
-				34FB5A0E2789619E00406970 /* HabitModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -282,6 +284,7 @@
 				343070F127808F6B00D57317 /* HabitsView.swift */,
 				34F58DCE27875397005F1A94 /* TestsMenuView.swift */,
 				34F58DD427876B44005F1A94 /* MeditationView.swift */,
+				34FB5A12278966CD00406970 /* MoodDiaryView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				34C7F2B427881A6A00E5B3D6 /* MeditationViewModel.swift in Sources */,
 				348C351D26AD879C000A4D93 /* CheckBox.swift in Sources */,
 				3464F6DB26ADB71A00698D57 /* FormTextField.swift in Sources */,
+				34FB5A11278962F700406970 /* HabitsViewModel.swift in Sources */,
 				343070F227808F6B00D57317 /* HabitsView.swift in Sources */,
 				34C7F2C52788BD2900E5B3D6 /* TestResultInterpretationModel.swift in Sources */,
 				345DD2F926BE55230056A3E7 /* HomeView.swift in Sources */,
@@ -393,7 +397,7 @@
 				34EBB713274044BA003C03D1 /* AppState.swift in Sources */,
 				34DC6D532747DE24004B3F22 /* ResultItemView.swift in Sources */,
 				343070EC278065A100D57317 /* Picker.swift in Sources */,
-				34FB5A0F2789619F00406970 /* HabitModel.swift in Sources */,
+				34FB5A13278966CD00406970 /* MoodDiaryView.swift in Sources */,
 				34C7F2C127886C3D00E5B3D6 /* AllTestsResultsModel.swift in Sources */,
 				345DD2F226BE468B0056A3E7 /* ContentViewModel.swift in Sources */,
 				349BC90B273AD74300606951 /* NavigationButton.swift in Sources */,

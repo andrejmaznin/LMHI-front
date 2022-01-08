@@ -21,7 +21,7 @@ struct HomeView: View {
                             .font(Fonts.label)
                     }
                     
-                    NavigationButton(destination: HabitsView(), backgroundColor: color, height: height) {
+                    NavigationButton(destination: MoodDiaryView(), backgroundColor: color, height: height) {
                         Text("Дневник насторения")
                             .foregroundColor(.white)
                             .font(Fonts.label)

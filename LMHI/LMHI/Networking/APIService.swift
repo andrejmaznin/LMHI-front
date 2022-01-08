@@ -28,13 +28,30 @@ class APIService {
         let yellow: String
     }
     
+    struct TestInfo: Decodable {
+        let data: Int
+        let finished: Bool
+        let id: Int
+        let result: [Int]
+        let user_id: Int
+    }
+    
     struct MoodCriteria: Decodable {
         let id: Int
         let name: String
     }
     
+    struct Habit: Decodable {
+        let id: Int
+        let name: String
+        let boolean: Bool
+        let lower: Int
+        let upper: Int
+        let value: String
+    }
+    
     struct HabitNotesSubmitionResult: Decodable {
-        let success: Bool
+        let id: Int
     }
     
     static func createUser(model: SignUpModel, completion: @escaping (Result<Bool, APIError>) -> Void) {
@@ -117,8 +134,8 @@ class APIService {
         }
     }
     
-    static func getAllTestResults(model: AllTestsResultsModel, completion: @escaping(Result<[TestResult], APIError>) -> Void) {
-        NetworkingService.GETRequest(endpoint: "test_result", headers: model.data) { (result: Result<[TestResult], Error>) in
+    static func getAllTestResults(model: AllTestsResultsModel, completion: @escaping(Result<[TestInfo], APIError>) -> Void) {
+        NetworkingService.GETRequest(endpoint: "test_result", headers: model.data) { (result: Result<[TestInfo], Error>) in
             switch result {
             case .success(let result):
                 AppState.debugLog("Successfully Received All Tests Results")
@@ -155,8 +172,8 @@ class APIService {
         }
     }
     
-    static func getHabits(completion: @escaping(Result<[HabitModel], APIError>) -> Void) {
-        NetworkingService.GETRequest(endpoint: "habit") { (result: Result<[HabitModel], Error>) in
+    static func getHabits(completion: @escaping(Result<[Habit], APIError>) -> Void) {
+        NetworkingService.GETRequest(endpoint: "habits") { (result: Result<[Habit], Error>) in
             switch result {
             case .success(let result):
                 AppState.debugLog("Successfully Received Habits")
@@ -172,8 +189,8 @@ class APIService {
         }
     }
     
-    static func submitHabitNotes(model: HabitNoteModel, completion: @escaping(Result<Bool, APIError>) -> Void) {
-        NetworkingService.POSTRequest(endpoint: "habit_diary", data: model) { (result: Result<HabitNotesSubmitionResult, Error>) in
+    static func submitHabitNotes(model: HabitNoteModel, token: String, completion: @escaping(Result<Bool, APIError>) -> Void) {
+        NetworkingService.POSTRequest(endpoint: "habit_diary", data: model, headers: ["token": token]) { (result: Result<HabitNotesSubmitionResult, Error>) in
             switch result {
             case .success:
                 AppState.debugLog("Successfully Submited Habit Notes")

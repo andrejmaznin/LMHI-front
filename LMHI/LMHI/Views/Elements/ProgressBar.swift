@@ -2,13 +2,13 @@ import SwiftUI
 
 struct ProgressBar: View {
     let title: String
-    let currentMinutes: Int
-    let goalMinutes: Int
+    let current: Int
+    let goal: Int
     let foregroundColor: Color
     let backgroundColor: Color
     
     private var progress: Double {
-        Double(currentMinutes) / Double(goalMinutes)
+        Double(current) / Double(goal)
     }
     
     var body: some View {
@@ -29,7 +29,7 @@ struct ProgressBar: View {
                     Spacer()
                     
                     VStack {
-                        Text("\(currentMinutes) min")
+                        Text("\(current) min")
                         
                         Text("\(Int((progress * 100.0).rounded()))%")
                     }
@@ -50,8 +50,8 @@ struct ProgressBar_Previews: PreviewProvider {
     static var previews: some View {
         ProgressBar(
             title: "Meditation",
-            currentMinutes: 20,
-            goalMinutes: 30,
+            current: 20,
+            goal: 30,
             foregroundColor: Color(R: 246, G: 207, B: 69),
             backgroundColor: Color(R: 240, G: 222, B: 175)
         )
