@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ResulltItemButton: View {
     var title: String
-    var text: String
+    var interpretation: String?
     var cornerRadius: CGFloat = 30.0
     var height: CGFloat? = nil
     var maxHeight: CGFloat? = .infinity
@@ -11,8 +11,8 @@ struct ResulltItemButton: View {
     var padding: CGFloat = 80.0
     
     var body: some View {
-        Group {
-            if text != "ERROR" {
+        Section {
+            if let text = interpretation {
                 NavigationButton(destination: ResultItemView(title: title, text: text), cornerRadius: cornerRadius, height: height, maxHeight: maxHeight) {
                     ZStack {
                         HStack {
@@ -53,7 +53,7 @@ struct ResulltItemButton: View {
 
 struct ResulltItemButton_Previews: PreviewProvider {
     static var previews: some View {
-        ResulltItemButton(title: "Стремления, мотивированные самопониманием", text: "Test", image: Image("Meditation"), color: Color("Highball"))
+        ResulltItemButton(title: "Стремления, мотивированные самопониманием", interpretation: "Test", image: Image("Meditation"), color: Color("Highball"))
             .frame(height: 137)
             .padding()
     }

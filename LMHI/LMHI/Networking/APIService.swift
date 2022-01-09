@@ -21,11 +21,11 @@ class APIService {
     }
     
     struct TestResult: Decodable {
-        let blue: String
-        let green: String
-        let main: String
-        let red: String
-        let yellow: String
+        let blue: String?
+        let green: String?
+        let main: String?
+        let red: String?
+        let yellow: String?
     }
     
     struct TestInfo: Decodable {
@@ -41,13 +41,13 @@ class APIService {
         let name: String
     }
     
-    struct Habit: Decodable {
+    struct Habit: Decodable, Identifiable {
         let id: Int
         let name: String
         let boolean: Bool
         let lower: Int
         let upper: Int
-        let value: String
+        let value: String?
     }
     
     struct HabitNotesSubmitionResult: Decodable {

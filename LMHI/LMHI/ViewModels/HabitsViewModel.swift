@@ -17,5 +17,6 @@ class HabitsViewModel: ObservableObject {
 //                fatalError("Failed to load habits")
             }
         }
+        print(self.habits)
     }
 }

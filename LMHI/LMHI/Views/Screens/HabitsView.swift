@@ -3,22 +3,25 @@ import SwiftUI
 struct HabitsView: View {
     @ObservedObject var VM = HabitsViewModel()
     
+    let spacing: CGFloat = 20.0
+    
     var body: some View {
-        Group {
-            if VM.loading {
-                LoadingCover()
-                    .navigationBarBackButtonHidden(true)
-            } else {
-                ScrollView {
-                    VStack {
-                        Text("Track your habits")
-                            .font(Fonts.title)
-                        
-                        
+        ZStack {
+            ScrollView {
+                VStack(spacing: spacing) {
+                    Text("Track your habits")
+                        .font(Fonts.title)
+                    
+                    ForEach(VM.habits) { habit in
+                        ProgressBar(title: habit.name, goal: habit.lower, upper: habit.upper, value: habit.value ?? "")
+                            .padding(.horizontal)
                     }
                 }
             }
+            
+            LoadingCover(isPresented: VM.loading)
         }
+        .navigationBarBackButtonHidden(VM.loading)
     }
 }
 

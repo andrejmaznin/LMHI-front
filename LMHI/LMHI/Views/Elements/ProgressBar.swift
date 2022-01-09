@@ -2,13 +2,20 @@ import SwiftUI
 
 struct ProgressBar: View {
     let title: String
-    let current: Int
     let goal: Int
-    let foregroundColor: Color
-    let backgroundColor: Color
+    let upper: Int
+    let value: String
+    let foregroundColor: Color = Color("Festival")
+    let backgroundColor: Color = Color("Wheat")
+    let completedColor: Color = Color("Green")
+    
+    let cornerRadius: CGFloat = 30.0
+    let aspectRatio: CGFloat = 4.0
+    
+    @State var current: Int = 0
     
     private var progress: Double {
-        Double(current) / Double(goal)
+        Double(current) / Double(upper)
     }
     
     var body: some View {
@@ -20,6 +27,9 @@ struct ProgressBar: View {
                 Rectangle()
                     .frame(width: CGFloat(progress) * metrics.size.width)
                     .foregroundColor(foregroundColor)
+                    .gesture(DragGesture().onChanged { (value) in
+                        print(value)
+                    })
                 
                 HStack {
                     Text(title)
@@ -29,31 +39,30 @@ struct ProgressBar: View {
                     Spacer()
                     
                     VStack {
-                        Text("\(current) min")
+                        Text(String(current) + "/" + String(upper) + " " + value)
                         
-                        Text("\(Int((progress * 100.0).rounded()))%")
+                        Text("min " + String(goal))
                     }
                     .padding()
                 }
                 .font(.system(size: 24))
                 .foregroundColor(.white)
             }
-            .cornerRadius(30.0)
+            .cornerRadius(cornerRadius)
         }
-        .padding()
+        .padding(.horizontal)
         .frame(width: UIScreen.main.bounds.width)
-        .aspectRatio(2.5, contentMode: .fit)
+        .aspectRatio(aspectRatio, contentMode: .fit)
     }
 }
 
 struct ProgressBar_Previews: PreviewProvider {
     static var previews: some View {
         ProgressBar(
-            title: "Meditation",
-            current: 20,
-            goal: 30,
-            foregroundColor: Color(R: 246, G: 207, B: 69),
-            backgroundColor: Color(R: 240, G: 222, B: 175)
+            title: "Drink your water",
+            goal: 1200,
+            upper: 2500,
+            value: "ml"
         )
     }
 }

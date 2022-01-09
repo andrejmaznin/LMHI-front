@@ -17,7 +17,7 @@ class TestViewModel: ObservableObject {
     @Published var testState = TestState.initial
     @Published var showLoadingCover = false
     @Published var showAlert = false
-    @Published var results: [String] = []
+    @Published var results: [String?] = []
     
     let colors = [
         [Color("DarkestBlue"), Color("BluishGreen"), Color("Red"), Color("Yellow")],
