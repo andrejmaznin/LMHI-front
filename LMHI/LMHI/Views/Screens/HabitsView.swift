@@ -22,6 +22,7 @@ struct HabitsView: View {
             LoadingCover(isPresented: VM.loading)
         }
         .navigationBarBackButtonHidden(VM.loading)
+        .navigationTitle("Привычки")
     }
 }
 

@@ -1,16 +1,16 @@
-import SwiftUI
+import Foundation
 
-class HomeViewModel: ObservableObject {
+class MoodDiaryViewModel: ObservableObject {
     @Published var selections: [Int]
     @Published var moodCriterias: [String]
-    @Published var showLoadingCover: Bool
+    @Published var loading: Bool
     
     init() {
-        self.showLoadingCover = true
+        self.loading = true
         self.selections = []
         self.moodCriterias = []
         APIService.getMoodCriterias() { [unowned self] result in
-            self.showLoadingCover = false
+            self.loading = false
             switch result {
             case .success(let criterias):
                 AppState.debugLog("Success")
