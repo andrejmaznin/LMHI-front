@@ -70,11 +70,10 @@ class TestViewModel: ObservableObject {
     }
     
     func parseResults(_ state: [[Int]]) -> TestResultsModel {
-        var result = [0, 0, 0, 0, 0]
+        var result = ["", "", "", "", ""]
         for i in (0...4) {
             for j in (0...3) {
-                result[i] *= 10
-                result[i] += state[i][j]
+                result[i] += String(state[i][j]);
             }
         }
         
@@ -94,12 +93,6 @@ class TestViewModel: ObservableObject {
             case .success(let id):
                 print(id)
                 getInterpretation(id)
-//                    if result.blue == "ERROR" && result.green == "ERROR" && result.red == "ERROR" && result.yellow == "ERROR" {
-//                        AppState.setState(.home)
-//                    } else {
-//                        results = [result.main, result.blue, result.green, result.red, result.yellow]
-//                        testState = .resultsReceived
-//                    }
             case .failure:
                 self.showAlert = true
             }
@@ -112,7 +105,12 @@ class TestViewModel: ObservableObject {
             switch result {
             case .success(let result):
                 self.results = [result.main, result.blue, result.green, result.red, result.yellow]
-                self.testState = .resultsReceived
+                if result.main == nil && result.blue == nil && result.green == nil && result.red == nil && result.yellow == nil {
+                    AppState.setState(.home)
+                } else {
+                    self.results = [result.main, result.blue, result.green, result.red, result.yellow]
+                    self.testState = .resultsReceived
+                }
             case .failure(let error):
                 print(error)
             }

@@ -29,10 +29,14 @@ class APIService {
     }
     
     struct TestInfo: Decodable {
-        let data: Int
+        let date: Int
         let finished: Bool
         let id: Int
-        let result: [Int]
+        let blue: String?
+        let green: String?
+        let main: String?
+        let red: String?
+        let yellow: String?
         let user_id: Int
     }
     

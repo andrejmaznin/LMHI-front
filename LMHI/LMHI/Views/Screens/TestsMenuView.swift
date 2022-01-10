@@ -5,6 +5,7 @@ struct TestsMenuView: View {
     
     let buttonColor = Color("StarkWhite")
     let buttonHeight: CGFloat = 80.0
+    let spacing: CGFloat = 20.0
     
     var body: some View {
         Group {
@@ -13,7 +14,7 @@ struct TestsMenuView: View {
                     .navigationBarBackButtonHidden(true)
             } else {
                 ScrollView{
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: spacing) {
                         ActionButton (action: { AppState.setState(.test) }, backgroundColor: .green, height: buttonHeight) {
                             Text("Пройти цветовой тест")
                                 .foregroundColor(.white)
@@ -23,6 +24,10 @@ struct TestsMenuView: View {
                         
                         Text("Результаты предыдущих тестов")
                             .font(Fonts.title)
+                        
+                        ForEach((0..<VM.dates.count).reversed(), id: \.self) { id in
+                            CompletedTestBox(index: VM.dates.count - id, date: VM.dates[id])
+                        }
                     }
                 }
                 .padding()
