@@ -8,6 +8,7 @@ struct CompletedTestBox: View {
     let index: Int
     let date: String
     let buttonAscpectRatio: CGFloat = 1.5
+    let results: [String?]
     let width: CGFloat? = nil
     let height: CGFloat = 100.0
     let maxWidth: CGFloat? = .infinity
@@ -36,7 +37,7 @@ struct CompletedTestBox: View {
                 
                 Spacer()
                 
-                NavigationButton(destination: TestsMenuView(), cornerRadius: cornerRadius, backgroundColor: .gray, height: height / 2.0) {
+                NavigationButton(destination: TestResultsView(results: results), cornerRadius: cornerRadius, backgroundColor: .gray, height: height / 2.0) {
                     Text("Посмотреть")
                         .foregroundColor(.white)
                         .font(Fonts.label)
@@ -51,7 +52,7 @@ struct CompletedTestBox: View {
 
 struct CompletedTestBox_Previews: PreviewProvider {
     static var previews: some View {
-        CompletedTestBox(index: 1, date: "1.01.2022 16:00")
+        CompletedTestBox(index: 1, date: "1.01.2022 16:00", results: [""])
             .padding()
     }
 }

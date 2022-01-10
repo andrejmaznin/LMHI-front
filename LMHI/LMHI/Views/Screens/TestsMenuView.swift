@@ -8,12 +8,12 @@ struct TestsMenuView: View {
     let spacing: CGFloat = 20.0
     
     var body: some View {
-        Group {
+        Section {
             if VM.loading {
                 LoadingCover()
                     .navigationBarBackButtonHidden(true)
             } else {
-                ScrollView{
+                ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading, spacing: spacing) {
                         ActionButton (action: { AppState.setState(.test) }, backgroundColor: .green, height: buttonHeight) {
                             Text("Пройти цветовой тест")
@@ -26,7 +26,7 @@ struct TestsMenuView: View {
                             .font(Fonts.title)
                         
                         ForEach((0..<VM.dates.count).reversed(), id: \.self) { id in
-                            CompletedTestBox(index: VM.dates.count - id, date: VM.dates[id])
+                            CompletedTestBox(index: VM.dates.count - id, date: VM.dates[id], results: VM.results[id])
                         }
                     }
                 }
