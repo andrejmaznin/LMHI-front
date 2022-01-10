@@ -7,7 +7,8 @@ struct ProgressBar: View {
     let value: String
     let foregroundColor: Color = Color("Festival")
     let backgroundColor: Color = Color("Wheat")
-    let completedColor: Color = Color("Green")
+    let goalForeground: Color = Color("Green")
+    let goalBackground: Color = Color("FringyFlower")
     
     let cornerRadius: CGFloat = 30.0
     let aspectRatio: CGFloat = 4.0
@@ -22,14 +23,11 @@ struct ProgressBar: View {
         GeometryReader { metrics in
             ZStack(alignment: .leading) {
                 Rectangle()
-                    .foregroundColor(backgroundColor)
+                    .foregroundColor(current >= goal ? goalBackground: backgroundColor)
                 
                 Rectangle()
                     .frame(width: CGFloat(progress) * metrics.size.width)
-                    .foregroundColor(foregroundColor)
-                    .gesture(DragGesture().onChanged { (value) in
-                        print(value)
-                    })
+                    .foregroundColor(current >= goal ? goalForeground : foregroundColor)
                 
                 HStack {
                     Text(title)
@@ -49,6 +47,10 @@ struct ProgressBar: View {
                 .foregroundColor(.white)
             }
             .cornerRadius(cornerRadius)
+            .gesture(DragGesture().onChanged { (value) in
+                let position = min(1.0,max(0.0, value.location.x / metrics.size.width))
+                current = Int(round(position * CGFloat(upper)))
+            })
         }
         .padding(.horizontal)
         .frame(width: UIScreen.main.bounds.width)

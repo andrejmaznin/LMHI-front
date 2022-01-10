@@ -40,6 +40,7 @@ struct ResulltItemButton: View {
                                 .foregroundColor(.white)
                                 .multilineTextAlignment(.leading)
                                 .padding(.trailing, padding)
+                                .minimumScaleFactor(0.1)
                             
                             Spacer()
                         }
