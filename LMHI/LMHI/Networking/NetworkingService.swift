@@ -25,7 +25,7 @@ class NetworkingService {
         request(endpoint: endpoint, URLParameters: URLParameters, headers: headers, data: JSONData, method: "POST", contentType: "application/json", completion: completion)
     }
     
-    private static let serverURL = "https://luscherian.herokuapp.com/"
+    private static let serverURL = "https://iluscherian.herokuapp.com/"
     
     private static func request<T>(endpoint: String, URLParameters: [String: Any] = [:], headers: [String: Any] = [:], data: Data?, method: String, contentType: String, completion: @escaping (Result<T, Error>) -> Void) where T: Decodable {
         guard let domainComponent = URLComponents(string: NetworkingService.serverURL + endpoint) else {
