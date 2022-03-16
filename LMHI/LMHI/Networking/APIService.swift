@@ -67,10 +67,10 @@ class APIService {
             case .failure(let error):
                 AppState.debugLog("Creation Failure")
                 if let handledError = error as? NetworkingService.ErrorResult {
-                    if handledError.ERROR == "USER ALREADY EXISTS" {
+                    if handledError.message == "Credentials taken" {
                         completion(.failure(.userAlreadyExists))
                     } else {
-                        print(handledError.ERROR)
+                        print(handledError.message)
                         completion(.failure(.unexpectedError))
                     }
                 } else {
@@ -89,13 +89,13 @@ class APIService {
             case .failure(let error):
                 AppState.debugLog("Authentication Failure")
                 if let handledError = error as? NetworkingService.ErrorResult {
-                    switch handledError.ERROR {
-                    case "NO USER":
+                    switch handledError.message {
+                    case "No user found":
                         completion(.failure(.wrongEmail))
-                    case "WRONG USERNAME, LOGIN, PHONE OR PASSWORD":
+                    case "Wrong password":
                         completion(.failure(.wrongPassword))
                     default:
-                        print(handledError.ERROR)
+                        print(handledError.message)
                         completion(.failure(.unexpectedError))
                     }
                 } else {
@@ -114,7 +114,7 @@ class APIService {
             case .failure(let error):
                 print("Test Results Submition Failure")
                 if let handledError = error as? NetworkingService.ErrorResult {
-                    print(handledError.ERROR)
+                    print(handledError.message)
                 }
                 print(error)
                 completion(.failure(.unexpectedError))
@@ -130,7 +130,7 @@ class APIService {
             case .failure(let error):
                 print("Failed to Get Interpretation")
                 if let handledError = error as? NetworkingService.ErrorResult {
-                    print(handledError.ERROR)
+                    print(handledError.message)
                 }
                 print(error)
                 completion(.failure(.unexpectedError))
@@ -147,7 +147,7 @@ class APIService {
             case .failure(let error):
                 print("Failed to Receive All Tests Results")
                 if let handledError = error as? NetworkingService.ErrorResult {
-                    print(handledError.ERROR)
+                    print(handledError.message)
                 }
                 print(error)
                 completion(.failure(.unexpectedError))
@@ -168,7 +168,7 @@ class APIService {
             case .failure(let error):
                 print("Failed to Receive Mood Criterias")
                 if let handledError = error as? NetworkingService.ErrorResult {
-                    print(handledError.ERROR)
+                    print(handledError.message)
                 }
                 print(error)
                 completion(.failure(.unexpectedError))
@@ -185,7 +185,7 @@ class APIService {
             case .failure(let error):
                 print("Failed to Receive Habits")
                 if let handledError = error as? NetworkingService.ErrorResult {
-                    print(handledError.ERROR)
+                    print(handledError.message)
                 }
                 print(error)
                 completion(.failure(.unexpectedError))
@@ -202,7 +202,7 @@ class APIService {
             case .failure(let error):
                 print("Failed to Submit Habit Notes")
                 if let handledError = error as? NetworkingService.ErrorResult {
-                    print(handledError.ERROR)
+                    print(handledError.message)
                 }
                 print(error)
                 completion(.failure(.unexpectedError))

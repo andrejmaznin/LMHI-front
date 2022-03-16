@@ -2,7 +2,7 @@ import Foundation
 
 class NetworkingService {
     struct ErrorResult: Decodable, Error {
-        let ERROR: String
+        let message: String
     }
     
     enum NetworkingError: Error {
@@ -76,6 +76,7 @@ class NetworkingService {
                 if let object = try? JSONDecoder().decode(T.self, from: unwrappedData) {
                     completion(.success(object))
                 } else if let errorResult = try? JSONDecoder().decode(ErrorResult.self, from: unwrappedData) {
+                    print(errorResult)
                     completion(.failure(errorResult))
                 } else {
                     completion(.failure(NetworkingError.badDecoding))
