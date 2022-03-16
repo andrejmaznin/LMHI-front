@@ -17,7 +17,6 @@ struct CompletedTestBox: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(strokeColor, lineWidth: strokeWidth)
             
             RoundedRectangle(cornerRadius: cornerRadius)
                 .fill(backgroundColor)

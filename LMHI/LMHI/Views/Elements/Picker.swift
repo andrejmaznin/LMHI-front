@@ -11,7 +11,7 @@ struct Picker: View {
     let unselectedCircleDiameter: CGFloat = 20.0
     let unselectedCircleStroke: CGFloat = 5.0
     let selectedCircleDiameter: CGFloat = 30.0
-    let selectedCircleStroke: CGFloat = 6.0
+    let selectedCircleStroke: CGFloat = 10.0
     let labels = ["--", "-", "0", "+", "++"]
     let aspectRatio: CGFloat = 3.15
     let maxWidth: CGFloat? = UIScreen.main.bounds.width
@@ -42,9 +42,9 @@ struct Picker: View {
                             }
                             
                             Circle()
-                                .fill(Color("Whisper"))
+                                .fill(Color("PinkSwan"))
                                 .frame(width: unselectedCircleDiameter, height: unselectedCircleDiameter)
-                                .background(Circle().stroke(.black, lineWidth: unselectedCircleStroke))
+                                .background(Circle())
                                 .onTapGesture {
                                     currentSelection = i
                                 }
