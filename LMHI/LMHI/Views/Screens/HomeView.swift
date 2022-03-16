@@ -22,7 +22,7 @@ struct HomeView: View {
                     }
                     
                     NavigationButton(destination: MoodDiaryView(), backgroundColor: color, height: height) {
-                        Text("Дневник насторения")
+                        Text("Дневник настроения")
                             .foregroundColor(.white)
                             .font(Fonts.label)
                     }
