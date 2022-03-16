@@ -1,7 +1,7 @@
 import SwiftUI
 
 class AppState {
-    static var isInDebugMode: Bool = true
+    static var isInDebugMode: Bool = false
     static private var storage = UserDefaults.standard
     
     static func debugLog<Data>(_ data: Data) {
