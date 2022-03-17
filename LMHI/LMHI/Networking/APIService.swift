@@ -138,7 +138,7 @@ class APIService {
         }
     }
     
-    static func getAllTestResults(model: AllTestsResultsModel, completion: @escaping(Result<[TestInfo], APIError>) -> Void) {
+    static func getAllTestResults(model: TokenModel, completion: @escaping(Result<[TestInfo], APIError>) -> Void) {
         NetworkingService.GETRequest(endpoint: "test_result", headers: model.data) { (result: Result<[TestInfo], Error>) in
             switch result {
             case .success(let result):
@@ -176,8 +176,8 @@ class APIService {
         }
     }
     
-    static func getHabits(completion: @escaping(Result<[Habit], APIError>) -> Void) {
-        NetworkingService.GETRequest(endpoint: "habits") { (result: Result<[Habit], Error>) in
+    static func getHabits(model: TokenModel, completion: @escaping(Result<[Habit], APIError>) -> Void) {
+        NetworkingService.GETRequest(endpoint: "habit_diary", headers: model.data) { (result: Result<[Habit], Error>) in
             switch result {
             case .success(let result):
                 AppState.debugLog("Successfully Received Habits")

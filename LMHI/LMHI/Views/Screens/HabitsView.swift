@@ -12,8 +12,8 @@ struct HabitsView: View {
                     Text("Track your habits")
                         .font(Fonts.title)
                     
-                    ForEach(VM.habits) { habit in
-                        ProgressBar(title: habit.name, goal: habit.lower, upper: habit.upper, value: habit.value ?? "")
+                    ForEach(0..<9) { id in
+                        ProgressBar(title: VM.habits[id].name, goal: VM.habits[id].lower, upper: VM.habits[id].upper, value: VM.habits[id].value ?? "", current: $VM.values[id])
                             .padding(.horizontal)
                     }
                 }
@@ -23,6 +23,9 @@ struct HabitsView: View {
         }
         .navigationBarBackButtonHidden(VM.loading)
         .navigationTitle("Привычки")
+        .onDisappear {
+            VM.save()
+        }
     }
 }
 

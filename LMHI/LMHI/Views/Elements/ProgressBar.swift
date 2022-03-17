@@ -13,7 +13,7 @@ struct ProgressBar: View {
     let cornerRadius: CGFloat = 30.0
     let aspectRatio: CGFloat = 4.0
     
-    @State var current: Int = 0
+    @Binding var current: Int
     
     private var progress: Double {
         Double(current) / Double(upper)
@@ -64,7 +64,8 @@ struct ProgressBar_Previews: PreviewProvider {
             title: "Drink your water",
             goal: 1200,
             upper: 2500,
-            value: "ml"
+            value: "ml",
+            current: .constant(0)
         )
     }
 }

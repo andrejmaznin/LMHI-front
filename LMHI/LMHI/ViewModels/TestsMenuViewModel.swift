@@ -11,7 +11,7 @@ class TestsMenuViewModel: ObservableObject {
         self.showAlert = false
         self.dates = []
         self.results = []
-        let model = AllTestsResultsModel(AppState.load(key: "token", defaultValue: ""))
+        let model = TokenModel(AppState.load(key: "token", defaultValue: ""))
         APIService.getAllTestResults(model: model) { [unowned self] result in
             AppState.debugLog(result)
             self.loading = false

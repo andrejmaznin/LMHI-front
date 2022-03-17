@@ -37,7 +37,7 @@
 		34C7F2BB27882A4E00E5B3D6 /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7F2BA27882A4E00E5B3D6 /* MusicPlayer.swift */; };
 		34C7F2BD27883BD100E5B3D6 /* meditation_a_new_leaf.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34C7F2BC27883BD100E5B3D6 /* meditation_a_new_leaf.mp3 */; };
 		34C7F2BF27883BDD00E5B3D6 /* meditation_cloudy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34C7F2BE27883BDD00E5B3D6 /* meditation_cloudy.mp3 */; };
-		34C7F2C127886C3D00E5B3D6 /* AllTestsResultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7F2C027886C3D00E5B3D6 /* AllTestsResultsModel.swift */; };
+		34C7F2C127886C3D00E5B3D6 /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7F2C027886C3D00E5B3D6 /* TokenModel.swift */; };
 		34C7F2C327889E5400E5B3D6 /* HabitNoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7F2C227889E5400E5B3D6 /* HabitNoteModel.swift */; };
 		34C7F2C52788BD2900E5B3D6 /* TestResultInterpretationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C7F2C42788BD2900E5B3D6 /* TestResultInterpretationModel.swift */; };
 		34D568E6273EDDA200118A39 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D568E5273EDDA200118A39 /* ActionButton.swift */; };
@@ -97,7 +97,7 @@
 		34C7F2BA27882A4E00E5B3D6 /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		34C7F2BC27883BD100E5B3D6 /* meditation_a_new_leaf.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = meditation_a_new_leaf.mp3; sourceTree = "<group>"; };
 		34C7F2BE27883BDD00E5B3D6 /* meditation_cloudy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = meditation_cloudy.mp3; sourceTree = "<group>"; };
-		34C7F2C027886C3D00E5B3D6 /* AllTestsResultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTestsResultsModel.swift; sourceTree = "<group>"; };
+		34C7F2C027886C3D00E5B3D6 /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		34C7F2C227889E5400E5B3D6 /* HabitNoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitNoteModel.swift; sourceTree = "<group>"; };
 		34C7F2C42788BD2900E5B3D6 /* TestResultInterpretationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultInterpretationModel.swift; sourceTree = "<group>"; };
 		34D568E5273EDDA200118A39 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
@@ -251,7 +251,7 @@
 				34331E9126C8EBB5001E57F6 /* SignInModel.swift */,
 				34F060B326DBADAB004817CD /* TestResultsModel.swift */,
 				3482D28A27809A4A00C349B0 /* MoodCriteriaModel.swift */,
-				34C7F2C027886C3D00E5B3D6 /* AllTestsResultsModel.swift */,
+				34C7F2C027886C3D00E5B3D6 /* TokenModel.swift */,
 				34C7F2C227889E5400E5B3D6 /* HabitNoteModel.swift */,
 				34C7F2C42788BD2900E5B3D6 /* TestResultInterpretationModel.swift */,
 			);
@@ -394,7 +394,7 @@
 				34DC6D532747DE24004B3F22 /* ResultItemView.swift in Sources */,
 				343070EC278065A100D57317 /* Picker.swift in Sources */,
 				34FB5A13278966CD00406970 /* MoodDiaryView.swift in Sources */,
-				34C7F2C127886C3D00E5B3D6 /* AllTestsResultsModel.swift in Sources */,
+				34C7F2C127886C3D00E5B3D6 /* TokenModel.swift in Sources */,
 				345DD2F226BE468B0056A3E7 /* ContentViewModel.swift in Sources */,
 				349BC90B273AD74300606951 /* NavigationButton.swift in Sources */,
 				349BC90D273ADF4300606951 /* Fonts.swift in Sources */,

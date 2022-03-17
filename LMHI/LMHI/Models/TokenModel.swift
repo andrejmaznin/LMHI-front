@@ -1,6 +1,6 @@
 import Foundation
 
-struct AllTestsResultsModel: Encodable {
+struct TokenModel: Encodable {
     let data: [String: String]
     
     init(_ token: String) {
